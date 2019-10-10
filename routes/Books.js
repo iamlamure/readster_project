@@ -2,3 +2,24 @@ const express = require('express')
 const books = express.Router()
 const Book = require('../models/Book')
 
+books.post('/addbook',(req, res) => {
+    const bookData = {
+        book_name: req.body.book_name,
+        author_name: req.body.author_name,
+        book_detail: req.body.book_detail,
+        publisher: req.body.publisher,
+        category: req.body.category,
+        price: req.body.price,
+        pages: req.body.pages,
+        book_img: req.body.book_img,
+    }
+        Book.create(bookData)
+        .then(() => {
+            res.send('Book Added !')
+        })
+        .catch(err => {
+            res.send('error: ' + err)
+        })   
+})
+
+module.exports = books

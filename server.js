@@ -12,12 +12,13 @@ app.use(
     extended: false
   })
 )
-
 var Users = require('./routes/Users')
 var Blogs = require('./routes/Blogs')
+var Books = require('./routes/Books')
 
 app.use('/users', Users)
 app.use('/blogs', Blogs)
+app.use('/books', Books)
 
 app.listen(port, function() {
   console.log('Server is running on port: ' + port)

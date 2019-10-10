@@ -41,13 +41,9 @@
                             <input type="text" class="form-control" placeholder="ราคา">
                         </div>
                         <div class="form-group col-md-2">
-                            <input type="text" class="form-control" placeholder="น้ำหนัก">
-                        </div>
-                        <div class="form-group col-md-2">
                             <input type="text" class="form-control" placeholder="จำนวนหน้า">
                         </div>
                     </div>
-
                     <div class="input-group mb-3">
                         <div class="custom-file">
                             <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
