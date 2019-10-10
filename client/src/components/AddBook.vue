@@ -57,3 +57,42 @@
         </div>
     </div>
 </template>
+
+<script>
+
+import axios from 'axios'
+import router from '../router'
+
+export default {
+    
+    data () {
+        return {
+               book_name:'',
+               author_name: '',
+               book_detail: '',
+               publisher: '',
+               category: '',
+               price: '',
+               pages: '',
+               book_img: ''
+        }
+    },
+
+    methods: {
+        bookadd() {
+            axios.post('/books/addbooks',
+                {
+                    book_name: this.book_name,
+                    author_name: this.author_name,
+                    book_detail: this.book_name,
+                    publisher: this.publisher,
+                    category: this.category,
+                    price: this.price,
+                    pages: this.pages,
+                    book_img: this.book_img  
+                }
+            )
+        }
+    }
+}
+</script>

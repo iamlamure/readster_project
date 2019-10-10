@@ -2,6 +2,8 @@ const express = require('express')
 const books = express.Router()
 const Book = require('../models/Book')
 
+
+//Add book
 books.post('/addbook',(req, res) => {
     const bookData = {
         book_name: req.body.book_name,
