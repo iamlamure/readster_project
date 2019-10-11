@@ -71,7 +71,7 @@ export default {
                     book_img: this.book_img  
                 }
             ).then((res) => {
-                router.push({ name: 'Addbook'})
+                router.push({ name: 'profile'})
                 console.log(res)
             }).catch((err) => {
                 console.log(err)

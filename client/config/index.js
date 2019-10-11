@@ -14,6 +14,10 @@ module.exports = {
     host: 'localhost', // can be overwritten by process.env.HOST
     port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     proxyTable: {
+      '/books': {
+        target: 'http://localhost:5000',
+        changeOrigin: true
+      },
       '/users': {
         target: 'http://localhost:5000',
         changeOrigin: true

@@ -1,6 +1,9 @@
 const express = require('express')
 const books = express.Router()
 const Book = require('../models/Book')
+const cors = require('cors')
+
+books.use(cors())
 
 
 //Add book
