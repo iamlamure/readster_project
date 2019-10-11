@@ -9,7 +9,6 @@ const upload = multer({
     dest: '../upload/bookcover'
 })
 
-
 //Add book
 books.post('/addbook',upload.single('file'),(req, res) => {
     const bookData = {
