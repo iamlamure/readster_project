@@ -2,11 +2,16 @@ const express = require('express')
 const books = express.Router()
 const Book = require('../models/Book')
 const cors = require('cors')
+const multer = require('multer')
 
 books.use(cors())
+const upload = multer({
+    dest: '../upload/bookcover'
+})
+
 
 //Add book
-books.post('/addbook',(req, res) => {
+books.post('/addbook',upload.single('file'),(req, res) => {
     const bookData = {
         book_name: req.body.book_name,
         author_name: req.body.author_name,
@@ -17,8 +22,10 @@ books.post('/addbook',(req, res) => {
         pages: req.body.pages,
         book_img: req.body.book_img,
     }
+    
         Book.create(bookData)
         .then(() => {
+            res.json({ file: req.file })
             res.send('Book Added !')
         })
         .catch(err => {

@@ -32,7 +32,7 @@
                     <input type="text" v-model="pages" class="form-control" name="pages" placeholder="ระบุจำนวนหน้า">
                 </div>
                 <div class="form-group">
-                    <input type="file" class="form-control" @change="onFileChange">
+                    <input type="file" @change="onFileSelected">
                 </div>
                 <button type="submit" class="btn btn-lg btn-primary btn-block">Add Book Now!</button>
                 <table class="table">
@@ -72,7 +72,8 @@ export default {
                category: '',
                price: '',
                pages: '',
-               book_img: ''
+               book_img: '',
+
         }
     },
     mounted() {
@@ -80,6 +81,9 @@ export default {
     },
 
     methods: {
+        onFileSelected(event){
+            console.log(event)
+        },
         addbook () {
             axios.post('/books/addbook',
                 {
@@ -91,7 +95,7 @@ export default {
                     price: this.price,
                     pages: this.pages,
                     book_img: this.book_img  
-                }
+                },
             ).then((res) => {
                 this.book_name =''
                 this.author_name= '',
