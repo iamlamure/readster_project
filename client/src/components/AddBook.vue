@@ -91,6 +91,13 @@ export default {
                     book_img: this.book_img  
                 }
             ).then((res) => {
+                this.book_name =''
+                this.author_name= '',
+                this.book_detail= '',
+                this.publisher= '',
+                this.category= '',
+                this.price= '',
+                this.pages= '',
                 this.getbooks()
                 console.log(res)
             }).catch((err) => {
@@ -111,7 +118,6 @@ export default {
         deletebook (bookid) {
             axios.delete(`/books/books/${bookid}`
             ).then((res) => {
-                this.book_name = ''
                 this.getbooks()
                 console.log(res)
             }).catch((err) => {
