@@ -31,8 +31,10 @@
                     <label for="pages">จำนวนหน้า</label>
                     <input type="text" v-model="pages" class="form-control" name="pages" placeholder="ระบุจำนวนหน้า">
                 </div>
+                <div class="form-group">
+                    <input type="file" class="form-control" @change="onFileChange">
+                </div>
                 <button type="submit" class="btn btn-lg btn-primary btn-block">Add Book Now!</button>
-                
                 <table class="table">
                     <th>ID</th>
                     <th>Cover</th>
