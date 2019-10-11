@@ -5,7 +5,6 @@ const cors = require('cors')
 
 books.use(cors())
 
-
 //Add book
 books.post('/addbook',(req, res) => {
     const bookData = {
@@ -25,6 +24,31 @@ books.post('/addbook',(req, res) => {
         .catch(err => {
             res.send('error: ' + err)
         })   
+})
+//Get all book
+books.get('/books',(req,res) => {
+    Book.findAll()
+    .then(books => {
+        res.json(books)
+    })
+    .catch(err => {
+        res.send('error: '+ err)
+    })
+})
+
+//Delete Book
+books.delete('/books/:bookid',(req,res ,next) => {
+    Book.destroy({
+        where: {
+            bookid: req.params.bookid
+        }
+    })
+    .then(() => {
+        res.send('Book Deleted!')
+    })
+    .catch(err => {
+        res.send('error:' + err)
+    })
 })
 
 module.exports = books
