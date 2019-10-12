@@ -10,7 +10,7 @@
                 <form class="form-group" action="">
                     <div class="form-group">
                         <label for="name">หัวเรื่อง</label>
-                        <input type="text" v-model="title" class="form-control" name="title" placeholder="ระบุหัวเรื่อง">
+                        <input type="text" v-model="title" class="form-control form-control-lg" name="title" placeholder="ระบุหัวเรื่อง">
                     </div>
                     <div class="form-group">
                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="10" placeholder="Article"></textarea>

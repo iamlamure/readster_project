@@ -4,29 +4,32 @@ const db = require('../database/db.js')
 module.exports = db.sequelize.define(
     'blog',
     {
-        blockid: {
+        blogid: {
             type: Sequelize.INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
-        title: {
+        blog_title: {
             type: Sequelize.STRING
         },
-        article: {
+        blog_article: {
             type: Sequelize.STRING
         },
-        img: {
+        blog_img: {
             type: Sequelize.STRING
         },
-        userid: {
+        bookid: {
             type: Sequelize.INTEGER
         },
-        date: {
+        blog_user: {
+            type: Sequelize.INTEGER
+        },
+        blog_date: {
             type: Sequelize.DATE,
             defaultValue: Sequelize.NOW
         },
-        like: {
-            type: Sequelize.INTEGER
+        blog_rate: {
+            type: Sequelize.STRING
         }
     },
     {
