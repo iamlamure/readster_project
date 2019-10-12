@@ -4,6 +4,7 @@ const sequelize = new Sequelize('project1_db', 'root', 'root',
 {
   host: 'localhost',
   dialect: 'mysql',
+  port: '3307',
   operatorsAliases: false,
 
   pool: {
