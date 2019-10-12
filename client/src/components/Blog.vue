@@ -54,7 +54,7 @@
                     <tr v-for="(blog) in blogs" v-bind:key="blog.blogid" v-bind:title="blog.blog_title">
                         <td class="font-weight-bold">{{blog.blogid}}</td>
                         <td>
-                            <a href="#" class="font-weight-bold">{{blog.blog_title}}</a>
+                            <a href="blogs/read/1" class="font-weight-bold">{{blog.blog_title}}</a>
                         </td>
                         <td>{{blog.bookid}}</td>
                         <td>

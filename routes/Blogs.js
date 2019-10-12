@@ -50,7 +50,7 @@ blogs.delete('/blogs/:blogid',(req,res,next) =>{
     })
 })
 
-
+// Read Blog
 blogs.get('/read/:blogid',(req,res) => {
     Blog.findOne({
         blogid : req.params.blogid
