@@ -9,8 +9,7 @@
 
                 <form class="form-group" action="">
                     <div class="form-group">
-                        <label for="name">หัวเรื่อง</label>
-                        <input type="text" class="form-control form-control-lg" name="title" placeholder="ระบุหัวเรื่อง">
+                        <input type="text" class="form-control form-control-lg font-weight-bold" name="title" placeholder="ระบุหัวเรื่อง">
                     </div>
                     <div class="form-group">
                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="10" placeholder="Article"></textarea>
@@ -36,7 +35,7 @@
                             </select>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-lg btn-warning  btn-block">Publish Now</button>
+                    <button type="submit" class="btn btn-lg btn-warning  btn-block font-weight-bold ">Publish Now</button>
                 </form>
             
             </div>
@@ -47,22 +46,17 @@
                     <tr class="thead-dark">
                         <th scope="col">Id</th>
                         <th scope="col">Title</th>
-                        <th scope="col">Date/Update</th>
-                        <th scope="col">Rate</th>
+                        <th scope="col">Book</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
+                    <tr v-for="(blog) in blogs" v-bind:key="blog.blogid" v-bind:title="blog.blog_title">
+                        <td class="font-weight-bold">{{blog.blogid}}</td>
                         <td>
-                            <a href="#" class="">ประยุทธ์ออกไป</a>
+                            <a href="#" class="font-weight-bold">{{blog.blog_title}}</a>
                         </td>
-                        <td>
-                            04/10/62
-                            ,Current
-                        </td>
-                        <td>1M/1.2M</td>
+                        <td>{{blog.bookid}}</td>
                         <td>
                             <button type="button" class="btn btn-info">Edit</button>
                             <button type="button" class="btn btn-danger">Delete</button>
@@ -82,12 +76,29 @@ import axios from 'axios'
 import router from '../router'
 
 export default {
+    data() {
+        return {
+            blogs:[],
+            blogid:'',
+            blog_title:'',
+            book_id:''
+        }
+    },
+    mounted() {
+        this.getblog()
+    },
     methods: {
-        
+         getblog () {
+            axios.get('/blogs/blogs').then(
+                result => {
+                    console.log(result.data)
+                    this.blogs = result.data
+                },
+                error => {
+                    console.error(error)
+                }
+            )
+        },
     },
 }
 </script>
-
-<style>
-    
-</style>

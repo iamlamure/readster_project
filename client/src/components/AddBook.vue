@@ -81,9 +81,6 @@ export default {
     },
 
     methods: {
-        onFileSelected(event){
-            console.log(event)
-        },
 
         //Add Book
         addbook () {

@@ -24,5 +24,15 @@ blogs.post('/addblog',(req,res) => {
     })
 })
 
+//Get All blog 
+blogs.get('/blogs',(req,res) => {
+    Blog.findAll()
+    .then(blogs => {
+        res.json(blogs)
+    })
+    .catch(err => {
+        res.send('error: ' + err)
+    })
+})
 
 module.exports = blogs
