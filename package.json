@@ -26,6 +26,7 @@
     "mysql": "^2.14.1",
     "mysql2": "^1.7.0",
     "sequelize": "^4.38.0",
+    "vue-select": "^3.2.0",
     "vue-simple-search-dropdown": "^1.0.1"
   },
   "devDependencies": {

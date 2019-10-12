@@ -15,11 +15,36 @@
                     <div class="form-group">
                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="10" placeholder="Article"></textarea>
                     </div>
-                    <input type="file" class="form-control-file" id="exampleFormControlFile1" placeholder="เลือกไฟล์ภาพ">
-                    
+                    <div class="form-row">
+                        <div class="col-md-4 mb-3">
+                            <input type="file" class="form-control-file" id="exampleFormControlFile1" placeholder="เลือกไฟล์ภาพ">
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <select class="custom-select">
+                                <option selected>ชื่อหนังสือ</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <select class="custom-select">
+                                <option selected>Rate</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-lg btn-warning  btn-block">Publish Now</button>
                 </form>
             
             </div>
+
+
+
+
+
             <div class="table-responsive-md">
                 <table class="table">
                 <thead>
@@ -54,3 +79,13 @@
     </div>
 </template>
 <!-- eslint-disable -->
+
+<script>
+export default {
+    
+}
+</script>
+
+<style>
+    
+</style>
