@@ -137,7 +137,12 @@ export default {
             })
         },
     }
+/*
 
+        ยังขาด Update & Upload
+        
+*/
 
 }
 </script>
+
