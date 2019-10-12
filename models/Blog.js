@@ -19,17 +19,22 @@ module.exports = db.sequelize.define(
             type: Sequelize.STRING
         },
         bookid: {
-            type: Sequelize.INTEGER
+            type: Sequelize.INTEGER,
+            references: {
+                model: 'Book', 
+                key: 'bookid', 
+             }
         },
-        blog_user: {
-            type: Sequelize.INTEGER
+        userid: {
+            type: Sequelize.INTEGER,
+            references: {
+                model: 'User', 
+                key: 'id', 
+             }
         },
         blog_date: {
             type: Sequelize.DATE,
             defaultValue: Sequelize.NOW
-        },
-        blog_rate: {
-            type: Sequelize.STRING
         }
     },
     {

@@ -10,7 +10,7 @@
                 <form class="form-group" action="">
                     <div class="form-group">
                         <label for="name">หัวเรื่อง</label>
-                        <input type="text" v-model="title" class="form-control form-control-lg" name="title" placeholder="ระบุหัวเรื่อง">
+                        <input type="text" class="form-control form-control-lg" name="title" placeholder="ระบุหัวเรื่อง">
                     </div>
                     <div class="form-group">
                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="10" placeholder="Article"></textarea>
@@ -41,10 +41,6 @@
             
             </div>
 
-
-
-
-
             <div class="table-responsive-md">
                 <table class="table">
                 <thead>
@@ -52,7 +48,7 @@
                         <th scope="col">Id</th>
                         <th scope="col">Title</th>
                         <th scope="col">Date/Update</th>
-                        <th scope="col">Like/Read</th>
+                        <th scope="col">Rate</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -81,8 +77,14 @@
 <!-- eslint-disable -->
 
 <script>
+
+import axios from 'axios'
+import router from '../router'
+
 export default {
-    
+    methods: {
+        
+    },
 }
 </script>
 
