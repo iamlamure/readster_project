@@ -32,7 +32,7 @@
                     <input type="text" v-model="pages" class="form-control" name="pages" placeholder="ระบุจำนวนหน้า">
                 </div>
                 <div class="form-group">
-                    <input type="file" @change="onFileSelected" name="book_img">
+                    <input type="file" name="book_img" >
                 </div>
                 <button type="submit" class="btn btn-lg btn-primary btn-block">Add Book Now!</button>
                 <table class="table">
