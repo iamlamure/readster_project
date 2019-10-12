@@ -50,4 +50,17 @@ blogs.delete('/blogs/:blogid',(req,res,next) =>{
     })
 })
 
+
+blogs.get('/read/:blogid',(req,res) => {
+    Blog.findOne({
+        blogid : req.params.blogid
+    })
+    .then(blog => {
+        res.json(blog)
+    })
+    .catch(err => {
+        res.send('error: '+ err)
+    })
+})
+
 module.exports = blogs

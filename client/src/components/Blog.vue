@@ -12,7 +12,7 @@
                         <input type="text" v-model="blog_title" class="form-control form-control-lg font-weight-bold" name="blog_title" placeholder="ระบุหัวเรื่อง">
                     </div>
                     <div class="form-group">
-                        <textarea type="text" v-model="blog_article" class="form-control" id="exampleFormControlTextarea1" rows="10" placeholder="blog_article"></textarea>
+                        <textarea type="text" v-model="blog_article" class="form-control" id="exampleFormControlTextarea1" rows="10" placeholder="เริ่มเขียนอะไรบางอย่าง ... "></textarea>
                     </div>
                     <div class="form-row">
                         <div class="col-md-4 mb-3">
