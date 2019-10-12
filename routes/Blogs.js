@@ -35,4 +35,19 @@ blogs.get('/blogs',(req,res) => {
     })
 })
 
+//Delete Blog
+blogs.delete('/blogs/:blogid',(req,res,next) =>{
+    Blog.destroy({
+        where:{
+            blogid: req.params.blogid
+        }
+    })
+    .then(() => {
+        res.send('Blog Deleted!')
+    })
+    .catch(err => {
+        res.send('error: ' + err)
+    })
+})
+
 module.exports = blogs

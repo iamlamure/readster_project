@@ -7,19 +7,19 @@
             </div>
             <div class="col-sm-auto mx-auto">
 
-                <form class="form-group" action="">
+                <form class="form-group">
                     <div class="form-group">
-                        <input type="text" class="form-control form-control-lg font-weight-bold" name="title" placeholder="ระบุหัวเรื่อง">
+                        <input type="text" v-model="blog_title" class="form-control form-control-lg font-weight-bold" name="blog_title" placeholder="ระบุหัวเรื่อง">
                     </div>
                     <div class="form-group">
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="10" placeholder="Article"></textarea>
+                        <textarea type="text" v-model="blog_article" class="form-control" id="exampleFormControlTextarea1" rows="10" placeholder="blog_article"></textarea>
                     </div>
                     <div class="form-row">
                         <div class="col-md-4 mb-3">
                             <input type="file" class="form-control-file" id="exampleFormControlFile1" placeholder="เลือกไฟล์ภาพ">
                         </div>
                         <div class="col-md-4 mb-3">
-                            <select class="custom-select">
+                            <select class="custom-select" name="">
                                 <option selected>ชื่อหนังสือ</option>
                                 <option value="1">One</option>
                                 <option value="2">Two</option>
@@ -59,7 +59,7 @@
                         <td>{{blog.bookid}}</td>
                         <td>
                             <button type="button" class="btn btn-info">Edit</button>
-                            <button type="button" class="btn btn-danger">Delete</button>
+                            <button  v-on:click="deleteblog(blog.blogid)" type="button" class="btn btn-danger">Delete</button>
                         </td>
                     </tr>
                 </tbody>
@@ -80,6 +80,7 @@ export default {
         return {
             blogs:[],
             blogid:'',
+            blog_article:'',
             blog_title:'',
             book_id:''
         }
@@ -99,6 +100,15 @@ export default {
                 }
             )
         },
+        deleteblog(blogid) {
+            axios.delete(`/blogs/blogs/${blogid}`
+            ).then((res) => {
+                this.getblog()
+                console.log(res)
+            }).catch((err) => {
+                console.log(err)
+            })
+        }
     },
 }
 </script>
