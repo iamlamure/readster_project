@@ -21,6 +21,9 @@
           <router-link class="nav-link" to="/addbook">Book</router-link>
         </li>
         <li v-if="auth=='loggedin' || token!=null || token!=undefined" class="nav-item">
+          <router-link class="nav-link" to="/blog">Blog</router-link>
+        </li>
+        <li v-if="auth=='loggedin' || token!=null || token!=undefined" class="nav-item">
           <router-link class="nav-link" to="/profile">Profile</router-link>
         </li>
         <li v-if="auth=='loggedin' || token!=null || token!=undefined" class="nav-item float-right">
@@ -34,6 +37,7 @@
 <script>
 
 import EventBus from './EventBus'
+import Axios from 'axios'
 
 EventBus.$on('logged-in', test => {
   console.log(test)
@@ -45,7 +49,6 @@ export default {
       token: localStorage.usertoken
     }
   },
-
   methods: {
     logout () {
       localStorage.removeItem('usertoken')

@@ -2,17 +2,23 @@
 <template>
     <div class="container">
         <div class="jumbotron mt-5">
-            <div class="col-sm-8 mx-auto">
+            <div class="form-group">
                 <button type="button" class="btn btn-warning col-4 mb-2 float-right">เพิ่มบทความ</button>
+            </div>
+            <div class="col-sm-auto mx-auto">
+
                 <form class="form-group" action="">
                     <div class="form-group">
-                        <input class="form-control form-control-lg" type="text" placeholder="Title">
+                        <label for="name">หัวเรื่อง</label>
+                        <input type="text" v-model="title" class="form-control" name="title" placeholder="ระบุหัวเรื่อง">
                     </div>
                     <div class="form-group">
                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="10" placeholder="Article"></textarea>
                     </div>
                     <input type="file" class="form-control-file" id="exampleFormControlFile1" placeholder="เลือกไฟล์ภาพ">
+                    
                 </form>
+            
             </div>
             <div class="table-responsive-md">
                 <table class="table">
