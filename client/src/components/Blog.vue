@@ -54,7 +54,7 @@
                     <tr v-for="(blog) in blogs" v-bind:key="blog.blogid" v-bind:title="blog.blog_title">
                         <td class="font-weight-bold">{{blog.blogid}}</td>
                         <td>
-                            <a href="blogs/read/1" class="font-weight-bold">{{blog.blog_title}}</a>
+                            <router-link :to="{ name: 'blog' , params: {blogid} }">{{blog.blog_title}}</router-link>
                         </td>
                         <td>{{blog.bookid}}</td>
                         <td>
@@ -82,7 +82,8 @@ export default {
             blogid:'',
             blog_article:'',
             blog_title:'',
-            book_id:''
+            book_id:'',
+            userid: '',
         }
     },
     mounted() {
@@ -108,7 +109,20 @@ export default {
             }).catch((err) => {
                 console.log(err)
             })
+        },
+        readblog(blogid){
+            axios.get(`/blogs/read/${blogid}`
+            ).then((res) => {
+                this.blogid = res.data.blogid,
+                this.blog_article = res.data.blog_article,
+                this.blog_title = res.data.blog_title,
+                this.book_id = res.data.book_id,
+                this.userid =  res.data.userid,
+                console.log(res)
+            }).catch((err) => {
+                console.log(err)
+            })
         }
-    },
+    }
 }
 </script>

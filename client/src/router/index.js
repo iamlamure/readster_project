@@ -49,7 +49,7 @@ export default new Router({
       component: AddBook
     },
     {
-      path: '/read',
+      path: '/read/',
       name: 'Read',
       component: Read
     }
