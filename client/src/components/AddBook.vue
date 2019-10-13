@@ -97,12 +97,12 @@ export default {
                 },
             ).then((res) => {
                 this.book_name =''
-                this.author_name = '',
-                this.book_detail = '',
-                this.publisher = '',
-                this.category = '',
-                this.price = '',
-                this.pages = '',
+                this.author_name = ''
+                this.book_detail = ''
+                this.publisher = ''
+                this.category = ''
+                this.price = ''
+                this.pages = ''
                 this.getbooks()
                 console.log(res)
             }).catch((err) => {

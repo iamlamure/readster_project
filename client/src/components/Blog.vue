@@ -7,7 +7,7 @@
             </div>
             <div class="col-sm-auto mx-auto">
 
-                <form class="form-group" v-on:submit.prevent="">
+                <form class="form-group" v-on:submit.prevent="addblog">
                     <div class="form-group">
                         <input type="text" v-model="blog_title" class="form-control form-control-lg font-weight-bold" name="blog_title" placeholder="ระบุหัวเรื่อง">
                     </div>
@@ -19,10 +19,7 @@
                             <input type="file" class="form-control-file" id="exampleFormControlFile1" placeholder="เลือกไฟล์ภาพ">
                         </div>
                         <div class="col-md-4 mb-3">
-                            <input type="text" v-model="book_id" class="form-control form-control-lg font-weight-bold" name="book_id" placeholder="ชื่อหนังสือ">
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <input type="text" v-model="book_id" class="form-control form-control-lg font-weight-bold" name="" placeholder="ผู้รีวิว">
+                            <input type="text" class="form-control form-control-lg font-weight-bold" name="" placeholder="รูป">
                         </div>
                     </div>
                     <button type="submit" class="btn btn-lg btn-warning  btn-block font-weight-bold ">Publish Now</button>
@@ -36,7 +33,6 @@
                     <tr class="thead-dark">
                         <th scope="col">Id</th>
                         <th scope="col">Title</th>
-                        <th scope="col">Book</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -44,9 +40,8 @@
                     <tr v-for="(blog) in blogs" v-bind:key="blog.blogid" v-bind:title="blog.blog_title">
                         <td class="font-weight-bold">{{blog.blogid}}</td>
                         <td>
-                            <router-link :to="{ name: 'blogid' , params: {blogid} }">{{blog.blog_title}}</router-link>
+                            <a href="">{{blog.blog_title}}</a>
                         </td>
-                        <td>{{blog.bookid}}</td>
                         <td>
                             <button type="button" class="btn btn-info">Edit</button>
                             <button  v-on:click="deleteblog(blog.blogid)" type="button" class="btn btn-danger">Delete</button>
@@ -72,8 +67,6 @@ export default {
             blogid:'',
             blog_article:'',
             blog_title:'',
-            book_id:'',
-            userid: '',
         }
     },
     mounted() {
@@ -109,14 +102,34 @@ export default {
                 this.blogid = res.data.blogid,
                 this.blog_article = res.data.blog_article,
                 this.blog_title = res.data.blog_title,
-                this.book_id = res.data.book_id,
-                this.userid =  res.data.userid,
+                //this.blog_img = res.data.blog_img,
+                //this.userid =  res.data.userid,
                 console.log(res)
             }).catch((err) => {
                 console.log(err)
             })
         },
         // Add Blog
+        addblog() {
+            axios.post('/blogs/addblog',
+            {
+                blog_title: this.blog_title,
+                blog_article: this.blog_article,
+                //blog_img: this.blog_img
+                //And Anothe else
+            }
+            ).then((res) => {
+                    this.blog_title = ''
+                    this.blog_article = ''
+                    //this.blog_img = ''
+                    //this.book_id = ''
+                    this.getblog()
+                    console.log(res)
+                }).catch((err) => {
+                    console.log(err)
+                })
+        }
+        
     }
 }
 </script>

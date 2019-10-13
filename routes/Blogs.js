@@ -12,8 +12,6 @@ blogs.post('/addblog',(req,res) => {
         blog_title : req.body.blog_title,
         blog_article : req.body.blog_article,
         blog_img : req.body.blog_img,
-        bookid : req.body.bookid,
-        userid : req.body.userid,
     }
     Blog.create(blogData)
     .then(() => {
