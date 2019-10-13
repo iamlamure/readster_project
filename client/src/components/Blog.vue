@@ -19,20 +19,10 @@
                             <input type="file" class="form-control-file" id="exampleFormControlFile1" placeholder="เลือกไฟล์ภาพ">
                         </div>
                         <div class="col-md-4 mb-3">
-                            <select class="custom-select" name="">
-                                <option selected>ชื่อหนังสือ</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                            </select>
+                            <input type="text" v-model="book_id" class="form-control form-control-lg font-weight-bold" name="book_id" placeholder="ชื่อหนังสือ">
                         </div>
                         <div class="col-md-4 mb-3">
-                            <select class="custom-select">
-                                <option selected>Rate</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                            </select>
+                            <input type="text" v-model="book_id" class="form-control form-control-lg font-weight-bold" name="" placeholder="ผู้รีวิว">
                         </div>
                     </div>
                     <button type="submit" class="btn btn-lg btn-warning  btn-block font-weight-bold ">Publish Now</button>
