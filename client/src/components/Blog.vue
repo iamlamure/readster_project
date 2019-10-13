@@ -7,7 +7,7 @@
             </div>
             <div class="col-sm-auto mx-auto">
 
-                <form class="form-group">
+                <form class="form-group" v-on:submit.prevent="">
                     <div class="form-group">
                         <input type="text" v-model="blog_title" class="form-control form-control-lg font-weight-bold" name="blog_title" placeholder="ระบุหัวเรื่อง">
                     </div>
@@ -80,6 +80,7 @@ export default {
         this.getblog()
     },
     methods: {
+        // Get All Blog
          getblog () {
             axios.get('/blogs/blogs').then(
                 result => {
@@ -91,6 +92,7 @@ export default {
                 }
             )
         },
+        // Delete Blog
         deleteblog(blogid) {
             axios.delete(`/blogs/blogs/${blogid}`
             ).then((res) => {
@@ -100,6 +102,7 @@ export default {
                 console.log(err)
             })
         },
+        // Read Blog By Find
         readblog(blogid){
             axios.get(`/blogs/read/${blogid}`
             ).then((res) => {
@@ -112,7 +115,8 @@ export default {
             }).catch((err) => {
                 console.log(err)
             })
-        }
+        },
+        // Add Blog
     }
 }
 </script>
