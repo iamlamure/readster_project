@@ -54,7 +54,7 @@
                     <tr v-for="(blog) in blogs" v-bind:key="blog.blogid" v-bind:title="blog.blog_title">
                         <td class="font-weight-bold">{{blog.blogid}}</td>
                         <td>
-                            <router-link :to="{ name: 'blog' , params: {blogid} }">{{blog.blog_title}}</router-link>
+                            <router-link :to="{ name: 'blogid' , params: {blogid} }">{{blog.blog_title}}</router-link>
                         </td>
                         <td>{{blog.bookid}}</td>
                         <td>
