@@ -7,6 +7,7 @@ import Profile from '@/components/Profile'
 import Blog from '@/components/Blog'
 import List from '@/components/List'
 import AddBook from '@/components/AddBook'
+import Read from '@/components/Read'
 
 Vue.use(Router)
 
@@ -46,6 +47,11 @@ export default new Router({
       path: '/addbook',
       name: 'Addbook',
       component: AddBook
+    },
+    {
+      path: '/read',
+      name: 'Read',
+      component: Read
     }
   ]
 })

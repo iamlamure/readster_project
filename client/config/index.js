@@ -25,6 +25,10 @@ module.exports = {
       '/users': {
         target: 'http://localhost:5000',
         changeOrigin: true
+      },
+      '/reads': {
+        target: 'http://localhost:5000',
+        changeOrigin: true
       }
     },
     autoOpenBrowser: false,
