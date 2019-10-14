@@ -40,7 +40,7 @@
                     <tr v-for="(blog) in blogs" v-bind:key="blog.blogid" v-bind:title="blog.blog_title">
                         <td class="font-weight-bold">{{blog.blogid}}</td>
                         <td>
-                            <a href="">{{blog.blog_title}}</a>
+                            <h3 @click="gotodetail(blog.blogid)" >{{blog.blog_title}}</h3> 
                         </td>
                         <td>
                             <button type="button" class="btn btn-info">Edit</button>
@@ -128,6 +128,12 @@ export default {
                 }).catch((err) => {
                     console.log(err)
                 })
+        },
+        gotodetail(blogid){
+            this.$router.push({
+                name:'Read',
+                params:{blog:blogid}
+            })
         }
         
     }
