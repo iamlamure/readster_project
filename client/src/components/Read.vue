@@ -2,7 +2,8 @@
     <div class="container">
         <div class="jumbotron mt-5" >
             <h2>หน้าอ่านจ้า</h2>
-            <h1>{{this.$route.params.blog_title}}</h1>
+            <h1>{{this.$route.params.blog}}</h1>
+            <h1>{{this.$route.params.title}}</h1>
         </div>
     </div>
 </template>
@@ -16,12 +17,8 @@ export default {
     name: 'Read',
     data() {
         return {
-            blogid:'',
-        }
-    },
-    methods: {
-        getread(blogid) {
-            axios.get(`/blogs/read/${blogid}`)
+            blog:this.params.blogid,
+            title:this.params.blog_title
         }
     }
 }
