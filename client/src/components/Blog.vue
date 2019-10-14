@@ -133,6 +133,10 @@ export default {
             this.$router.push({
                 name:'Read',
                 params:{blog:blogid}
+            }).then((res) => {
+                this.getblog()
+            }).catch((err) => {
+                console.log(err)
             })
         }
         
