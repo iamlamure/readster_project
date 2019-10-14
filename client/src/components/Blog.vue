@@ -95,20 +95,7 @@ export default {
                 console.log(err)
             })
         },
-        // Read Blog By Find
-        readblog(blogid){
-            axios.get(`/blogs/read/${blogid}`
-            ).then((res) => {
-                this.blogid = res.data.blogid,
-                this.blog_article = res.data.blog_article,
-                this.blog_title = res.data.blog_title,
-                //this.blog_img = res.data.blog_img,
-                //this.userid =  res.data.userid,
-                console.log(res)
-            }).catch((err) => {
-                console.log(err)
-            })
-        },
+        
         // Add Blog
         addblog() {
             axios.post('/blogs/addblog',
