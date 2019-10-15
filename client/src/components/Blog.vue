@@ -2,11 +2,8 @@
 <template>
     <div class="container">
         <div class="jumbotron mt-5">
-            <div class="form-group">
-                <button type="button" class="btn btn-warning col-4 mb-2 float-right">เพิ่มบทความ</button>
-            </div>
             <div class="col-sm-auto mx-auto">
-
+                <button type="button" class="btn btn-warning col-4 mb-2 float-right">เพิ่มบทความ</button>
                 <form class="form-group" v-on:submit.prevent="addblog">
                     <div class="form-group">
                         <input type="text" v-model="blog_title" class="form-control form-control-lg font-weight-bold" name="blog_title" placeholder="ระบุหัวเรื่อง">
