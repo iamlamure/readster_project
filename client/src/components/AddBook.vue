@@ -34,6 +34,7 @@
                 <div class="form-group">
                     <input type="file" name="book_img" >
                 </div>
+                <hr class="style11">
                 <button type="submit" class="btn btn-lg btn-primary btn-block">Add Book Now!</button>
                 <table class="table">
                     <th>ID</th>

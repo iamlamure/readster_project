@@ -21,6 +21,7 @@
                         </div>
                     </div>
                     <button type="submit" class="btn btn-lg btn-warning  btn-block font-weight-bold ">Publish Now</button>
+                    <hr class="style1">
                 </form>
             
             </div>

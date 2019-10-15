@@ -26,6 +26,9 @@
         <li v-if="auth=='loggedin' || token!=null || token!=undefined" class="nav-item">
           <router-link class="nav-link" to="/profile">Profile</router-link>
         </li>
+        <li v-if="auth=='loggedin' || token!=null || token!=undefined" class="nav-item">
+          <router-link class="nav-link" to="/product">Product</router-link>
+        </li>
         <li v-if="auth=='loggedin' || token!=null || token!=undefined" class="nav-item float-right">
           <a class="nav-link float-right" href="" v-on:click="logout">Logout</a>
         </li>

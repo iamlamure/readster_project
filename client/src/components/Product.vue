@@ -2,6 +2,7 @@
      <div class="container">
         <div class="jumbotron mt-5">
             <h1>เพิ่มสินค้า</h1>
+            <hr class="style1">
             <form v-on:submit.prevent="addbook">
                 <div class="form-group">
                     <label for="book_name">ชื่อสินค้า</label>
@@ -9,7 +10,7 @@
                 </div>
                 <div class="form-group">
                     <label for="product_detail">รายละเอียด/เรื่องย่อ</label>
-                    <input type="text" class="form-control" name="book_detail" placeholder="โปรดระบุราละเอียด/เรื่องย่อ">
+                    <textarea type="text" class="form-control" name="book_detail" placeholder="โปรดระบุราละเอียด/เรื่องย่อ"></textarea>
                 </div>
                 <div class="form-row">
                     <div class="col-md-4 mb-3">
@@ -20,34 +21,52 @@
                         <label for="qty">จำนวน</label>
                         <input type="text" class="form-control" name="qty" placeholder="จำนวน">
                     </div>
-                    <div class="col-auto my-1">
-                        <label >สภาพ</label>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="สินค้าใหม่" >
-                            <label class="form-check-label" for="exampleRadios1">
-                                สินค้าใหม่
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" >
-                            <label class="form-check-label" for="exampleRadios1">
-                                สินค้ามือสอง
-                            </label>
-                        </div>
+                    <div class="col-md-4 mb-3">  
+                        <label for="productstatus">สภาพ</label>
+                        <select class="form-control" id="productstatus">
+                            <option>สินค้าใหม่</option>
+                            <option>สินค้ามือสอง</option>
+                        </select>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="book_img">รูปสินค้า</label>
                     <input type="file" name="book_img" >
                 </div>
+                <hr class="style1">
+                <h4>
+                    การจัดส่ง
+                </h4>
+                <div class="form-row">
+                    <div class="col-md-4 mb-3">  
+                        <label for="shipping">บริการขนส่ง</label>
+                        <select class="form-control" id="shipping">
+                            <option>EMS - ไปรษณีย์ไทย</option>
+                            <option>REG - ไปรษณีย์ไทย</option>
+                            <option>ส่งด่วน - Kerry</option>
+                            <option>ส่งด่วน - DHL</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="shippingcost">ค่าจัดส่ง</label>
+                        <input type="text" class="form-control" name="shippingcost" placeholder="ค่าจัดส่ง">
+                    </div>
+                </div>
+                
                 <button type="submit" class="btn btn-lg btn btn-success btn-block">Add Product Now!</button>
+                
+                
                 <table class="table">
                     <th>ID</th>
-                    <th>Cover</th>
-                    <th>Book Name</th>
+                    <th>IMG</th>
+                    <th>PRODUCT NAME</th>
+                    <th>QTY</th>
+                    <th>PRICE</th>
                     <tr>
                         <td>1</td>
                         <td>Image</td>
+                        <td>Book Name</td>
+                        <td>Book Name</td>
                         <td>Book Name</td>
                         <td class="text-right">
                             <button  class=" btn btn-info ">Edit</button>
@@ -61,7 +80,16 @@
 </template>
 
 <script>
+
+import axios from 'axios'
+import router from "../router";
 export default {
+
+    methods: {
+        addproduct() {
+
+        }
+    },
     
 }
 </script>
