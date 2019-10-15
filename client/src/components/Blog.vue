@@ -17,6 +17,7 @@
                         </div>
                         <div class="col-md-4 mb-3">
                             <input type="text" class="form-control form-control-lg font-weight-bold" name="" placeholder="รูป">
+                            
                         </div>
                     </div>
                     <button type="submit" class="btn btn-lg btn-warning  btn-block font-weight-bold ">Publish Now</button>
@@ -66,7 +67,7 @@ export default {
             blogid:'',
             blog_article:'',
             blog_title:'',
-            
+
         }
     },
     mounted() {
