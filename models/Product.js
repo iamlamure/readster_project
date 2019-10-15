@@ -2,28 +2,33 @@ const Sequelize = require('sequelize')
 const db = require('../database/db.js')
 
 module.exports = db.sequelize.define(
-    'blog',
+    'product',
     {
-        blogid: {
+        productid: {
             type: Sequelize.INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
-        blog_title: {
+        product_name: {
             type: Sequelize.STRING
         },
-        blog_article: {
+        product_detail: {
             type: Sequelize.STRING
         },
-        blog_img: {
+        product_price: {
+            type: Sequelize.INTEGER
+        },
+        qty: {
+            type: Sequelize.INTEGER
+        },
+        product_condition: {
             type: Sequelize.STRING
         },
-        blog_date: {
-            type: Sequelize.DATE,
-            defaultValue: Sequelize.NOW
+        shipping: {
+            type: Sequelize.STRING
         },
-        userblogid: {
-            type: Sequelize.INTEGER,
+        shippingcost: {
+            type: Sequelize.INTEGER
         }
     },
     {
