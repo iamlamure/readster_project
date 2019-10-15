@@ -66,6 +66,7 @@ export default {
             blogid:'',
             blog_article:'',
             blog_title:'',
+            
         }
     },
     mounted() {

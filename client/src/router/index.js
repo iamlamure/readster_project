@@ -8,6 +8,7 @@ import Blog from '@/components/Blog'
 import List from '@/components/List'
 import AddBook from '@/components/AddBook'
 import Read from '@/components/Read'
+import Product from '@/components/Product'
 
 Vue.use(Router)
 
@@ -52,6 +53,11 @@ export default new Router({
       path: '/blogs/read/:blog',
       name: 'Read',
       component: Read
+    },
+    {
+      path:'/product',
+      name: 'Product',
+      component: Product
     }
   ]
 })
