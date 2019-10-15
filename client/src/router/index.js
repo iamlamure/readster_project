@@ -55,9 +55,9 @@ export default new Router({
       component: Read
     },
     {
-      path:'/product',
-      name: 'Product',
-      component: Product
+      path:'/sell',
+      name: 'Sell',
+      component: Sell
     }
   ]
 })
