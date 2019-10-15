@@ -8,7 +8,7 @@ import Blog from '@/components/Blog'
 import List from '@/components/List'
 import AddBook from '@/components/AddBook'
 import Read from '@/components/Read'
-import Product from '@/components/Product'
+import Sell from '@/components/Sell'
 
 Vue.use(Router)
 
