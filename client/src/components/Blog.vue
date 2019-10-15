@@ -33,6 +33,7 @@
                     <tr class="thead-dark">
                         <th scope="col">Id</th>
                         <th scope="col">Title</th>
+                        <th scope="col">Post By</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -42,6 +43,7 @@
                         <td>
                             <h3 @click="gotodetail(blog.blogid)" >{{blog.blog_title}}</h3> 
                         </td>
+                        <td>ตะวัน</td>
                         <td>
                             <button type="button" class="btn btn-info">Edit</button>
                             <button  v-on:click="deleteblog(blog.blogid)" type="button" class="btn btn-danger">Delete</button>
