@@ -20,20 +20,27 @@
                         <label for="qty">จำนวน</label>
                         <input type="text" class="form-control" name="qty" placeholder="จำนวน">
                     </div>
-                    <div class="col-md-4 mb-3">
-                        <label for="product_status">สภาพ</label>
-                        <input type="text"  class="form-control" name="product_status" placeholder="สภาพของสินค้า">
-                    </div>
-                    <div class="col-md-4 mb-3">
-                        <label for="shipping">การจัดส่ง</label>
-                        <input type="text" class="form-control" name="shipping" placeholder="การจัดส่ง">
+                    <div class="col-auto my-1">
+                        <label >สภาพ</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="สินค้าใหม่" >
+                            <label class="form-check-label" for="exampleRadios1">
+                                สินค้าใหม่
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" >
+                            <label class="form-check-label" for="exampleRadios1">
+                                สินค้ามือสอง
+                            </label>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="book_img">รูปสินค้า</label>
                     <input type="file" name="book_img" >
                 </div>
-                <button type="submit" class="btn btn-lg btn-primary btn-block">Add Product Now!</button>
+                <button type="submit" class="btn btn-lg btn btn-success btn-block">Add Product Now!</button>
                 <table class="table">
                     <th>ID</th>
                     <th>Cover</th>
