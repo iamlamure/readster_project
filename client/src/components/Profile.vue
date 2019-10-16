@@ -8,6 +8,10 @@
       <table class="table col-md-6 mx-auto">
         <tbody>
           <tr>
+            <td>User Id</td>
+            <td>{{id}}</td>
+          </tr>
+          <tr>
             <td>Fist Name</td>
             <td>{{first_name}}</td>
           </tr>
@@ -34,6 +38,7 @@ export default {
     const token = localStorage.usertoken
 
     return {
+      id:'',
       first_name: '',
       last_name: '',
       email: '',
@@ -45,6 +50,7 @@ export default {
       axios.get('/users/profile', {
         headers: { 'Authorization': this.token }
       }).then(res => {
+        this.id = res.data.id
         this.first_name = res.data.first_name
         this.last_name = res.data.last_name
         this.email = res.data.email
