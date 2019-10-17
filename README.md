@@ -1,1 +1,1 @@
-# Project 2 Readster Platfrom 
+# Project 2 Readster Platfrom for Senior Project
