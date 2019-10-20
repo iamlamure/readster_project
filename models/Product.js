@@ -15,6 +15,9 @@ module.exports = db.sequelize.define(
         product_detail: {
             type: Sequelize.STRING
         },
+        product_img: {
+            type: Sequelize.STRING
+        },
         product_price: {
             type: Sequelize.INTEGER
         },
@@ -33,5 +36,4 @@ module.exports = db.sequelize.define(
     },
     {
         timestamps: false
-    }
-)
+    })
