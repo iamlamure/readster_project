@@ -38,10 +38,10 @@ products.get('/products',(req,res) => {
 })
 
 // Delete Product
-products.delete('/products/:productid' ,(req,res) => {
+products.delete('/products/:productid' ,(req,res,next) => {
     Product.destroy({
-        where : {
-            productid: req.param.productid
+        where: {
+            productid: req.params.productid
         }
     })
     .then(() => {
@@ -51,4 +51,5 @@ products.delete('/products/:productid' ,(req,res) => {
         res.send('error :' + err)
     })
 })
+
 module.exports = products
