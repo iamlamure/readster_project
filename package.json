@@ -1,7 +1,7 @@
 {
-  "name": "nodejs-mysql-authentication",
+  "name": "Readster Project",
   "version": "1.0.0",
-  "description": "nodejs login with jwt token",
+  "description": "Panuwat & Tawan",
   "main": "server.js",
   "scripts": {
     "test": "node server.js",
@@ -25,11 +25,13 @@
     "multer": "^1.4.2",
     "mysql": "^2.14.1",
     "mysql2": "^1.7.0",
-    "sequelize": "^4.38.0",
-    "vue-select": "^3.2.0",
-    "vue-simple-search-dropdown": "^1.0.1"
+    "sequelize": "^4.38.0"
   },
   "devDependencies": {
     "nodemon": "^1.19.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/iamalmure/readster_project.git"
   }
 }
