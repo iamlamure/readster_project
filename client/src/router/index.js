@@ -6,7 +6,7 @@ import Register from '@/components/Register'
 import Profile from '@/components/Profile'
 import Blog from '@/components/Blog'
 import List from '@/components/List'
-import AddBook from '@/components/AddBook'
+import Book from '@/components/Book'
 import Read from '@/components/Read'
 import Product from '@/components/Product'
 
@@ -45,9 +45,9 @@ export default new Router({
       component: List
     },
     {
-      path: '/addbook',
-      name: 'Addbook',
-      component: AddBook
+      path: '/book',
+      name: 'Book',
+      component: Book
     },
     {
       path: '/blogs/read/:blog',

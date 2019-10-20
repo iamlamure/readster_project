@@ -58,16 +58,15 @@
                 
                 <table class="table">
                     <th>ID</th>
-                    <th>IMG</th>
                     <th>PRODUCT NAME</th>
                     <th>QTY</th>
                     <th>PRICE</th>
-                    <tr>
-                        <td>1</td>
-                        <td>Image</td>
-                        <td>Book Name</td>
-                        <td>Book Name</td>
-                        <td>Book Name</td>
+                    <th class="text-right" >ACTION</th>
+                    <tr v-for="(product) in products" v-bind:key="product.productid" v-bind:title="product.product_name">
+                        <td>{{product.productid}}</td>
+                        <td>{{product.product_name}}</td>
+                        <td>{{product.qty}}</td>
+                        <td>{{product.product_price}}</td>
                         <td class="text-right">
                             <button  class=" btn btn-info ">Edit</button>
                             <button  class=" btn btn-danger ">Delete</button>
@@ -84,10 +83,62 @@
 import axios from 'axios'
 import router from "../router";
 export default {
-
+    data(){
+        return {
+            products: [],
+            productid:'',
+            product_name:'',
+            product_detail:'',
+            product_img:'',
+            product_price:'',
+            qty:'',
+            product_condition:'',
+            shipping:'',
+            shippingcost:''
+        }
+    },
+    mounted() {
+        this.getproduct()
+    },
     methods: {
-        addproduct() {
 
+        addproduct(){
+            axios.post('/products/addproduct',
+            {
+                product_name: this.product_name,
+                product_detail:this.product_detail,
+                product_img:this.product_img,
+                product_price:this.product_price,
+                qty:this.qty,
+                product_condition:this.product_condition,
+                shipping:this.shipping,
+                shippingcost:this.shippingcost
+            })
+        },
+
+
+        //Get All Products
+        getproduct() {
+            axios.get('/products/products').then(
+                result => {
+                    console.log(result.data)
+                    this.products = result.data
+                },
+                error => {
+                    console.error(error)
+                }
+            )
+        },
+
+        //Delete Product By ID
+        deleteproduct (productid) {
+            axios.delete(`/products/products/${productid}`
+            ).then((res) => {
+                this.getproduct()
+                console.log(res)
+            }).catch((err) => {
+                console.log(err)
+            })
         }
     },
     
