@@ -3,6 +3,7 @@
         <div class="jumbotron mt-5" >
             <h1>บทความที่ : {{this.$route.params.blog}}</h1>
             <h1>ชื่อเรื่อง : {{this.blog_title}}</h1>
+            <h5>Writer : </h5>
             <hr class="style1">
             <p>{{this.blog_article}}</p>
         </div>

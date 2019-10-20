@@ -2,6 +2,7 @@
 <template>
     <div class="container">
         <div class="jumbotron mt-5">
+            <h1>เพิ่มบทความ</h1>
             <div class="col-sm-auto mx-auto">
                 <button type="button" class="btn btn-warning col-4 mb-2 float-right">เพิ่มบทความ</button>
                 <form class="form-group" v-on:submit.prevent="addblog">
