@@ -10,7 +10,7 @@
                         <input type="text" v-model="blog_title" class="form-control form-control-lg font-weight-bold" name="blog_title" placeholder="หัวข้อบทความที่ต้องการจะบอกเล่า">
                     </div>
                     <div class="form-group">
-                        <textarea type="text" v-model="blog_article" class="form-control" id="exampleFormControlTextarea1" rows="10" placeholder="เริ่มเขียนอะไรบางอย่าง ... "></textarea>
+                        <textarea type="text" v-model="blog_article" class="form-control" id="blog_article" rows="10" placeholder="เริ่มเขียนอะไรบางอย่าง ... "></textarea>
                     </div>
                     <div class="form-row">
                         <div class="col-md-4 mb-3">
@@ -36,10 +36,10 @@
                 <table class="table">
                 <thead>
                     <tr class="thead-dark">
-                        <th scope="col">Id</th>
+                        <th scope="col">ID</th>
                         <th scope="col">Title</th>
                         <th scope="col">Post By</th>
-                        <th scope="col">Action</th>
+                        <th scope="col">Management</th>
                     </tr>
                 </thead>
                 <tbody>
