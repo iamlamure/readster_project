@@ -1,11 +1,10 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded" v-bind:class=" { 'navbarOpen': show }" >
-     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample10" aria-controls="navbarsExample10"
-      aria-expanded="false" aria-label="Toggle navigation">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample10" >
-      <ul class="navbar-nav">
+    <div class="collapse navbar-collapse justify-content-md-center" id="navbar" >
+      <ul class="navbar-nav mr-auto">
         <li class="nav-item">
           <router-link class="nav-link" to="/">Home</router-link>
         </li>

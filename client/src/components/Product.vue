@@ -53,8 +53,8 @@
                     </div>
                 </div>
                 
-                <button type="submit" class="btn btn-lg btn btn-success btn-block">Add Product Now!</button>
-                
+                <button type="submit" class="btn btn-lg btn btn-success font-weight-bold btn-block">Add Product Now!</button>
+                <hr class="style11">
                 <table class="table">
                     <th>ID</th>
                     <th>PRODUCT NAME</th>

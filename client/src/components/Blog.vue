@@ -3,25 +3,30 @@
     <div class="container">
         <div class="jumbotron mt-5">
             <h1>เพิ่มบทความ</h1>
+            <hr class="style11">
             <div class="col-sm-auto mx-auto">
-                <button type="button" class="btn btn-warning col-4 mb-2 float-right">เพิ่มบทความ</button>
                 <form class="form-group" v-on:submit.prevent="addblog">
                     <div class="form-group">
-                        <input type="text" v-model="blog_title" class="form-control form-control-lg font-weight-bold" name="blog_title" placeholder="ระบุหัวเรื่อง">
+                        <input type="text" v-model="blog_title" class="form-control form-control-lg font-weight-bold" name="blog_title" placeholder="หัวข้อบทความที่ต้องการจะบอกเล่า">
                     </div>
                     <div class="form-group">
                         <textarea type="text" v-model="blog_article" class="form-control" id="exampleFormControlTextarea1" rows="10" placeholder="เริ่มเขียนอะไรบางอย่าง ... "></textarea>
                     </div>
                     <div class="form-row">
                         <div class="col-md-4 mb-3">
-                            <input type="file" class="form-control-file" id="exampleFormControlFile1" placeholder="เลือกไฟล์ภาพ">
+                            <label for="review_img">อัพโหลดรูปภาพประกอบ</label>
+                            <input type="file" class="form-control-file" id="review_img" placeholder="เลือกไฟล์ภาพ">
                         </div>
-                        <div class="col-md-4 mb-3">
-                            <input type="text" class="form-control form-control-lg font-weight-bold" name="" placeholder="รูป">
-                            
-                        </div>
+                        <div class="col-md-4 mb-3">  
+                        <label for="book_name">หนังสือที่รีวิว</label>
+                        <select class="form-control" v-model="book_name" id="book_name">
+                            <option>โตไปไม่โกง</option>
+                            <option>ประชาธิปไตย</option>
+                            <option>รับราชการยังไงให้ได้ 4000 ล้าน</option>
+                        </select>
                     </div>
-                    <button type="submit" class="btn btn-lg btn-warning  btn-block font-weight-bold ">Publish Now</button>
+                    </div>
+                    <button type="submit" class="btn btn-lg btn-success  btn-block font-weight-bold ">Publish Now</button>
                     <hr class="style1">
                 </form>
             

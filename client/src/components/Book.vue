@@ -2,6 +2,7 @@
     <div class="container">
         <div class="jumbotron mt-5">
             <h1>เพิ่มหนังสือ</h1>
+            <hr class="style11">
             <form v-on:submit.prevent="addbook">
                 <div class="form-group">
                     <label for="book_name">ชื่อหนังสือ</label>
@@ -34,19 +35,24 @@
                         <label for="pages">จำนวนหน้า</label>
                         <input type="text" v-model="pages" class="form-control" name="pages" placeholder="ระบุจำนวนหน้า">
                     </div>
-                        <div class="col-md-4 mb-3">
+                    <div class="col-md-4 mb-3">
                         <label for="pages">อัพโหลดรูปหน้าปกหนังสือ</label>
                         <input type="file" name="book_img" >
                     </div>
                 </div>
                 
+                <div>
+                    <button type="submit" class="btn btn-lg btn-success font-weight-bold btn-block">Add Book Now!</button>
+                </div>
                 <hr class="style11">
-                <button type="submit" class="btn btn-lg btn-primary btn-block">Add Book Now!</button>
+                
                 <table class="table">
-                    <th>ID</th>
-                    <th>Cover</th>
-                    <th>Book Name</th>
-                    <tr v-for="(book) in books" v-bind:key="book.bookid" v-bind:title="book.book_name">
+                    <tr class="thead-dark">
+                        <th>ID</th>
+                        <th>Cover</th>
+                        <th>Book Name</th>
+                    </tr>
+                    <tr v-for="(book) in books" v-bind:key="book.bookid" v-bind:title="book.book_name" >
                         <td>{{book.bookid}}</td>
                         <td>{{book.book_img}}</td>
                         <td>{{book.book_name}}</td>
