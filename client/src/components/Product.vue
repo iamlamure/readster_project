@@ -104,7 +104,7 @@ export default {
 
     methods: {
 
-        addproducts(){
+        addproduct(){
             axios.post('/products/addproduct',
                 {
                     product_name: this.product_name,
