@@ -52,4 +52,19 @@ products.delete('/products/:productid' ,(req,res,next) => {
     })
 })
 
+// Product detail
+products.get ('/product_detail/:productid',(req,res) => {
+    Product.findOne({
+        where: {
+            productid : req.params.productid
+        }
+    })
+    .then(products => {
+        res.json(products)
+    })
+    .catch(err => {
+        res.send('err: '+ err)
+    })
+})
+
 module.exports = products

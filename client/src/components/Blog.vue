@@ -74,6 +74,7 @@ export default {
             blogid:'',
             blog_article:'',
             blog_title:'',
+            book_name:''
 
         }
     },

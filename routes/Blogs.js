@@ -48,6 +48,7 @@ blogs.delete('/blogs/:blogid',(req,res,next) =>{
     })
 }),
 
+//Read blog to Read.vue
 blogs.get('/read/:blogid',(req,res) => {
     Blog.findOne({
         where: {

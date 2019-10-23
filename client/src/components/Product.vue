@@ -63,7 +63,9 @@
                     <th class="text-right" >ACTION</th>
                     <tr v-for="(product) in products" v-bind:key="product.productid" v-bind:title="product.product_name">
                         <td>{{product.productid}}</td>
-                        <td>{{product.product_name}}</td>
+                        <td>
+                            <h5 @click="getproduct_detail(product.productid)">{{product.product_name}}</h5>
+                        </td>
                         <td>{{product.qty}}</td>
                         <td>{{product.product_price}}</td>
                         <td class="text-right">
@@ -155,6 +157,18 @@ export default {
                 this.getproducts()
                 console.log(res)
             }).catch((err) => {
+                console.log(err)
+            })
+        },
+
+        //get product_detail
+        getproduct_detail(productid){
+            this.$router.push({
+                name:'Product_detail',
+                params: {product:productid}
+            }).then((res) => {
+                this.getproducts()
+            }).catch((err)=> {
                 console.log(err)
             })
         }
