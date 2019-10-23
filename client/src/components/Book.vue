@@ -45,13 +45,16 @@
                     <button type="submit" class="btn btn-lg btn-success font-weight-bold btn-block">Add Book Now!</button>
                 </div>
                 <hr class="style11">
-                
-                <table class="table">
-                    <tr class="thead-dark">
-                        <th>ID</th>
-                        <th>Cover</th>
-                        <th>Book Name</th>
-                    </tr>
+                <div class="table-responsive-md">
+                    <table class="table">
+                    <thead>
+                        <tr class="thead-dark">
+                            <th>ID</th>
+                            <th>Cover</th>
+                            <th>Book Name</th>
+                            <th></th>
+                        </tr>
+                    </thead>
                     <tr v-for="(book) in books" v-bind:key="book.bookid" v-bind:title="book.book_name" >
                         <td>{{book.bookid}}</td>
                         <td>{{book.book_img}}</td>
@@ -62,6 +65,7 @@
                         </td>
                     </tr>
                 </table>
+                </div>
             </form>
         </div>
     </div>
