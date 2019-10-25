@@ -2,6 +2,7 @@
     <div class="container">
         <div class="jumbotron mt-5">
             <h1>เพิ่มหนังสือ</h1>
+            <h1>{{books.length}}</h1>
             <h6>ชื่อผู้ใช้ <span class="badge badge-secondary">{{first_name}}</span></h6>
             <hr class="style11">
             <form v-on:submit.prevent="addbook">

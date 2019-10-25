@@ -4,6 +4,7 @@
         <div class="jumbotron mt-5">
             <h1>เพิ่มบทความ</h1>
             <h6>userid : username  <span class="badge badge-secondary">{{id}} : {{first_name}}</span></h6>
+            <h1>{{blogs.length}}</h1>
             <hr class="style11">
             <div class="col-sm-auto mx-auto">
                 <form class="form-group" v-on:submit.prevent="addblog">

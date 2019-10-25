@@ -2,6 +2,7 @@
      <div class="container">
         <div class="jumbotron mt-5">
             <h1>เพิ่มสินค้า</h1>
+            <h1>{{products.length}}</h1>
             <hr class="style1">
             <form v-on:submit.prevent="addproduct">
                 <div class="form-group">
