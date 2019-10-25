@@ -39,7 +39,6 @@ books.get('/books',(req,res) => {
         res.send('error: '+ err)
     })
 })
-
 //Delete Book
 books.delete('/books/:bookid',(req,res ,next) => {
     Book.destroy({
@@ -52,6 +51,20 @@ books.delete('/books/:bookid',(req,res ,next) => {
     })
     .catch(err => {
         res.send('error:' + err)
+    })
+}),
+
+books.get('/book_detail/:bookid',(req,res) => {
+    Book.findOne({
+        where: {
+            bookid : req.params.bookid
+        }
+    })
+    .then(books => {
+        res.json(books)
+    })
+    .catch(err => {
+        res.send('error: '+ err)
     })
 })
 

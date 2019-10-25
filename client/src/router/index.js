@@ -10,6 +10,7 @@ import Book from '@/components/Book'
 import Read from '@/components/Read'
 import Product from '@/components/Product'
 import Product_detail from '@/components/Product_detail'
+import Book_detail from '@/components/Book_detail'
 
 Vue.use(Router)
 
@@ -41,6 +42,11 @@ export default new Router({
       component: Blog
     },
     {
+      path: '/blogs/read/:blog',
+      name: 'Read',
+      component: Read
+    },
+    {
       path: '/list',
       name: 'List',
       component: List
@@ -51,9 +57,9 @@ export default new Router({
       component: Book
     },
     {
-      path: '/blogs/read/:blog',
-      name: 'Read',
-      component: Read
+      path: '/book/book_detail/:book',
+      name: 'Book_detail',
+      component: Book_detail
     },
     {
       path:'/product',
@@ -64,6 +70,6 @@ export default new Router({
       path: '/product/product_detail/:product',
       name: 'Product_detail',
       component: Product_detail
-    }
+    },
   ]
 })

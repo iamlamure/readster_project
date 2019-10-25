@@ -3,6 +3,7 @@
     <div class="container">
         <div class="jumbotron mt-5">
             <h1>เพิ่มบทความ</h1>
+            <h6>userid : username  <span class="badge badge-secondary">{{id}} : {{first_name}}</span></h6>
             <hr class="style11">
             <div class="col-sm-auto mx-auto">
                 <form class="form-group" v-on:submit.prevent="addblog">
@@ -14,17 +15,20 @@
                     </div>
                     <div class="form-row">
                         <div class="col-md-4 mb-3">
-                            <label for="review_img">อัพโหลดรูปภาพประกอบ</label>
-                            <input type="file" class="form-control-file" id="review_img" placeholder="เลือกไฟล์ภาพ">
+                            <label for="blog_img">อัพโหลดรูปภาพประกอบ</label>
+                            <input type="file" class="form-control-file" id="blog_img" placeholder="เลือกไฟล์ภาพ">
                         </div>
                         <div class="col-md-4 mb-3">  
                         <label for="book_name">หนังสือที่รีวิว</label>
-                        <select class="form-control" v-model="book_name" id="book_name">
-                            <option>โตไปไม่โกง</option>
-                            <option>ประชาธิปไตย</option>
-                            <option>รับราชการยังไงให้ได้ 4000 ล้าน</option>
-                        </select>
-                    </div>
+                            <select class="form-control"  id="book_name">
+                                <option>โตไปไม่โกง</option>
+                                <option>ประชาธิปไตย</option>
+                                <option>รับราชการยังไงให้ได้ 4000 ล้าน</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            
+                        </div>
                     </div>
                     <button type="submit" class="btn btn-lg btn-success  btn-block font-weight-bold ">Publish Now</button>
                     <hr class="style1">
@@ -68,18 +72,25 @@ import axios from 'axios'
 import router from '../router'
 
 export default {
+    props: ['msg'],
     data() {
+        const token = localStorage.usertoken
         return {
             blogs:[],
             blogid:'',
             blog_article:'',
             blog_title:'',
-            book_name:''
-
+            blog_img:'',
+            bookid:'',
+            id:'',
+            userblogid:'',
+            token: token,
+            first_name:'',
         }
     },
     mounted() {
         this.getblog()
+        this.getuser()
     },
     methods: {
         // Get All Blog
@@ -111,15 +122,18 @@ export default {
             {
                 blog_title: this.blog_title,
                 blog_article: this.blog_article,
-                //blog_img: this.blog_img
-                //And Anothe else
+                bookid: this.bookid,
+                blog_img:this.blog_img,
+                userblogid:this.userblogid,
             }
             ).then((res) => {
                     this.blog_title = ''
                     this.blog_article = ''
-                    //this.blog_img = ''
-                    //this.book_id = ''
+                    this.blog_img = ''
+                    this.book_id = ''
+                    this.userblogid = ''
                     this.getblog()
+                    this.getuser()
                     console.log(res)
                 }).catch((err) => {
                     console.log(err)
@@ -134,7 +148,19 @@ export default {
             }).catch((err) => {
                 console.log(err)
             })
-        }
+        },
+
+        getuser () {
+            axios.get('/users/profile', {
+            headers: { 'Authorization': this.token }
+        }).then(res => {
+            this.id = res.data.id
+            this.first_name = res.data.first_name
+        }).catch(err => {
+            console.log(err)
+            router.push({ name: 'Login' })
+        })
+    }
         
     }
 }

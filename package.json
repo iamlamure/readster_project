@@ -28,7 +28,8 @@
     "sequelize": "^4.38.0"
   },
   "devDependencies": {
-    "nodemon": "^1.19.3"
+    "nodemon": "^1.19.3",
+    "vuetify": "^2.1.6"
   },
   "repository": {
     "type": "git",

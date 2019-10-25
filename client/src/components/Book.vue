@@ -2,6 +2,7 @@
     <div class="container">
         <div class="jumbotron mt-5">
             <h1>เพิ่มหนังสือ</h1>
+            <h6>ชื่อผู้ใช้ <span class="badge badge-secondary">{{first_name}}</span></h6>
             <hr class="style11">
             <form v-on:submit.prevent="addbook">
                 <div class="form-group">
@@ -45,6 +46,7 @@
                     <button type="submit" class="btn btn-lg btn-success font-weight-bold btn-block">Add Book Now!</button>
                 </div>
                 <hr class="style11">
+                <h1>userid : {{id}}</h1>
                 <div class="table-responsive-md">
                     <table class="table">
                     <thead>
@@ -57,8 +59,12 @@
                     </thead>
                     <tr v-for="(book) in books" v-bind:key="book.bookid" v-bind:title="book.book_name" >
                         <td>{{book.bookid}}</td>
-                        <td>{{book.book_img}}</td>
-                        <td>{{book.book_name}}</td>
+                        <td>
+                            {{book.book_img}}
+                        </td>
+                        <td>
+                            <h5 @click="getbookdetail(book.bookid)">{{book.book_name}}</h5>
+                        </td>
                         <td class="text-right">
                             <button v-on:click="editTask(todo.task_name, todo.id)" class=" btn btn-info ">Edit</button>
                             <button v-on:click="deletebook(book.bookid)" class=" btn btn-danger ">Delete</button>
@@ -79,6 +85,9 @@ import router from '../router'
 export default {
 
     data () {
+
+        const token = localStorage.usertoken
+
         return {
                books:[],
                bookid:'',
@@ -90,11 +99,15 @@ export default {
                price: '',
                pages: '',
                book_img: '',
+               id:'',
+               token: token,
+               first_name:''
 
         }
     },
     mounted() {
         this.getbooks()
+        this.getuser()
     },
 
     methods: {
@@ -149,7 +162,32 @@ export default {
             }).catch((err) => {
                 console.log(err)
             })
-        }
+        },
+
+        //getbookdetail
+        getbookdetail(bookid) {
+            this.$router.push({
+                name:'Book_detail',
+                params: {book:bookid}
+            }).then((res) => {
+                this.getbooks()
+                this.getuser()
+            }).catch((err) => {
+                console.log(err)
+            })
+        },
+
+         getuser () {
+            axios.get('/users/profile', {
+                headers: { 'Authorization': this.token }
+            }).then(res => {
+                this.id = res.data.id
+                this.first_name = res.data.first_name
+            }).catch(err => {
+                console.log(err)
+                router.push({ name: 'Login' })
+        })
+    }
     }
 /*
 
