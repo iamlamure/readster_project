@@ -20,15 +20,16 @@
                             <input type="file" class="form-control-file" id="blog_img" placeholder="เลือกไฟล์ภาพ">
                         </div>
                         <div class="col-md-4 mb-3">  
-                        <label for="book_name">หนังสือที่รีวิว</label>
-                            <select class="form-control"  id="book_name">
-                                <option>โตไปไม่โกง</option>
-                                <option>ประชาธิปไตย</option>
-                                <option>รับราชการยังไงให้ได้ 4000 ล้าน</option>
+                        <label >หนังสือที่รีวิว</label>
+                            <select class="form-control" v-model="book_id">
+                                <option for="book_id" v-for="(book) in books" v-bind:key="book.bookid" v-bind:title="book.book_name" v-bind:value="book.bookid">
+                                    {{book.book_name}}
+                                </option>
                             </select>
                         </div>
                         <div class="col-md-4 mb-3">
-                            <select class="form-control"  v-model="userblogid" id="userblogid">
+                            <label >รีวิวโดย</label>
+                            <select class="form-control"  v-model="userblogid" id="userblogid" required>
                                 <option>{{id}}</option>
                             </select>
                         </div>
@@ -36,7 +37,6 @@
                     <button type="submit" class="btn btn-lg btn-success  btn-block font-weight-bold ">Publish Now</button>
                     <hr class="style1">
                 </form>
-            
             </div>
 
             <div class="table-responsive-md">
@@ -55,7 +55,7 @@
                         <td>
                             <h3 @click="gotodetail(blog.blogid)" >{{blog.blog_title}}</h3> 
                         </td>
-                        <td>ตะวัน</td>
+                        <td>{{first_name}}</td>
                         <td>
                             <button type="button" class="btn btn-info">Edit</button>
                             <button  v-on:click="deleteblog(blog.blogid)" type="button" class="btn btn-danger">Delete</button>
@@ -74,17 +74,20 @@
 import axios from 'axios'
 import router from '../router'
 
+
 export default {
-    props: ['msg'],
     data() {
         const token = localStorage.usertoken
         return {
             blogs:[],
+            books:[],
             blogid:'',
             blog_article:'',
             blog_title:'',
             blog_img:'',
             bookid:'',
+            book_id:'',
+            book_name:'',
             id:'',
             userblogid:'',
             token: token,
@@ -94,6 +97,7 @@ export default {
     mounted() {
         this.getblog()
         this.getuser()
+        this.getbooks()
     },
     methods: {
         // Get All Blog
@@ -127,6 +131,7 @@ export default {
                 blog_article: this.blog_article,
                 bookid: this.bookid,
                 blog_img:this.blog_img,
+                book_id:this.book_id,
                 userblogid:this.userblogid,
             }
             ).then((res) => {
@@ -136,6 +141,7 @@ export default {
                     this.book_id = ''
                     this.userblogid = ''
                     this.getblog()
+                    this.getbooks()
                     this.getuser()
                     console.log(res)
                 }).catch((err) => {
@@ -154,16 +160,29 @@ export default {
         },
 
         getuser () {
-            axios.get('/users/profile', {
-            headers: { 'Authorization': this.token }
-        }).then(res => {
-            this.id = res.data.id
-            this.first_name = res.data.first_name
-        }).catch(err => {
-            console.log(err)
-            router.push({ name: 'Login' })
-        })
-    }
+                axios.get('/users/profile', {
+                headers: { 'Authorization': this.token }
+            }).then(res => {
+                this.id = res.data.id
+                this.first_name = res.data.first_name
+            }).catch(err => {
+                console.log(err)
+                router.push({ name: 'Login' })
+            })
+        },
+
+        //Show Books
+        getbooks () {
+            axios.get('/books/books').then(
+                result => {
+                    console.log(result.data)
+                    this.books = result.data
+                },
+                error => {
+                    console.error(error)
+                }
+            )
+        },
         
     }
 }

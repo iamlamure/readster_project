@@ -3,7 +3,8 @@
         <div class="jumbotron mt-5" >
             <h1>บทความที่ : {{this.$route.params.blog}}</h1>
             <h1>ชื่อเรื่อง : {{this.blog_title}}</h1>
-            <h5>Writer : </h5>
+            <h5>Writer : {{this.userblogid}}</h5>
+            <h5>Book : {{this.book_id}}</h5>
             <hr class="style1">
             <p>{{this.blog_article}}</p>
         </div>
@@ -21,7 +22,9 @@ export default {
         return {
             blog:this.$route.params.blogid,
             blog_title:'',
-            blog_article:''
+            blog_article:'',
+            userblogid:'',
+            book_id:''
         }
     },
     mounted() {
@@ -34,6 +37,8 @@ export default {
                 this.blogid = res.data.blogid,
                 this.blog_article = res.data.blog_article,
                 this.blog_title = res.data.blog_title,
+                this.userblogid = res.data.userblogid,
+                this.book_id = res.data.book_id
                 console.log(res)
             }).catch((err) => {
                 console.log(err)

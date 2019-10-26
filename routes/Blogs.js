@@ -13,7 +13,7 @@ blogs.post('/addblog',(req,res) => {
         blog_article : req.body.blog_article,
         blog_img : req.body.blog_img,
         userblogid : req.body.userblogid,
-        bookid: req.body.bookid
+        book_id: req.body.book_id
     }
     Blog.create(blogData)
     .then(() => {
