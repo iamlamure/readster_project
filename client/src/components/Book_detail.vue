@@ -1,14 +1,14 @@
 <template>
     <div class="container">
         <div class="jumbotron mt-5">
-            <h1>ชื่อหนังสือ:  {{this.book_name}}</h1>
+            <h1>ชื่อหนังสือ:{{book_name}}</h1>
             <hr class="style11">
-            <h1>ผู้แต่ง/ผู้เขียน:  {{this.author_name}}</h1>
-            <h1>รายละเอียด:  {{this.book_detail}}</h1>
-            <h1>สำนักพิมพ์:  {{this.publisher}}</h1>
-            <h1>หมวดหมู่:  {{this.category}}</h1>
-            <h1>ราคาปก:  {{this.price}} บาท</h1>
-            <h1>จำนวนหน้า:  {{this.pages}} หน้า</h1>
+            <h1>ผู้แต่ง/ผู้เขียน:  {{author_name}}</h1>
+            <h1>รายละเอียด:  {{book_detail}}</h1>
+            <h1>สำนักพิมพ์:  {{publisher}}</h1>
+            <h1>หมวดหมู่:  {{category}}</h1>
+            <h1>ราคาปก:  {{price}} บาท</h1>
+            <h1>จำนวนหน้า:  {{pages}} หน้า</h1>
         </div>
     </div>
 </template>

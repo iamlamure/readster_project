@@ -2,11 +2,11 @@
     <div class="container">
         <div class="jumbotron mt-5" >
             <h1>บทความที่ : {{this.$route.params.blog}}</h1>
-            <h1>ชื่อเรื่อง : {{this.blog_title}}</h1>
-            <h5>Writer : {{this.userblogid}}</h5>
-            <h5>Book : {{this.book_id}}</h5>
+            <h1>ชื่อเรื่อง : {{blog_title}}</h1>
+            <h5>Writer : {{userblogid}}</h5>
+            <h5>Book : {{book_id}}</h5>
             <hr class="style1">
-            <p>{{this.blog_article}}</p>
+            <p>{{blog_article}}</p>
         </div>
     </div>
 </template>
@@ -18,17 +18,22 @@ import router from '../router'
 
 export default {
     name: 'Read',
+
     data() {
+        const token = localStorage.usertoken
         return {
             blog:this.$route.params.blogid,
             blog_title:'',
             blog_article:'',
             userblogid:'',
-            book_id:''
+            book_id:'',
+            first_name:'',
+            token: token
         }
     },
     mounted() {
-        this.getblogdetail();
+        this.getblogdetail()
+        this.getuser()
     },
     methods: {
         getblogdetail(blog){
@@ -44,6 +49,16 @@ export default {
                 console.log(err)
             })
         },
+        getuser () {
+            axios.get('/users/profile', {
+                headers: { 'Authorization': this.token }
+            }).then(res => {
+                this.id = res.data.id
+                this.first_name = res.data.first_name
+            }).catch(err => {
+                console.log(err)
+            })
+        }
     },
 }
 </script>
