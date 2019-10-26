@@ -55,7 +55,7 @@
                         <td>
                             <h3 @click="gotodetail(blog.blogid)" >{{blog.blog_title}}</h3> 
                         </td>
-                        <td>{{first_name}}</td>
+                        <td>{{blog.userblogid}}</td>
                         <td>
                             <button type="button" class="btn btn-info">Edit</button>
                             <button  v-on:click="deleteblog(blog.blogid)" type="button" class="btn btn-danger">Delete</button>
