@@ -28,7 +28,9 @@
                             </select>
                         </div>
                         <div class="col-md-4 mb-3">
-                            
+                            <select class="form-control"  v-model="userblogid" id="userblogid">
+                                <option>{{id}}</option>
+                            </select>
                         </div>
                     </div>
                     <button type="submit" class="btn btn-lg btn-success  btn-block font-weight-bold ">Publish Now</button>
