@@ -16,13 +16,13 @@
         <router-link class="navbar-item" to="/">
           Home
         </router-link>
-        <router-link class="navbar-item" to="/book">
+        <router-link class="navbar-item" to="/book" v-if="auth=='loggedin' || token!=null || token!=undefined">
             Book
         </router-link>
-        <router-link class="navbar-item" to="/blog">
+        <router-link class="navbar-item" to="/blog" v-if="auth=='loggedin' || token!=null || token!=undefined">
             Blog
         </router-link>
-        <router-link class="navbar-item" to="/profile">
+        <router-link class="navbar-item" to="/profile" v-if="auth=='loggedin' || token!=null || token!=undefined">
             Profile
         </router-link>
 
@@ -31,15 +31,20 @@
       <div class="navbar-end">
         <div class="navbar-item">
           <div class="field is-grouped">
-            <p class="control">
+            <p class="control1" v-if="auth=='' && (token==null || token==undefined)">
               <router-link class="button is-info is-rounded" to="/register">
                 Register
               </router-link>
             </p>
-            <p class="control">
+            <p class="control2" v-if="auth=='' && (token==null || token==undefined)">
               <router-link class="button is-success is-rounded" to="/login">
                 Login
               </router-link>
+            </p>
+            <p class="control2" v-if="auth=='loggedin' || token!=null || token!=undefined" >
+              <a class="button is-danger is-rounded" href="/" v-on:click="logout">
+                Logout
+              </a>
             </p>
           </div>
         </div>
