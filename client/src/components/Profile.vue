@@ -1,47 +1,44 @@
 <template>
-  <div>
-      
+  <div class="container">
       <h1 class="title columns is-mobile is-centered"> ข้อมูลผู้ใช้ </h1>
-      <section class="section columns is-half is-centered">
-        <div class="box">
-          <article class="media">
-            <div class="media-left">
-              <figure class="image is-64x64">
-                <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
-              </figure>
-            </div>
-            <div class="media-content">
-              <div class="content">
-                <p>
-                  <strong>{{first_name}} {{last_name}}</strong> <small>@{{id}}</small>
-                  <br>
-                  email : {{email}} 
-                  <br>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
-                </p>
-              </div>
-              <nav class="level is-mobile">
-                <div class="level-left">
-                  <a class="level-item" aria-label="reply">
-                    <span class="icon is-small">
-                      <i class="fas fa-reply" aria-hidden="true"></i>
-                    </span>
-                  </a>
-                  <a class="level-item" aria-label="retweet">
-                    <span class="icon is-small">
-                      <i class="fas fa-retweet" aria-hidden="true"></i>
-                    </span>
-                  </a>
-                  <a class="level-item" aria-label="like">
-                    <span class="icon is-small">
-                      <i class="fas fa-heart" aria-hidden="true"></i>
-                    </span>
-                  </a>
-                </div>
-              </nav>
-            </div>
-          </article>
+      <hr class="style11">
+      <div class="tile is-ancestor">
+      <div class="tile is-4 is-vertical is-parent">
+        <div class="tile is-child box">
+          <a class="title">{{first_name}} {{last_name}}</a>
+           <a class="button is-warning is-rounded is-pulled-right" href="">อัพเดท</a>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
         </div>
+        <div class="tile is-child box">
+          <p class="title">ตะกร้าสินค้า</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
+        </div>
+      </div>
+        <div class="tile is-parent">
+          <div class="tile is-child box">
+            <a class="title">รีวิว</a>
+            <a class="button is-primary is-rounded is-pulled-right" href="">เขียนรีวิว</a>
+            <div class="container">
+              <table class="table is-fullwidth">
+                <thead>
+                  <th class="subtitle is-5">ชื่อเรื่อง</th>
+                  <th class="subtitle is-5">วันที่</th>
+                  <th class="subtitle is-5">ถูกใจ</th>
+                </thead>
+                <tbody>
+                  <td>รับราชการยังไงให้ได้ 4000 ล้าน</td>
+                  <td>10/10/63</td>
+                  <td>1000</td>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr class="style11">
+      <section class="section columns is-half is-centered">
+        <h1 class="title columns is-mobile is-centered"> ข้อมูลผู้ใช้ </h1>
+        
       </section>
   </div>
 </template>
