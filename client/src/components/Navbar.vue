@@ -1,36 +1,49 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse justify-content-md-center" id="navbar" >
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <router-link class="nav-link" to="/">Home</router-link>
-        </li>
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://bulma.io">
+        <img src="https://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">
+      </a>
+      <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
 
-        <li v-if="auth=='' && (token==null || token==undefined)" class="nav-item">
-          <router-link class="nav-link" to="/login">Login</router-link>
-        </li>
-        <li v-if="auth=='' && (token==null || token==undefined)" class="nav-item">
-          <router-link class="nav-link" to="/register">Register</router-link>
-        </li>
-        <li v-if="auth=='loggedin' || token!=null || token!=undefined" class="nav-item">
-          <router-link class="nav-link" to="/book">Book</router-link>
-        </li>
-        <li v-if="auth=='loggedin' || token!=null || token!=undefined" class="nav-item">
-          <router-link class="nav-link" to="/blog">Blog</router-link>
-        </li>
-        <li v-if="auth=='loggedin' || token!=null || token!=undefined" class="nav-item">
-          <router-link class="nav-link" to="/profile">Profile</router-link>
-        </li>
-        <li v-if="auth=='loggedin' || token!=null || token!=undefined" class="nav-item">
-          <router-link class="nav-link" to="/product">Product</router-link>
-        </li>
-        <li v-if="auth=='loggedin' || token!=null || token!=undefined" class="nav-item float-right">
-          <a class="nav-link float-right" href="" v-on:click="logout">Logout</a>
-        </li>
-      </ul>
+    <div id="navbarExampleTransparentExample" class="navbar-menu">
+      <div class="navbar-start">
+        <router-link class="navbar-item" to="/">
+          Home
+        </router-link>
+        <router-link class="navbar-item" to="/book">
+            Book
+        </router-link>
+        <router-link class="navbar-item" to="/blog">
+            Blog
+        </router-link>
+        <router-link class="navbar-item" to="/profile">
+            Profile
+        </router-link>
+
+      </div>
+
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="field is-grouped">
+            <p class="control">
+              <router-link class="button is-info is-rounded" to="/register">
+                Register
+              </router-link>
+            </p>
+            <p class="control">
+              <router-link class="button is-success is-rounded" to="/login">
+                Login
+              </router-link>
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   </nav>
 </template>

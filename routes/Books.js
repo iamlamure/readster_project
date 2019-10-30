@@ -3,7 +3,6 @@ const books = express.Router()
 const Book = require('../models/Book')
 const cors = require('cors')
 
-
 books.use(cors())
 
 
@@ -39,6 +38,7 @@ books.get('/books',(req,res) => {
         res.send('error: '+ err)
     })
 })
+
 //Delete Book
 books.delete('/books/:bookid',(req,res ,next) => {
     Book.destroy({
@@ -54,6 +54,7 @@ books.delete('/books/:bookid',(req,res ,next) => {
     })
 }),
 
+//Get book id from click
 books.get('/book_detail/:bookid',(req,res) => {
     Book.findOne({
         where: {

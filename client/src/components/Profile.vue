@@ -1,32 +1,35 @@
 <template>
-  <div class="container">
-    <div class="jumbotron mt-5">
-      <button type="button" class="btn btn-warning col-2 mb-2 float-right">อัพเดทข้อมูลผู้ใช้</button>
-      <div class="col-sm-8 mx-auto">
-        <h1 class="text-center">PROFILE</h1>
+  <div class="container columns is-centered">
+    <div class="card">
+    <div class="card-image">
+      <figure class="image is-4by3">
+        <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+      </figure>
+    </div>
+    <div class="card-content">
+      <div class="media">
+        <div class="media-left">
+          <figure class="image is-48x48">
+            <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+          </figure>
+        </div>
+        <div class="media-content">
+          <p class="title is-4">{{first_name}} {{last_name}}</p>
+          <p class="subtitle is-6">@{{id}} email : {{email}}</p>
+        </div>
       </div>
-      <table class="table col-md-6 mx-auto">
-        <tbody>
-          <tr>
-            <td>User Id</td>
-            <td>{{id}}</td>
-          </tr>
-          <tr>
-            <td>Fist Name</td>
-            <td>{{first_name}}</td>
-          </tr>
-          <tr>
-            <td>Last Name</td>
-            <td>{{last_name}}</td>
-          </tr>
-          <tr>
-            <td>Email</td>
-            <td>{{email}}</td>
-          </tr>
-        </tbody>
-      </table>
+
+    <div class="content">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      Phasellus nec iaculis mauris. <a>@bulmaio</a>.
+      <a href="#">#css</a> <a href="#">#responsive</a>
+      <br>
+      <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
     </div>
   </div>
+</div>
+  </div>
+
 </template>
 
 <script>

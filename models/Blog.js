@@ -23,10 +23,14 @@ module.exports = db.sequelize.define(
             defaultValue: Sequelize.NOW
         },
         userblogid: {
-            type: Sequelize.INTEGER
+            type: Sequelize.INTEGER,
+            references: 'users',
+            referencesKey: 'id'
         },
         book_id: {
-            type: Sequelize.INTEGER
+            type: Sequelize.INTEGER,
+            references: 'books',
+            referencesKey: 'bookid'
         }
     },
     {

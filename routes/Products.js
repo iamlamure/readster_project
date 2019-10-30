@@ -5,6 +5,7 @@ const cors = require('cors')
 
 products.use(cors())
 
+//Add Product
 products.post('/addproduct',(req,res) => {
     const productData = {
         product_name:product_name,
