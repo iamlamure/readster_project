@@ -46,12 +46,6 @@
             <p class="subtitle">Subtitle</p>
             </article>
         </div>
-        <div class="tile is-parent">
-            <article class="tile is-child box">
-            <p class="title">Five</p>
-            <p class="subtitle">Subtitle</p>
-            </article>
-        </div>
     </div>
 </div>
 </div>
