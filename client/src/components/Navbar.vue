@@ -28,17 +28,22 @@
       <div class="navbar-end">
         <div class="navbar-item">
           <div class="field is-grouped">
-            <p class="control1" v-if="auth=='' && (token==null || token==undefined)">
+            <p class="control" v-if="auth=='' && (token==null || token==undefined)">
               <router-link class="button is-info is-rounded" to="/register">
                 Register
               </router-link>
             </p>
-            <p class="control2" v-if="auth=='' && (token==null || token==undefined)">
+            <p class="control" v-if="auth=='' && (token==null || token==undefined)">
               <router-link class="button is-success is-rounded" to="/login">
                 Login
               </router-link>
             </p>
-            <p class="control2" v-if="auth=='loggedin' || token!=null || token!=undefined" >
+            <p class="control" v-if="auth=='loggedin' || token!=null || token!=undefined" >
+              <a class="button is-primary is-rounded" href="/" v-on:click="cart">
+                Cart
+              </a>
+            </p>
+            <p class="control" v-if="auth=='loggedin' || token!=null || token!=undefined" >
               <a class="button is-danger is-rounded" href="/" v-on:click="logout">
                 Logout
               </a>

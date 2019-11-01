@@ -1,16 +1,40 @@
 <template>
-    <div class="container">
-        <div class="jumbotron mt-5">
-            <h1>ชื่อหนังสือ:{{book_name}}</h1>
-            <hr class="style11">
-            <h1>ผู้แต่ง/ผู้เขียน:  {{author_name}}</h1>
-            <h1>รายละเอียด:  {{book_detail}}</h1>
-            <h1>สำนักพิมพ์:  {{publisher}}</h1>
-            <h1>หมวดหมู่:  {{category}}</h1>
-            <h1>ราคาปก:  {{price}} บาท</h1>
-            <h1>จำนวนหน้า:  {{pages}} หน้า</h1>
+        <div class="container">
+            <div class="tile is-ancestor">
+                <div class="tile is-vertical is-parent">
+                    <div class="tile is-child box">
+                        <article class="media">
+                            <div class="media-left">
+                                <figure class="image">
+                                    <img src="https://readery.co/media/catalog/product/cache/1/small_image/360x/17f82f742ffe127f42dca9de82fb58b1/b/o/book_l_less.png" alt="Image">
+                                </figure>
+                            </div>
+                            <div class="media-content">
+                                <div class="content">
+                                    <a class="button is-warning is-rounded is-pulled-right" href="">เขียนรีวิว</a>
+                                    <p class="title">{{book_name}}</p>
+                                    <h4 class="title id-4">ผู้เขียน : {{author_name}}</h4>
+                                    <h6 class="title id-6">รายละเอียด</h6>
+                                    <p>{{book_detail}}</p>
+                                    <div class="tile is-child box">
+                                        <div class="container">
+                                            <h4 class="title is-4">รายการขายหนังสือเล่มนี้</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+            <div class="tile is-ancestor">
+                <div class="tile is-vertical is-parent">
+                    <div class="tile is-child box">
+                        <h1 class="title"> รวมรีวิวหนังสือเล่มนี้ !</h1>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
 </template>
 <script>
 import axios from 'axios'
