@@ -7,11 +7,27 @@
         <div class="tile is-child box">
           <a class="title">{{first_name}} {{last_name}}</a>
            <a class="button is-warning is-rounded is-pulled-right" href="">อัพเดท</a>
+           <p class="subtitle" href="">{{email}}</p>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
         </div>
         <div class="tile is-child box">
-          <p class="title">ตะกร้าสินค้า</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
+          <a class="title">ตะกร้าสินค้า</a>
+          <a class="button is-danger is-rounded is-pulled-right" href="">จัดการ</a>
+          <div class="container">
+          <table class="table is-fullwidth">
+                <thead>
+                  <th class="subtitle is-5">ชื่อสินค้า</th>
+                  <th class="subtitle is-5">จำนวน</th>
+                  <th class="subtitle is-5">ราคา</th>
+                  
+                </thead>
+                <tbody>
+                  <td>รับราชการยังไงให้ได้ 4000 ล้าน</td>
+                  <td>1</td>
+                  <td>400</td>
+                </tbody>
+              </table>
+            </div>
         </div>
       </div>
         <div class="tile is-parent">
