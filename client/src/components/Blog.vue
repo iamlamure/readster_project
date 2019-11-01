@@ -11,7 +11,7 @@
                 </thead>
                 <tbody>
                     <tr v-for="(blog) in blogs" v-bind:key="blog.blogid" v-bind:title="blog.blog_title" >
-                        <td><a href="">{{blog.blog_title}}</a></td>
+                        <td><a @click="gotodetail(blog.blogid)">{{blog.blog_title}}</a></td>
                         <td>{{blog.blog_date}}</td>
                         <td>{{blog.userblogid}}</td>
                     </tr>
