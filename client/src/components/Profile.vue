@@ -13,13 +13,11 @@
         <div class="tile is-child box">
           <a class="title">ตะกร้าสินค้า</a>
           <a class="button is-danger is-rounded is-pulled-right" href="">จัดการ</a>
-          <div class="container">
           <table class="table is-fullwidth">
                 <thead>
-                  <th class="subtitle is-5">ชื่อสินค้า</th>
-                  <th class="subtitle is-5">จำนวน</th>
-                  <th class="subtitle is-5">ราคา</th>
-                  
+                  <th class="subtitle is-6">ชื่อสินค้า</th>
+                  <th class="subtitle is-6">Qty</th>
+                  <th class="subtitle is-6">Price</th>
                 </thead>
                 <tbody>
                   <td>รับราชการยังไงให้ได้ 4000 ล้าน</td>
@@ -27,7 +25,6 @@
                   <td>400</td>
                 </tbody>
               </table>
-            </div>
         </div>
       </div>
         <div class="tile is-parent">
@@ -53,7 +50,7 @@
       </div>
       <hr class="style11">
       <section class="section columns is-half is-centered">
-        <h1 class="title columns is-mobile is-centered"> ข้อมูลผู้ใช้ </h1>
+        
         
       </section>
   </div>

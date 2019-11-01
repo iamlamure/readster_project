@@ -3,51 +3,23 @@
     <div class="container is-fluid">
     <h1 class="title columns is-mobile is-centered">รายการหนังสือ</h1>
       <hr class="style11">
-      <div class="tile is-ancestor">
-        <div class="tile is-parent">
-            <article class="tile is-child box">
-                <div class="card-content">
-                    <p class="title">
-                    รับราชกาลยังไงให้ได้
-                    </p>
-                    <p class="subtitle">
-                    Jeff Atwood
-                    </p>
+      <br>
+      <div class="container">
+          <div class="columns is-multiline">
+            <div class="column tile is-3 is-vertical is-mobile is-parent is-narrow" v-for="(book) in books" v-bind:key="book.bookid" v-bind:title="book.book_name" >
+                <div @click="getbookdetail(book.bookid)" class="tile is-child box">
+                    <div class="card-image has-text-centered">
+                        <figure class="image is-inline-block">
+                            <img src="https://readery.co/media/catalog/product/cache/1/small_image/240x/17f82f742ffe127f42dca9de82fb58b1/b/o/book_l_less.png">
+                        </figure>
+                    </div>
+                    <h5  class="title columns is-mobile is-centered card-header-title is-5">{{book.book_name}}</h5>
+                    <h6  class="title columns is-mobile is-centered is-6">฿{{book.price}}</h6>
                 </div>
-                <footer class="card-footer">
-                    <p class="card-footer-item">
-                    <a>
-                       เพิ่มลงตะกร้า
-                    </a>
-                    </p>
-                    <p class="card-footer-item">
-                    <a>
-                        ซื้อทันที!
-                    </a>
-                    </p>
-                </footer>
-            </article>
+            </div>
         </div>
-        <div class="tile is-parent">
-            <article class="tile is-child box">
-            <p class="title">Two</p>
-            <p class="subtitle">Subtitle</p>
-            </article>
-        </div>
-        <div class="tile is-parent">
-            <article class="tile is-child box">
-            <p class="title">Three</p>
-            <p class="subtitle">Subtitle</p>
-            </article>
-        </div>
-        <div class="tile is-parent">
-            <article class="tile is-child box">
-            <p class="title">Four</p>
-            <p class="subtitle">Subtitle</p>
-            </article>
-        </div>
+      </div>
     </div>
-</div>
 </div>
 </template>
 <!-- eslint-disable -->
@@ -78,8 +50,7 @@ export default {
                id:'',
                token: token,
                first_name:''
-
-        }
+        } 
     },
     mounted() {
         this.getbooks()
