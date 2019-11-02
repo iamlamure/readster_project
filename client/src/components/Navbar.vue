@@ -4,16 +4,16 @@
       <a class="navbar-item" href="/">
         <h1 class="title" width="112" height="28"> Readster </h1>
       </a>
-      <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
+      <div class="navbar-burger burger" data-target="navbarExampleTransparentExample" aria-expanded="false" @click="isOpen = !isOpen" v-bind:class="{'is-active': isOpen}">
         <span></span>
         <span></span>
         <span></span>
       </div>
     </div>
 
-    <div id="navbarExampleTransparentExample" class="navbar-menu">
+    <div id="navbarExampleTransparentExample" class="navbar-menu" v-bind:class="{'is-active': isOpen}">
       <div class="navbar-start">
-        <router-link class="navbar-item" to="/book" v-if="auth=='loggedin' || token!=null || token!=undefined">
+        <router-link class="navbar-item titile is-5" to="/book" v-if="auth=='loggedin' || token!=null || token!=undefined">
             Book
         </router-link>
         <router-link class="navbar-item" to="/blog" v-if="auth=='loggedin' || token!=null || token!=undefined">
@@ -62,7 +62,8 @@ export default {
   data () {
     return {
       auth: '',
-      token: localStorage.usertoken
+      token: localStorage.usertoken,
+      isOpen: false
     }
   },
   methods: {

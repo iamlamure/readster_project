@@ -1,12 +1,12 @@
 <template>
   <div class="container is-fluid">
-    <div class="container">
+    <div class="container is-fluid">
       <h1 class="title  columns is-mobile is-centered"> ค้นพบบทความ และ หนังสือที่คุณถูกใจ </h1>
       <br>
-      <div class="columns is-mobile is-centered">
+      <div class="columns is-centered">
         <div class="column is-half ">
           <p class="bd-notification is-primary">
-            <input class="input is-rounded" type="text" placeholder="Rounded input">
+            <input class="input is-rounded" type="text" placeholder="บทความ หรือ หนังสือ">
           </p>
         </div>
       </div>
