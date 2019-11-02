@@ -93,7 +93,7 @@
                     </div>
                     <h5  class="title columns is-mobile is-centered card-header-title is-5">ชื่อหนังสือ</h5>
                     <h6  class="title columns is-mobile is-centered is-6">฿ราคา</h6>
-                </div>
+                  </div>
             </div>
         </div>
       </div>     
