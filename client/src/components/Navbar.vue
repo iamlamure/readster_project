@@ -29,13 +29,8 @@
         <div class="navbar-item">
           <div class="field is-grouped">
             <p class="control" v-if="auth=='' && (token==null || token==undefined)">
-              <router-link class="button is-info is-rounded" to="/register">
-                Register
-              </router-link>
-            </p>
-            <p class="control" v-if="auth=='' && (token==null || token==undefined)">
               <router-link class="button is-success is-rounded" to="/login">
-                Login
+                Account
               </router-link>
             </p>
             <p class="control" v-if="auth=='loggedin' || token!=null || token!=undefined" >

@@ -1,26 +1,31 @@
 <template>
   <div class="container">
-    <div class="row">
-      <div class="col-md-6 mt-5 mx-auto">
+    <div class="columns is-mobile is-centered">
+      <div class="column is-half">
         <form v-on:submit.prevent="register">
-          <h1 class="h3 mb-3 font-weight-normal">Register</h1>
+          <h1 class="title">Register</h1>
           <div class="form-group">
             <label for="name">First name</label>
-            <input type="text" v-model="first_name" class="form-control" name="first_name" placeholder="Enter your first name">
+            <input type="text" v-model="first_name" class="input" name="first_name" placeholder="Enter your first name">
           </div>
           <div class="form-group">
             <label for="name">Last name</label>
-            <input type="text" v-model="last_name" class="form-control" name="last_name" placeholder="Enter your lastname name">
+            <input type="text" v-model="last_name" class="input" name="last_name" placeholder="Enter your lastname name">
           </div>
           <div class="form-group">
             <label for="email">Email address</label>
-            <input type="email" v-model="email" class="form-control" name="email" placeholder="Enter email">
+            <input type="email" v-model="email" class="input" name="email" placeholder="Enter email">
           </div>
           <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" v-model="password" class="form-control" name="password" placeholder="Password">
+            <input type="password" v-model="password" class="input" name="password" placeholder="Password">
           </div>
-          <button type="submit" class="btn btn-lg btn-primary btn-block">Register!</button>
+          <br>
+          <a type="submit" class="button is-primary columns is-centered">Register!</a>
+          <br>
+          <div class="columns is-centered">
+              <router-link to="/login">Have a account ? . Login Now</router-link>
+            </div>
         </form>
       </div>
     </div>

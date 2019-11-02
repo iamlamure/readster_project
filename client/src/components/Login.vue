@@ -15,6 +15,10 @@
             </div>
             <br>
             <a type="submit" class="button is-primary columns is-centered">Sign in</a>
+            <br>
+            <div class="columns is-centered">
+              <router-link to="/register">Not have a account ? . Register Now</router-link>
+            </div>
           </form>
         </div>
       </div>
