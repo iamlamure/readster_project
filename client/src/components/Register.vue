@@ -21,7 +21,7 @@
             <input type="password" v-model="password" class="input" name="password" placeholder="Password">
           </div>
           <br>
-          <a type="submit" class="button is-primary columns is-centered">Register!</a>
+            <button type="submit" class="button is-primary  is-fullwidth">Sign up</button>
           <br>
           <div class="columns is-centered">
               <router-link to="/login">Have a account ? . Login Now</router-link>

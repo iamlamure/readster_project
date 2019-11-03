@@ -34,9 +34,9 @@
               </router-link>
             </p>
             <p class="control" v-if="auth=='loggedin' || token!=null || token!=undefined" >
-              <a class="button is-primary is-rounded" href="/" v-on:click="cart">
+              <router-link class="button is-success is-rounded" to="/">
                 Cart
-              </a>
+              </router-link>
             </p>
             <p class="control" v-if="auth=='loggedin' || token!=null || token!=undefined" >
               <a class="button is-danger is-rounded" href="/" v-on:click="logout">

@@ -1,6 +1,6 @@
 <template>
   <div class="container is-fluid">
-    <div class="container is-fluid">
+    <div class="container">
       <h1 class="title  columns is-mobile is-centered"> ค้นพบบทความ และ หนังสือที่คุณถูกใจ </h1>
       <br>
       <div class="columns is-centered">

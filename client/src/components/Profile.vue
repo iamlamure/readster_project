@@ -29,7 +29,7 @@
       </div>
         <div class="tile is-parent">
           <div class="tile is-child box">
-            <a class="title">รีวิว</a>
+            <a class="title">บทความ</a>
             <a class="button is-primary is-rounded is-pulled-right" href="">เขียนรีวิว</a>
             <div class="container">
               <table class="table is-fullwidth">
@@ -50,8 +50,6 @@
       </div>
       <hr class="style11">
       <section class="section columns is-half is-centered">
-        
-        
       </section>
   </div>
 </template>
