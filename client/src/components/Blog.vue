@@ -6,7 +6,7 @@
         <br>
         <div class="columns is-multiline">
             <div class="tile is-ancestor column is-three-fifths is-offset-one-fifth">
-                <div class="column tile is-mobile is-parent">
+                <div class="column tile is-mobile is-parent" v-for="(blog) in blogs" v-bind:key="blog.blogid" v-bind:title="blog.blog_title">
                     <div class="tile is-child box">
                         <article class="media">
                             <div class="media-left">
@@ -17,7 +17,7 @@
                             <div class="media-content">
                             <div class="content">
                                 <p>
-                                <strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
+                                <strong>{{first_name}}</strong> <small>@johnsmith</small> <small>{{blog.blog_date}}</small>
                                 <br>
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
                                 </p>

@@ -29,7 +29,7 @@
       </div>
         <div class="tile is-parent">
           <div class="tile is-child box">
-            <a class="title">บทความ</a>
+            <a class="title">บทความของคุณ</a>
             <a class="button is-primary is-rounded is-pulled-right" href="">เขียนรีวิว</a>
             <div class="container">
               <table class="table is-fullwidth">
@@ -42,6 +42,7 @@
                   <td>รับราชการยังไงให้ได้ 4000 ล้าน</td>
                   <td>10/10/63</td>
                   <td>1000</td>
+                  <td><a class="button is-primary is-small is-rounded is-pulled-right" href="">Edit</a></td>
                 </tbody>
               </table>
             </div>
@@ -50,6 +51,28 @@
       </div>
       <hr class="style11">
       <section class="section columns is-half is-centered">
+        <div class="container">
+          <div class="tile is-ancestor">
+            <div class="tile is-parent">
+              <div class="tile is-child box">
+                <h4 class="title is-4"> ชั้นหนังสือของคุณ </h4>
+                 <div class="columns is-multiline">
+                  <div class="column tile is-2 is-vertical is-mobile is-parent is-narrow">
+                      <div class="tile is-child box">
+                          <div class="card-image has-text-centered">
+                              <figure class="image is-inline-block">
+                                  <img src="https://readery.co/media/catalog/product/cache/1/small_image/240x/17f82f742ffe127f42dca9de82fb58b1/b/o/book_l_less.png">
+                              </figure>
+                          </div>
+                          <h5  class="title columns is-mobile is-centered card-header-title is-5">ชื่อหนังสือ</h5>
+                          <h6  class="title columns is-mobile is-centered is-6">฿ราคา</h6>
+                        </div>
+                      </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
   </div>
 </template>

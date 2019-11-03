@@ -15,8 +15,8 @@ module.exports = {
     port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     proxyTable: {
       '/products':{ 
-          target: 'http://localhost:5000',
-          changeOrigin: true
+        target: 'http://localhost:5000',
+        changeOrigin: true
       },
       '/blogs': {
         target: 'http://localhost:5000',
@@ -33,7 +33,11 @@ module.exports = {
       '/reads': {
         target: 'http://localhost:5000',
         changeOrigin: true
-      }
+      },
+      '/blogview':{ 
+        target: 'http://localhost:5000',
+        changeOrigin: true
+      },
     },
     autoOpenBrowser: false,
     errorOverlay: true,

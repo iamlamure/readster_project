@@ -6,6 +6,18 @@ const cors = require('cors')
 books.use(cors())
 
 
+//Get all book
+books.get('/books',(req,res) => {
+    Book.findAll()
+    .then(books => {
+        res.json(books)
+    })
+    .catch(err => {
+        res.send('error: '+ err)
+    })
+})
+
+
 //Add book
 books.post('/addbook',(req, res) => {
     const bookData = {
@@ -28,16 +40,7 @@ books.post('/addbook',(req, res) => {
         })   
 })
 
-//Get all book
-books.get('/books',(req,res) => {
-    Book.findAll()
-    .then(books => {
-        res.json(books)
-    })
-    .catch(err => {
-        res.send('error: '+ err)
-    })
-})
+
 
 //Delete Book
 books.delete('/books/:bookid',(req,res ,next) => {

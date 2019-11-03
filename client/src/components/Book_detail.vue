@@ -21,7 +21,8 @@
                                         <div class="container">
                                             <h4 class="title is-4">รายการขายหนังสือเล่มนี้</h4>
                                             <!-- @click gotoProduct Detail -->
-                                            <table class="table">
+                                            <div class="table-container">
+                                                <table class="table">
                                                 <thead>
                                                     <th>ชื่อสินค้า</th>
                                                     <th>ราคา</th>
@@ -35,6 +36,7 @@
                                                     <td><button class="button is-link is-outlined">เพิ่มลงตะกร้าสินค้า</button></td>
                                                 </tbody>
                                             </table>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -50,7 +52,7 @@
                         <button class="button is-warning is-rounded is-pulled-right">เขียนรีวิว</button>
                         <h1 class="title"> รวมบทความเกี่ยวกับหนังสือเล่มนี้ !</h1>
                         <div class="columns is-multiline">
-                        <div class="tile is-ancestor column is-three-fifths is-offset-one-fifth">
+                        <div class="tile is-ancestor column is-6">
                             <div class="column tile is-mobile is-parent">
                                 <div class="tile is-child box">
                                     <article class="media">
