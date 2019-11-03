@@ -38,6 +38,7 @@ module.exports = {
         target: 'http://localhost:5000',
         changeOrigin: true
       },
+      //And Check Server.js
     },
     autoOpenBrowser: false,
     errorOverlay: true,

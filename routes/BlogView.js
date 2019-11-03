@@ -5,7 +5,7 @@ const cors = require('cors')
 
 blogview.use(cors())
 
-//Get all book
+//Get all view 
 blogview.get('/blogview',(req,res) => {
     Blogview.findAll({
         attributes: ['blogid','blog_title','blog_article','blog_img','blog_date','userblogid','book_id','first_name','book_name']
