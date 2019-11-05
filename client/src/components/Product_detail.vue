@@ -1,22 +1,29 @@
 <template>
-    <div class="container">
-        <div class="jumbotron mt-5">
-            <h1>ชื่อสินค้า: {{this.product_name}}</h1>
-            <hr class="style11">
-            <h1>รายละเอียดสินค้า: {{this.product_detail}}</h1>
-            <h1>ราคาสินค้า: {{this.product_price}}</h1>
-            <h1>จำนวน: {{this.qty}}</h1>
-            <h1>สภาพ: {{this.product_condition}}</h1>
-            <h1>บริการขนส่ง: {{this.shipping}}</h1>
-            <h1>ค่าส่ง: {{this.shippingcost}}</h1>
-            <div>
-                <button  class=" btn btn-info btn-lg">Add to cart</button>
-                <button  type="button"  class=" btn btn-danger btn-lg">Buy now !</button>
+   <div class="container">
+        <div class="container is-fluid">
+            <div class="container">
+          <div class="tile is-ancestor">
+            <div class="tile is-parent">
+              <div class="tile is-child box">
+                  <p class="is-pulled-right"> POST {{blog_date}}</p>
+                <h1 class="title is-1"> {{product_name}} </h1>
+                <h5 class="title is-5"> รายละเอียด : {{product_detail}} </h5>
+                <h5 class="subtitle is-5"> ราคา : {{product_price}} </h5>
+                <p>จำนวนชิ้น : {{qty}}</p>
+                <p>สภาพสินค้า : {{product_condition}}</p>
+                <p>การจัดส่ง : {{shipping}}</p>
+                <p>ค่าจัดส่ง : {{shippingcost}}</p>
+                <hr class="style11">
+                <p>{{blog_article}}</p>
+              </div>
             </div>
+          </div>
+        </div>
         </div>
     </div>
 </template>
 <script>
+// Please Create VIEWS in DB Product VIEW
 
 import axios from 'axios'
 import router from '../router'
