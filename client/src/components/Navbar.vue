@@ -22,6 +22,9 @@
         <router-link class="navbar-item" to="/profile" v-if="auth=='loggedin' || token!=null || token!=undefined">
             Profile
         </router-link>
+        <router-link class="navbar-item" to="/product" v-if="auth=='loggedin' || token!=null || token!=undefined">
+            Product
+        </router-link>
 
       </div>
 

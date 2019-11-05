@@ -18,4 +18,20 @@ blogview.get('/blogview',(req,res) => {
     })
 })
 
+//ฺGet Blog By ID
+blogview.get('/read/:blogid',(req,res) => {
+    Blogview.findOne({
+        attributes: ['blogid','blog_title','blog_article','blog_img','blog_date','userblogid','book_id','first_name','book_name'],
+        where: {
+            blogid : req.params.blogid
+        }
+    })
+    .then(blogview => {
+        res.json(blogview)
+    })
+    .catch(err => {
+        res.send('error: '+ err)
+    })
+})
+
 module.exports = blogview
