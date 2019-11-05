@@ -5,68 +5,50 @@
             <h1>{{products.length}}</h1>
             <hr class="style1">
             <form v-on:submit.prevent="addproduct">
-                <div class="form-group">
-                    <label for="product_name">ชื่อสินค้า</label>
-                    <input class="input" type="text"  v-model="product_name"  name="product_name" placeholder="โปรดระบุชื่อสินค้า">
+                <h1 class="title is-4">ชื่อสินค้า</h1>
+                <div class="columns is-mobile is-centered" >
+                    <input class="input" type="text" name="product_name">
                 </div>
-                <div class="form-group">
-                    <label for="product_detail">รายละเอียด/เรื่องย่อ</label>
-                    <textarea class="input" type="text" v-model="product_detail"  name="product_detail" placeholder="โปรดระบุราละเอียด/เรื่องย่อ"></textarea>
+                <h1 class="title is-4">รายละเอียดสินค้า</h1>
+                <div class="columns is-mobile is-centered" >
+                    <textarea class="textarea" placeholder="10 lines of textarea" rows="10"></textarea>
                 </div>
-                <div class="form-row">
-                    <div class="col-md-4 mb-3">
-                        <label for="product_price">ราคา</label>
-                        <input class="input" type="text" v-model="product_price"  name="product_price" placeholder="ราคา">
+                <div class="columns">
+                    <div class="column">
+                        <label class="title is-4">ราคา</label>
+                        <input class="input" type="text" name="product_name">
                     </div>
-                    <div class="col-md-4 mb-3">
-                        <label for="qty">จำนวน</label>
-                        <input class="input" type="text" v-model="qty"  name="qty" placeholder="จำนวน">
+                    <div class="column">
+                       <label class="title is-4">จำนวน</label>
+                        <input class="input" type="text" name="product_name">
                     </div>
-                    <div>
-                    <div class="select">
-                        <select v-model="product_condition" name="product_condition">
-                            <option>สินค้าใหม่</option>
-                            <option>สินค้ามือสอง</option>
-                        </select>
+                    <div class="column">
+                        <label class="title is-4">สภาพ</label>
+                        <input class="input" type="text" name="product_name">
+                    </div>
+                </div>
+                <div class="columns">
+                    <div class="column">
+                        <label class="title is-4">การจัดส่ง</label>
+                        <div class="select">
+                            <select>
+                                <option>REG - ลงทะเบียน</option>
+                                <option>EMS - ไปรษณีย์ด่วนพิเศษ</option>
+                                <option>KERRY - พัศดุด่วนพิเศษ</option>
+                                <option>ผู้ขายจัดส่งเอง</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div>
+                            <label class="title is-4">ค่าจัดส่ง</label>
+                            <input class="input" type="text" name="product_name">
+                        </div>
+                    </div>
+                    <div class="column">
                     </div> 
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="file has-name">
-                    <label class="file-label">
-                        <input class="file-input" type="file" name="resume">
-                        <span class="file-cta">
-                        <span class="file-label">
-                            เลือกไฟล์รูปภาพ
-                        </span>
-                        </span>
-                        <span class="file-name">
-                            Screen Shot 2017-07-29 at 15.54.25.png
-                        </span>
-                    </label>
-                    </div>
-                </div>
-                <hr class="style1">
-                <h4>
-                    การจัดส่ง
-                </h4>
-                <div class="form-row">
-                    <div class="select">  
-                        <label for="shipping">บริการขนส่ง</label>
-                        <select class="form-control" v-model="shipping" id="shipping">
-                            <option>EMS - ไปรษณีย์ไทย</option>
-                            <option>REG - ไปรษณีย์ไทย</option>
-                            <option>ส่งด่วน - Kerry</option>
-                            <option>ส่งด่วน - DHL</option>
-                        </select>
-                    </div>
-                    <div class="col-md-4 mb-3">
-                        <label for="shippingcost">ค่าจัดส่ง</label>
-                        <input type="text" v-model="shippingcost" class="form-control" name="shippingcost" placeholder="ค่าจัดส่ง">
-                    </div>
-                </div>
-                    <button type="submit" class="btn btn-lg btn btn-success font-weight-bold btn-block">Add Product Now!</button>
-                </form>
+                </div>   
+            </form>
                 <hr class="style11">
                 <table class="table">
                     <th>ID</th>
