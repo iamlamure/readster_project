@@ -1,8 +1,6 @@
 <template>
      <div class="container">
-        <div class="jumbotron mt-5">
             <h1 class="title is-1">เพิ่มสินค้า</h1>
-            <h1>{{products.length}}</h1>
             <hr class="style1">
             <form v-on:submit.prevent="addproduct">
                 <h1 class="title is-4">ชื่อสินค้า</h1>
@@ -49,28 +47,34 @@
                     </div> 
                 </div>   
             </form>
+            <div>
                 <hr class="style11">
-                <table class="table">
-                    <th>ID</th>
-                    <th>PRODUCT NAME</th>
-                    <th>QTY</th>
-                    <th>PRICE</th>
-                    <th class="text-right" >ACTION</th>
-                    <tr v-for="(product) in products" v-bind:key="product.productid" v-bind:title="product.product_name">
-                        <td>{{product.productid}}</td>
-                        <td>
-                            <h5 @click="getproduct_detail(product.productid)">{{product.product_name}}</h5>
-                        </td>
-                        <td>{{product.qty}}</td>
-                        <td>{{product.product_price}}</td>
-                        <td class="text-right">
-                            <button  class=" btn btn-info ">Edit</button>
-                            <button  v-on:click="deleteproduct(product.productid)" type="button"  class=" btn btn-danger ">Delete</button>
-                        </td>
-                    </tr>
+                <h1 class="title is-1">รายการสินค้า</h1>
+                <h5 class="title is-5">สินค้าของคุณทั้งหมด {{products.length}} ชิ้น</h5>
+                <table class="table is-fullwidth">
+                    <thead>
+                        <th>ID</th>
+                        <th>PRODUCT NAME</th>
+                        <th>QTY</th>
+                        <th>PRICE</th>
+                        <th class="text-right" >ACTION</th>
+                    </thead>
+                    <tbody>
+                        <tr v-for="(product) in products" v-bind:key="product.productid" v-bind:title="product.product_name">
+                            <td>{{product.productid}}</td>
+                            <td>
+                                <h5 @click="getproduct_detail(product.productid)">{{product.product_name}}</h5>
+                            </td>
+                            <td>{{product.qty}}</td>
+                            <td>{{product.product_price}}</td>
+                            <td class="text-right">
+                                <button  class="button is-warning is-rounded ">Edit</button>
+                                <button  v-on:click="deleteproduct(product.productid)" type="button"  class="button is-danger is-rounded">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
                 </table>
-            
-        </div>
+            </div>
     </div>
 </template>
 
