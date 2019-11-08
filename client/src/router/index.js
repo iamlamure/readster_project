@@ -11,6 +11,8 @@ import Read from '@/components/Read'
 import Product from '@/components/Product'
 import Product_detail from '@/components/Product_detail'
 import Book_detail from '@/components/Book_detail'
+import Cart from '@/components/Cart'
+import Shop from '@/components/Shop'
 
 Vue.use(Router)
 
@@ -71,5 +73,14 @@ export default new Router({
       name: 'Product_detail',
       component: Product_detail
     },
+    {
+      path: '/cart',
+      name: 'Cart',
+      component: Cart
+    },{
+      path: '/shop',
+      name: 'Shop',
+      component: Shop
+    }
   ]
 })

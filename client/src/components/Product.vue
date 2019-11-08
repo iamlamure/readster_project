@@ -45,7 +45,8 @@
                     </div>
                     <div class="column">
                     </div> 
-                </div>   
+                </div>
+                <button class="button is-primary  is-fullwidth">เพิ่มสินค้า</button>   
             </form>
             <div>
                 <hr class="style11">

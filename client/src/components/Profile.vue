@@ -11,13 +11,13 @@
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
         </div>
         <div class="tile is-child box">
-          <a class="title">ตะกร้าสินค้า</a>
-          <a class="button is-danger is-rounded is-pulled-right" href="">จัดการ</a>
+          <a class="title">การขาย</a>
+          <router-link class="button is-danger is-rounded is-pulled-right" to="/product">จัดการ</router-link>
           <table class="table is-fullwidth">
                 <thead>
                   <th class="subtitle is-6">ชื่อสินค้า</th>
                   <th class="subtitle is-6">Qty</th>
-                  <th class="subtitle is-6">Price</th>
+                  <th class="subtitle is-6">สถานะ</th>
                 </thead>
                 <tbody>
                   <td>รับราชการยังไงให้ได้ 4000 ล้าน</td>
@@ -37,12 +37,16 @@
                   <th class="subtitle is-5">ชื่อเรื่อง</th>
                   <th class="subtitle is-5">วันที่</th>
                   <th class="subtitle is-5">ถูกใจ</th>
+                  <th></th>
                 </thead>
                 <tbody>
                   <td>รับราชการยังไงให้ได้ 4000 ล้าน</td>
                   <td>10/10/63</td>
                   <td>1000</td>
-                  <td><a class="button is-primary is-small is-rounded is-pulled-right" href="">Edit</a></td>
+                  <td>
+                    <a class="button is-danger is-small is-rounded is-pulled-right" href="">Delete</a>
+                    <a class="button is-warning is-small is-rounded is-pulled-right" href="">Edit</a>
+                  </td>
                 </tbody>
               </table>
             </div>

@@ -22,8 +22,8 @@
         <router-link class="navbar-item" to="/profile" v-if="auth=='loggedin' || token!=null || token!=undefined">
             Profile
         </router-link>
-        <router-link class="navbar-item" to="/product" v-if="auth=='loggedin' || token!=null || token!=undefined">
-            Product
+        <router-link class="navbar-item" to="/shop" v-if="auth=='loggedin' || token!=null || token!=undefined">
+            Shop
         </router-link>
 
       </div>
@@ -37,7 +37,7 @@
               </router-link>
             </p>
             <p class="control" v-if="auth=='loggedin' || token!=null || token!=undefined" >
-              <router-link class="button is-success is-rounded" to="/">
+              <router-link class="button is-success is-rounded" to="/cart">
                 Cart
               </router-link>
             </p>
