@@ -10,6 +10,7 @@
                         <th></th>
                         <th>ราคาต่อชิ้น</th>
                         <th>จำนวน</th>
+                        <th>ค่าจัดส่ง</th>
                         <th>ราคารวม</th>
                         <th>action</th>
                     </thead>
@@ -19,15 +20,14 @@
                             <td>product_name</td>
                             <td>1900</td>
                             <td>1</td>
+                            <td>60</td>
                             <td>1900</td>
                             <td>
                                 <a class="button is-danger is-small is-rounded" href="">Delete</a>
                             </td>
                         </tr>
                     </tbody>
-
                 </table>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem ut, fugiat, debitis delectus eum possimus incidunt officiis nam, magni sapiente nisi dicta reiciendis dolorum assumenda animi tenetur pariatur vero excepturi?
             </div>
         </div>
         <section>
@@ -35,9 +35,16 @@
         <div class="tile is-ancestor">
             <div class="tile is-child box">
                 <div class="contianer">
-                    <a class="button is-primary title is-5 is-pulled-right">สั่งซื้อสินค้า</a>
-                    <p>รวมค่าสินค้า(2 ชิ้น)</p>
-                    <h3 class="title is-3">1900</h3>
+                    <h5 class="title is-5">เลือกที่อยู่ในการจัดส่ง</h5>
+                    <div class="select is-fullwidth">
+                        <select>
+                            <option>Select dropdown</option>
+                            <option>With options</option>
+                        </select>
+                    </div>
+                    <hr class="style11">
+                    <button class="button is-primary title is-5 is-pulled-right">สั่งซื้อสินค้า</button>
+                    <h4 class="title is-4">รวมค่าสินค้า(2 ชิ้น) : ทั้งหมด 1900 บาท</h4>
                 </div>
             </div>
         </div>
