@@ -2,6 +2,7 @@
 <div>
     <div class="container is-fluid">
     <h1 class="title columns is-mobile is-centered">รายการหนังสือ</h1>
+    {{ books.length }}
       <hr class="style11">
       <br>
       <div class="container">

@@ -1,6 +1,7 @@
 <template>
     <div class="container">
         <h1 class="title columns is-mobile is-centered">ตะกร้าสินค้า</h1>
+        <!--<h1 class="title columns is-mobile is-centered">{{ Carts.length }}</h1> -->
         <hr class="style11">
         <div class="tile is-ancestor">
             <div class="tile is-child box">
