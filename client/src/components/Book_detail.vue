@@ -1,5 +1,6 @@
 <template>
         <div class="container">
+            <h1 class="title"> ข้อมูลหนังสือ : {{book_name}} </h1>
             <div class="tile is-ancestor">
                 <div class="tile is-vertical is-parent">
                     <div class="tile is-child box">
@@ -15,7 +16,15 @@
                                     <button class="button is-primary is-outlined is-rounded is-pulled-right">เพิ่มในชั้นหนังสือ</button>
                                     <p class="title">{{book_name}}</p>
                                     <h4 class="title id-4">ผู้เขียน : {{author_name}}</h4>
-                                    <h6 class="title id-6">รายละเอียด</h6>
+                                    <h6 class="title id-6">สำนักพิมพ์ : {{publisher}}</h6>
+                                    <h6 class="title id-6">รายละเอียด และ เรื่องย่อ</h6>
+                                    <div class="content">
+                                        <dl>
+                                            <li>ราคา : {{price}}</li>
+                                            <li>หน้า : {{pages}}</li>
+                                            <li>หมวดหมู่ : {{category}}</li>
+                                        </dl>
+                                    </div>
                                     <p>{{book_detail}}</p>
                                     <div class="tile is-child box">
                                         <div class="container">

@@ -19,9 +19,6 @@
         <router-link class="navbar-item" to="/blog" v-if="auth=='loggedin' || token!=null || token!=undefined">
             Blog
         </router-link>
-        <router-link class="navbar-item" to="/profile" v-if="auth=='loggedin' || token!=null || token!=undefined">
-            Profile
-        </router-link>
         <router-link class="navbar-item" to="/shop" v-if="auth=='loggedin' || token!=null || token!=undefined">
             Shop
         </router-link>
@@ -31,6 +28,11 @@
       <div class="navbar-end">
         <div class="navbar-item">
           <div class="field is-grouped">
+            <p class="control" v-if="auth=='loggedin' || token!=null || token!=undefined" >
+              <router-link class="button is-primary is-rounded" to="/profile">
+                Profile
+              </router-link>
+            </p>
             <p class="control" v-if="auth=='' && (token==null || token==undefined)">
               <router-link class="button is-success is-rounded" to="/login">
                 Account

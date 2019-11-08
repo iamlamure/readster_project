@@ -5,10 +5,18 @@
       <div class="tile is-ancestor">
       <div class="tile is-4 is-vertical is-parent">
         <div class="tile is-child box">
-          <a class="title">{{first_name}} {{last_name}}</a>
-           <a class="button is-warning is-rounded is-pulled-right" href="">อัพเดท</a>
-           <p class="subtitle" href="">{{email}}</p>
+          <figure class="image is-square">
+            <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
+          </figure>
+          <br>
+          <h3 class="title is-3 columns is-mobile is-centered">{{first_name}} {{last_name}}</h3>
+          <p></p>
+          <h5 class="subtitle is-5 columns is-mobile is-centered" href="">{{email}}</h5>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
+          <br>
+          <div>
+            <button class="button is-warning is-fullwidth title is-6">อัพเดทข้อมูลผู้ใช้</button>
+          </div>
         </div>
         <div class="tile is-child box">
           <a class="title">การขาย</a>
@@ -49,6 +57,7 @@
                   </td>
                 </tbody>
               </table>
+              <br>
             </div>
           </div>
         </div>
