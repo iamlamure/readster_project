@@ -15,7 +15,7 @@
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
           <br>
           <div>
-            <button class="button is-warning is-fullwidth title is-6">อัพเดทข้อมูลผู้ใช้</button>
+            <router-link class="button is-warning is-fullwidth title is-6" to="/user/user_detail">อัพเดทข้อมูลผู้ใช้</router-link>
           </div>
         </div>
         <div class="tile is-child box">
