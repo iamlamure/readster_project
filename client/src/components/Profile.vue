@@ -125,8 +125,8 @@ export default {
       })
     },
     // Get all Blog by userid
-         getblog (id) {
-            axios.get(`/blogview/userblog/${id}`).then(
+         getblog () {
+            axios.get(`/blogview/userblog/${14}`).then(
                 result => {
                     console.log(result.data)
                     this.blogs = result.data
