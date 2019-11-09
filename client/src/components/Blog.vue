@@ -4,10 +4,10 @@
         <h1 class="title columns is-mobile is-centered">บทความ</h1>
         <hr class="style11">
         <br>
-        <div class="columns is-multiline">
-            <div class="tile is-ancestor column is-three-fifths is-offset-one-fifth">
-                <div class="column tile is-mobile is-parent" v-for="(blog) in blogs" v-bind:key="blog.blogid" v-bind:title="blog.blog_title">
-                    <div class="tile is-child box">
+        <div class="columns is-multiline" >
+            <div class="tile is-ancestor column is-half" v-for="(blog) in blogs" v-bind:key="blog.blogid" v-bind:title="blog.blog_title" >
+                <div class="column tile is-mobile is-parent">
+                    <div @click="gotodetail(blog.blogid)" class="tile is-child box">
                         <article class="media">
                             <div class="media-left">
                             <figure class="image is-64x64">
@@ -16,11 +16,9 @@
                             </div>
                             <div class="media-content">
                             <div class="content">
-                                <p>
-                                <strong>{{first_name}}</strong> <small>@johnsmith</small> <small>{{blog.blog_date}}</small>
+                                <strong>{{first_name}} {{last_name}}</strong> <small>@johnsmith</small> <small>{{blog.blog_date}}</small>
                                 <br>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
-                                </p>
+                                <h5 class="title is-5">{{blog.blog_title}}</h5>
                             </div>
                             </div>
                         </article>
@@ -69,6 +67,7 @@ export default {
             userblogid:'',
             token: token,
             first_name:'',
+            last_name:'',
             blog_date:''
         }
     },
@@ -119,6 +118,7 @@ export default {
             }).then(res => {
                 this.id = res.data.id
                 this.first_name = res.data.first_name
+                this.last_name = res.data.last_name
             }).catch(err => {
                 console.log(err)
                 router.push({ name: 'Login' })

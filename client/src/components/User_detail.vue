@@ -42,7 +42,7 @@ export default {
             last_name: '',
             email: '',
             password: '',
-            address:''
+            user_address:''
         }
     }
 }

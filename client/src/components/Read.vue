@@ -5,7 +5,7 @@
           <div class="tile is-ancestor">
             <div class="tile is-parent">
               <div class="tile is-child box">
-                  <p class="is-pulled-right"> POST {{blog_date}}</p>
+                <p class="is-pulled-right"> POST {{blog_date}}</p>
                 <h1 class="title is-1"> {{blog_title}} </h1>
                 <h5 class="title is-5"> บทความโดย : {{first_name}} </h5>
                 <h5 class="subtitle is-5"> ชื่อหนังสือ : {{book_name}} </h5>
