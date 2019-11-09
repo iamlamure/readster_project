@@ -43,18 +43,20 @@
               <table class="table is-fullwidth">
                 <thead>
                   <th class="subtitle is-5">ชื่อเรื่อง</th>
-                  <th class="subtitle is-5">วันที่</th>
-                  <th class="subtitle is-5">ถูกใจ</th>
+                  <th class="subtitle is-5"></th>
+                  <th class="subtitle is-5"></th>
                   <th></th>
                 </thead>
                 <tbody>
-                  <td>รับราชการยังไงให้ได้ 4000 ล้าน</td>
-                  <td>10/10/63</td>
-                  <td>1000</td>
-                  <td>
+                  <tr v-for="(blog) in blogs" v-bind:key="blog.blogid" v-bind:title="blog.blog_title">
+                    <td><a @click="gotodetail(blog.blogid)">{{blog.blog_title}}</a></td>
+                    <td>{{blog.book_name}}</td>
+                    <td></td>
+                    <td>
                     <a class="button is-danger is-small is-rounded is-pulled-right" href="">Delete</a>
                     <a class="button is-warning is-small is-rounded is-pulled-right" href="">Edit</a>
-                  </td>
+                    </td>
+                  </tr>
                 </tbody>
               </table>
               <br>
@@ -97,13 +99,26 @@ import axios from 'axios'
 export default {
   data () {
     const token = localStorage.usertoken
-
+    const userblogid = token.id
     return {
       id:'',
       first_name: '',
       last_name: '',
       email: '',
-      token: token
+      token: token,
+      userblogid: userblogid,
+
+      //Blog
+      blogs:[],
+      books:[],
+      blogid:'',
+      blog_article:'',
+      blog_title:'',
+      blog_img:'',
+      bookid:'',
+      book_id:'',
+      book_name:'',
+      
     }
   },
   methods: {
@@ -119,10 +134,37 @@ export default {
         console.log(err)
         router.push({ name: 'Login' })
       })
-    }
+    },
+
+    // Get Blog All
+    getblog () {
+            axios.get('/blogs/userblogs').then(
+                result => {
+                    console.log(result.data)
+                    this.blogs = result.data
+                    params:{userblogid:id}
+                },
+                error => {
+                    console.error(error)
+                }
+            )
+    },
+
+    // Gotoreadblog
+        gotodetail(blogid){
+            this.$router.push({
+                name:'Read',
+                params:{blog:blogid}
+            }).then((res) => {
+                this.getblog()
+            }).catch((err) => {
+                console.log(err)
+            })
+        },
   },
   mounted () {
     this.getuser()
+    this.getblog()
   }
 }
 </script>

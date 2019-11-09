@@ -35,6 +35,21 @@ blogs.get('/blogs',(req,res) => {
     })
 })
 
+//Get Blog By ID
+blogs.get('/userblogs',(req,res) => {
+    Blog.findAll({
+        where: {
+            userblogid : req.params.userblogid
+        }
+    })
+    .then(blogs => {
+        res.json(blogs)
+    })
+    .catch(err => {
+        res.send('error: ' + err)
+    })
+})
+
 //Delete Blog
 blogs.delete('/blogs/:blogid',(req,res,next) =>{
     Blog.destroy({
