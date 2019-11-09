@@ -101,31 +101,7 @@ export default {
             })
         },
         
-        // Add Blog
-        addblog() {
-            axios.post('/blogs/addblog',
-            {
-                blog_title: this.blog_title,
-                blog_article: this.blog_article,
-                bookid: this.bookid,
-                blog_img:this.blog_img,
-                book_id:this.book_id,
-                userblogid:this.userblogid,
-            }
-            ).then((res) => {
-                    this.blog_title = ''
-                    this.blog_article = ''
-                    this.blog_img = ''
-                    this.book_id = ''
-                    this.userblogid = ''
-                    this.getblog()
-                    this.getbooks()
-                    this.getuser()
-                    console.log(res)
-                }).catch((err) => {
-                    console.log(err)
-                })
-        },
+        // Gotoreadblog
         gotodetail(blogid){
             this.$router.push({
                 name:'Read',

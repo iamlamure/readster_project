@@ -38,7 +38,7 @@
         <div class="tile is-parent">
           <div class="tile is-child box">
             <a class="title">บทความของคุณ</a>
-            <a class="button is-primary is-rounded is-pulled-right" href="">เขียนรีวิว</a>
+            <router-link class="button is-primary is-rounded is-pulled-right" to="write_blog">เขียนรีวิว</router-link>
             <div class="container">
               <table class="table is-fullwidth">
                 <thead>
