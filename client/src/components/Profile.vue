@@ -37,42 +37,11 @@
       </div>
         <div class="tile is-parent">
           <div class="tile is-child box">
-            <a class="title">บทความของคุณ</a>
+            <a class="title is-3"> ชั้นหนังสือของคุณ </a>
             <router-link class="button is-primary is-rounded is-pulled-right" to="write_blog">เขียนรีวิว</router-link>
-            <div class="container">
-              <table class="table is-fullwidth">
-                <thead>
-                  <th class="subtitle is-5">ชื่อเรื่อง</th>
-                  <th class="subtitle is-5"></th>
-                  <th class="subtitle is-5"></th>
-                  <th></th>
-                </thead>
-                <tbody>
-                  <tr v-for="(blog) in blogs" v-bind:key="blog.blogid" v-bind:title="blog.blog_title">
-                    <td><a @click="gotodetail(blog.blogid)">{{blog.blog_title}}</a></td>
-                    <td>{{blog.book_name}}</td>
-                    <td></td>
-                    <td>
-                    <a class="button is-danger is-small is-rounded is-pulled-right" href="">Delete</a>
-                    <a class="button is-warning is-small is-rounded is-pulled-right" href="">Edit</a>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <br>
-            </div>
-          </div>
-        </div>
-      </div>
-      <hr class="style11">
-      <section class="section columns is-half is-centered">
-        <div class="container">
-          <div class="tile is-ancestor">
-            <div class="tile is-parent">
-              <div class="tile is-child box">
-                <h4 class="title is-4"> ชั้นหนังสือของคุณ </h4>
-                 <div class="columns is-multiline">
-                  <div class="column tile is-2 is-vertical is-mobile is-parent is-narrow">
+            <a @click="gouserblog(id)" class="button is-primary is-rounded is-pulled-right" to="user/user_blog">บทความของคุณ</a>
+              <div class="columns is-multiline">
+                  <div class="column tile is-5 is-vertical is-mobile is-parent is-narrow">
                       <div class="tile is-child box">
                           <div class="card-image has-text-centered">
                               <figure class="image is-inline-block">
@@ -84,11 +53,11 @@
                         </div>
                       </div>
                   </div>
-              </div>
-            </div>
+              <br>
           </div>
         </div>
-      </section>
+      </div>
+      <hr class="style11">
   </div>
 </template>
 
@@ -99,14 +68,14 @@ import axios from 'axios'
 export default {
   data () {
     const token = localStorage.usertoken
-    const userblogid = token.id
+    
     return {
       id:'',
       first_name: '',
       last_name: '',
       email: '',
       token: token,
-      userblogid: userblogid,
+      
 
       //Blog
       blogs:[],
@@ -136,20 +105,6 @@ export default {
       })
     },
 
-    // Get Blog All
-    getblog () {
-            axios.get('/blogs/userblogs').then(
-                result => {
-                    console.log(result.data)
-                    this.blogs = result.data
-                    params:{userblogid:id}
-                },
-                error => {
-                    console.error(error)
-                }
-            )
-    },
-
     // Gotoreadblog
         gotodetail(blogid){
             this.$router.push({
@@ -161,6 +116,18 @@ export default {
                 console.log(err)
             })
         },
+
+      //Get Blog by userblogid
+      gouserblog(id){
+            this.$router.push({
+                name:'User_blog',
+                params: {id}
+            }).then((res) => {
+                this.getblog()
+            }).catch((err)=> {
+                console.log(err)
+            })
+        }
   },
   mounted () {
     this.getuser()

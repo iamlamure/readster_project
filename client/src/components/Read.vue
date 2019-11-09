@@ -2,7 +2,7 @@
     <div class="container">
         <div class="container is-fluid">
             <div class="container">
-          <div class="tile is-ancestor">
+          <div class="tile is-ancestor columns is-mobile is-centered">
             <div class="tile is-parent">
               <div class="tile is-child box">
                 <p class="is-pulled-right"> POST {{blog_date}}</p>
@@ -44,7 +44,7 @@ export default {
     },
     mounted() {
         this.getblogdetail()
-        this.getuser()
+        //this.getuser()
     },
     methods: {
         getblogdetail(blog){
