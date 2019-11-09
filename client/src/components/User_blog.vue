@@ -13,20 +13,22 @@ export default {
     name: 'User_blog',
     data() {
         return {
-            id:this.$route.params.id,
+            userblogid:this.$route.params.id,
         }
     },
     methods: {
-        getblogs(blog){
-            axios.get(`/blogview/book_detail/${this.$route.params.book}`
+        getuser_blogs(id){
+            axios.get(`/blogview/userblog/${this.$route.params.userblogid}`
             ).then((res) => {
-
+                console.log(res)
+            }).catch((err) => {
+                console.log(err)
             })
         }
     },
     
     mounted() {
-        
+        this.getuser_blogs()
     },
 }
 </script>
