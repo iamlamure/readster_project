@@ -68,7 +68,8 @@ export default {
             //token: token,
             first_name:'',
             last_name:'',
-            blog_date:''
+            blog_date:'',
+            a : ''
         }
     },
     mounted() {

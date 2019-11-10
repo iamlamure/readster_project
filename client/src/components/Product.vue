@@ -5,31 +5,36 @@
             <form v-on:submit.prevent="addproduct">
                 <h1 class="title is-4">ชื่อสินค้า</h1>
                 <div class="columns is-mobile is-centered" >
-                    <input class="input" type="text" name="product_name">
+                    <input v-model="product_name" class="input" type="text" name="product_name">
                 </div>
                 <h1 class="title is-4">รายละเอียดสินค้า</h1>
                 <div class="columns is-mobile is-centered" >
-                    <textarea class="textarea" placeholder="10 lines of textarea" rows="10"></textarea>
+                    <textarea v-model="product_detail" class="textarea" placeholder="10 lines of textarea" rows="10"></textarea>
                 </div>
                 <div class="columns">
                     <div class="column">
                         <label class="title is-4">ราคา</label>
-                        <input class="input" type="text" name="product_name">
+                        <input v-model="product_price" class="input" type="text" name="product_name">
                     </div>
                     <div class="column">
                        <label class="title is-4">จำนวน</label>
-                        <input class="input" type="text" name="product_name">
+                        <input v-model="qty" class="input" type="text" name="product_name">
                     </div>
                     <div class="column">
+                        <div class="select">
                         <label class="title is-4">สภาพ</label>
-                        <input class="input" type="text" name="product_name">
+                            <select v-model="product_condition">
+                                <option>สินค้าใหม่</option>
+                                <option>สินค้ามือสอง</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
                 <div class="columns">
                     <div class="column">
-                        <label class="title is-4">การจัดส่ง</label>
                         <div class="select">
-                            <select>
+                        <label class="title is-4">การจัดส่ง</label>
+                            <select v-model="shipping">
                                 <option>REG - ลงทะเบียน</option>
                                 <option>EMS - ไปรษณีย์ด่วนพิเศษ</option>
                                 <option>KERRY - พัศดุด่วนพิเศษ</option>
@@ -40,11 +45,25 @@
                     <div class="column">
                         <div>
                             <label class="title is-4">ค่าจัดส่ง</label>
-                            <input class="input" type="text" name="product_name">
+                            <input v-model="shippingcost" class="input" type="text" name="product_name">
                         </div>
                     </div>
                     <div class="column">
-                    </div> 
+                        <div class="select">
+                        <label class="title is-4">หนังสือที่ขาย : </label>
+                            <select v-model="product_book_id" required>
+                                <option for="book_id" v-for="(book) in books" v-bind:key="book.bookid" v-bind:title="book.book_name" v-bind:value="book.bookid">{{book.book_name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="select">
+                        <label class="title is-4">ขายโดย : </label>
+                            <select v-model="product_user_id" required>
+                                <option v-bind:value="id">{{first_name}}</option>
+                            </select>
+                        </div>
+                    </div>  
                 </div>
                 <button class="button is-primary  is-fullwidth">เพิ่มสินค้า</button>   
             </form>
@@ -88,6 +107,7 @@ export default {
         const token = localStorage.usertoken
         return {
             products: [],
+            books: [],
             productid:'',
             product_name:'',
             product_detail:'',
@@ -97,11 +117,16 @@ export default {
             product_condition:'',
             shipping:'',
             shippingcost:'',
+            product_user_id :'',
+            product_book_id:'',
+            first_name:'',
             token: token
         }
     },
     mounted() {
         this.getproducts()
+        this.getbooks()
+        this.getuser()
     },
 
     methods: {
@@ -109,14 +134,17 @@ export default {
         addproduct(){
             axios.post('/products/addproduct',
                 {
-                    product_name: this.product_name,
-                    product_detail:this.product_detail,
-                    product_img:this.product_img,
-                    product_price:this.product_price,
-                    qty:this.qty,
-                    product_condition:this.product_condition,
-                    shipping:this.shipping,
-                    shippingcost:this.shippingcost,
+                productid:this.productid,
+                product_name:this.product_name,
+                product_detail:this.product_detail,
+                product_img:this.product_img,
+                product_price:this.product_price,
+                qty:this.qty,
+                product_condition:this.product_condition,
+                shipping:this.shipping,
+                shippingcost:this.shippingcost,
+                product_user_id :this.product_user_id,
+                product_book_id : this.product_book_id,
                     headers: { 'Authorization': this.token }
                 }
             ).then((res) => {
@@ -171,7 +199,34 @@ export default {
             }).catch((err)=> {
                 console.log(err)
             })
-        }
+        },
+
+        //Show Books
+        getbooks () {
+            axios.get('/books/books').then(
+                result => {
+                    console.log(result.data)
+                    this.books = result.data
+                },
+                error => {
+                    console.error(error)
+                }
+            )
+        },
+
+        //Get User
+        getuser () {
+                axios.get('/users/profile', {
+                headers: { 'Authorization': this.token }
+            }).then(res => {
+                this.id = res.data.id
+                this.first_name = res.data.first_name
+            }).catch(err => {
+                console.log(err)
+                router.push({ name: 'Login' })
+            })
+        },
+
     },
     
 }

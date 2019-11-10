@@ -8,19 +8,20 @@ products.use(cors())
 //Add Product
 products.post('/addproduct',(req,res) => {
     const productData = {
-        product_name:product_name,
-        product_detail:product_detail,
-        product_img:product_img,
-        product_price:product_price,
-        qty:req.qty,
-        product_condition:product_condition,
-        shipping:shipping,
-        shippingcost:shippingcost
-    } = req.body
-
+        product_name:req.body.product_name,
+        product_detail:req.body.product_detail,
+        product_img:req.body.product_img,
+        product_price:req.body.product_price,
+        qty:req.body.qty,
+        product_condition:req.body.product_condition,
+        shipping:req.body.shipping,
+        shippingcost:req.body.shippingcost,
+        product_user_id:req.body.product_user_id,
+        product_book_id:req.body.product_book_id
+    }
     Product.create(productData)
     .then(() => {
-        res.send('Product Added!')
+        res.json('Product Added!')
     })
     .catch(err => {
         res.send('error:' + err)
@@ -65,6 +66,21 @@ products.get ('/product_detail/:productid',(req,res) => {
     })
     .catch(err => {
         res.send('err: '+ err)
+    })
+})
+
+// Get All Product By ID
+products.get ('/products/get_all/:bookid',(req,res) => {
+    Product.findAll({
+        where: {
+            product_user_id : req.params.bookid
+        }
+    })
+    .then(products => {
+        res.json(products)
+    })
+    .catch(err => {
+        res.send('err: '+err)
     })
 })
 

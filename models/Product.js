@@ -32,6 +32,12 @@ module.exports = db.sequelize.define(
         },
         shippingcost: {
             type: Sequelize.INTEGER
+        },
+        product_user_id: {
+            type: Sequelize.INTEGER
+        },
+        product_book_id:{
+            type: Sequelize.INTEGER
         }
     },
     {
