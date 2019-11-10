@@ -28,7 +28,7 @@ export default {
     name: 'Read',
 
     data() {
-        const token = localStorage.usertoken
+        //const token = localStorage.usertoken
         return {
             blog:this.$route.params.blogid,
             blog_title : '',
@@ -39,7 +39,7 @@ export default {
             book_id : '',
             first_name : '',
             book_name : '',
-            token: token
+            //token: token
         }
     },
     mounted() {

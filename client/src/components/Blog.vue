@@ -16,7 +16,7 @@
                             </div>
                             <div class="media-content">
                             <div class="content">
-                                <strong>{{first_name}} {{last_name}}</strong> <small>@johnsmith</small> <small>{{blog.blog_date}}</small>
+                                <strong>{{blog.first_name}}</strong> <small>{{blog.blog_date}}</small>
                                 <br>
                                 <h5 class="title is-5">{{blog.blog_title}}</h5>
                             </div>
@@ -52,7 +52,7 @@ import router from '../router'
 
 export default {
     data() {
-        const token = localStorage.usertoken
+        //const token = localStorage.usertoken
         return {
             blogs:[],
             books:[],
@@ -65,7 +65,7 @@ export default {
             book_name:'',
             id:'',
             userblogid:'',
-            token: token,
+            //token: token,
             first_name:'',
             last_name:'',
             blog_date:''
@@ -73,13 +73,13 @@ export default {
     },
     mounted() {
         this.getblog()
-        this.getuser()
-        this.getbooks()
+        //this.getuser()
+        //this.getbooks()
     },
     methods: {
         // Get All Blog
          getblog () {
-            axios.get('/blogs/blogs').then(
+            axios.get('/blogview/blogview').then(
                 result => {
                     console.log(result.data)
                     this.blogs = result.data
