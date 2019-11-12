@@ -24,32 +24,14 @@
                             <td>60</td>
                             <td>1900</td>
                             <td>
-                                <a class="button is-danger is-small is-rounded" href="">Delete</a>
+                                <a class="button is-danger is-rounded" href="">ยกเลิก</a>
+                                <a class="button is-warning is-rounded" href="">ชำระเงิน</a>
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
-        <section>
-        <hr class="style11">
-        <div class="tile is-ancestor">
-            <div class="tile is-child box">
-                <div class="contianer">
-                    <h5 class="title is-5">เลือกที่อยู่ในการจัดส่ง</h5>
-                    <div class="select is-fullwidth">
-                        <select>
-                            <option>Select dropdown</option>
-                            <option>With options</option>
-                        </select>
-                    </div>
-                    <hr class="style11">
-                    <button class="button is-primary title is-5 is-pulled-right">สั่งซื้อสินค้า</button>
-                    <h4 class="title is-4">รวมค่าสินค้า(2 ชิ้น) : ทั้งหมด 1900 บาท</h4>
-                </div>
-            </div>
-        </div>
-        </section>
     </div>
 </template>
 <script>

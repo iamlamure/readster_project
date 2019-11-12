@@ -27,6 +27,7 @@
           </div>
           <br>
             <button type="submit" class="button is-warning  is-fullwidth title is-5">Confirm update</button>
+            <button type="submit" class="button is-danger  is-fullwidth title is-5">ลบบัญชีผู้ใช้</button>
           <br>
         </form>
       </div>

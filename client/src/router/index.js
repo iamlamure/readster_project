@@ -16,7 +16,8 @@ import Shop from '@/components/Shop'
 import Write_Blog from '@/components/Write_Blog'
 import User_detail from '@/components/User_detail'
 import User_blog from '@/components/User_blog'
-import Sale from '@/components/Sale'
+import Sell from '@/components/Sell'
+import Order from '@/components/Order'
 
 Vue.use(Router)
 
@@ -103,9 +104,14 @@ export default new Router({
       component: User_blog
     },
     {
-      path: '/sale',
-      name: 'Sale',
-      component: Sale
+      path: '/sell',
+      name: 'Sell',
+      component: Sell
+    },
+    {
+      path: '/order',
+      name: 'Order',
+      component: Order
     }
   ]
 })

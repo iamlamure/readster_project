@@ -20,19 +20,19 @@
         </div>
         <div class="tile is-child box">
           <a class="title">การขาย</a>
-          <router-link class="button is-danger is-rounded is-pulled-right" to="/product">จัดการ</router-link>
           <table class="table is-fullwidth">
                 <thead>
-                  <th class="subtitle is-6">ชื่อสินค้า</th>
-                  <th class="subtitle is-6">Qty</th>
+                  <th class="subtitle is-6">ล่าสุด</th>
+
                   <th class="subtitle is-6">สถานะ</th>
                 </thead>
                 <tbody>
                   <td>รับราชการยังไงให้ได้ 4000 ล้าน</td>
-                  <td>1</td>
-                  <td>400</td>
+                  <td>อยู่ระหว่างการจัดส่ง</td>
                 </tbody>
               </table>
+              <router-link class="button is-warning is-fullwidth title is-6" to="/product">จัดการสินค้า</router-link>
+              <router-link class="button is-warning is-fullwidth title is-6" to="/sell">จัดการการขาย</router-link>
         </div>
       </div>
         <div class="tile is-parent">
