@@ -5,25 +5,25 @@
             <div class="column">
                 <div class="notification is-primary">
                     <h3 class="title is-3">รอแจ้งโอนเงิน</h3>
-                    <h5 class="title is-5">จำนวน:    รายการ</h5>
+                    <h5 class="title is-5">จำนวน: 1   รายการ</h5>
                 </div>
             </div>
             <div class="column">
                 <div class="notification is-info">
                     <h3 class="title is-3">โอนเงินเรียบร้อย</h3>
-                    <h5 class="title is-5">จำนวน:    รายการ</h5>
+                    <h5 class="title is-5">จำนวน: 0  รายการ</h5>
                 </div> 
             </div>
             <div class="column">
                 <div class="notification is-link">
                     <h3 class="title is-3">อยู่ระหว่างจัดส่ง</h3>
-                    <h5 class="title is-5">จำนวน:    รายการ</h5>
+                    <h5 class="title is-5">จำนวน: 0   รายการ</h5>
                 </div> 
             </div>
             <div class="column">
                 <div class="notification is-success">
                     <h3 class="title is-3">ได้รับแล้ว</h3>
-                    <h5 class="title is-5">จำนวน:    รายการ</h5>
+                    <h5 class="title is-5">จำนวน: 0  รายการ</h5>
                 </div>
             </div>
         </div>

@@ -133,7 +133,7 @@ export default {
                 this.first_name = res.data.first_name
             }).catch(err => {
                 console.log(err)
-                router.push({ name: 'Login' })
+                //router.push({ name: 'Login' })
         })
     }
     }

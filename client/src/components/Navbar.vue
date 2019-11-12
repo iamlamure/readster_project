@@ -13,10 +13,10 @@
 
     <div id="navbarExampleTransparentExample" class="navbar-menu" v-bind:class="{'is-active': isOpen}">
       <div class="navbar-start">
-        <router-link class="navbar-item titile is-5" to="/book" v-if="auth=='loggedin' || token!=null || token!=undefined">
+        <router-link class="navbar-item titile is-5" to="/book">
             Book
         </router-link>
-        <router-link class="navbar-item" to="/blog" v-if="auth=='loggedin' || token!=null || token!=undefined">
+        <router-link class="navbar-item" to="/blog">
             Blog
         </router-link>
         <router-link class="navbar-item" to="/shop" v-if="auth=='loggedin' || token!=null || token!=undefined">

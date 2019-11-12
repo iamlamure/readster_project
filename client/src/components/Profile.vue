@@ -6,7 +6,7 @@
       <div class="tile is-4 is-vertical is-parent">
         <div class="tile is-child box">
           <figure class="image is-square">
-            <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
+            <img class="is-rounded" src="https://scontent.fbkk5-4.fna.fbcdn.net/v/t1.0-9/s960x960/72119991_2948702885158694_1902264873941729280_o.jpg?_nc_cat=110&_nc_eui2=AeF6F8CsOAfoqvUTJ5gjn626Crg2n_hOxFzj8GsMQk5Kml4svYUk54qNd-gXqwbSb6iOgOKC160pbZYTQMIIDBQnoITCJaWG3z5isl9yKzU2Qg&_nc_oc=AQkhnDSYNA8J0JQg_pNp9AHfxIsqo0UlWETrQYfOK2VAxI0BoLKZLuqU1WS9Wf8g1Lc&_nc_ht=scontent.fbkk5-4.fna&oh=17982eb8f5bfa03c155b54528a510db2&oe=5E597B3F">
           </figure>
           <br>
           <h3 class="title is-3 columns is-mobile is-centered">{{first_name}} {{last_name}}</h3>
