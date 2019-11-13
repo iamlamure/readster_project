@@ -20,4 +20,15 @@ bookshelfs.post('/addbookshelf/:bookid',(req,res,next) => {
     })
 })
 
+//Show book
+bookshelfs.get('/bookshelfs',(req,res) => {
+    Bookshelf.findAll()
+    .then(bookshelfs => {
+        res.json(bookshelfs)
+    })
+    .catch(err => {
+        res.send('error: ' + err)
+    })
+})
+
 module.exports = bookshelfs

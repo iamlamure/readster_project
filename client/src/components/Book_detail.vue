@@ -7,7 +7,7 @@
                         <article class="media">
                             <div class="media-left">
                                 <figure class="image">
-                                    <img src="https://readery.co/media/catalog/product/cache/1/small_image/360x/17f82f742ffe127f42dca9de82fb58b1/b/o/book_l_less.png" alt="Image">
+                                    <img src="http://www.kalyanamitra.org/th/images/book/MAGAZINE/hopevol_10.jpg" alt="Image">
                                 </figure>
                             </div>
                             <div class="media-content is-mobile">
@@ -39,9 +39,9 @@
                                                     <th></th>
                                                 </thead>
                                                 <tbody>
-                                                    <td>fgdsfgfijgdfjijsdfjgsiofdjgfjg;ofijg;isofdj;o</td>
-                                                    <td>400</td>
-                                                    <td>bus</td>
+                                                    <td>เล่นดนตรีง่ายๆสไตล์ตะวัน สภาพดี</td>
+                                                    <td>150</td>
+                                                    <td>Nattaphong</td>
                                                     <td><button class="button is-link is-outlined">เพิ่มลงตะกร้าสินค้า</button></td>
                                                 </tbody>
                                             </table>
@@ -67,15 +67,15 @@
                                     <article class="media">
                                         <div class="media-left">
                                         <figure class="image is-64x64">
-                                            <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
+                                            <img src="http://www.kalyanamitra.org/th/images/book/MAGAZINE/hopevol_10.jpg" alt="Image">
                                         </figure>
                                         </div>
                                         <div class="media-content">
                                         <div class="content">
                                             <p>
-                                            <strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
+                                            <strong>Nattaphong Kajud</strong> <small>เมื่อ 15 วันที่แล้ว</small>
                                             <br>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+                                                หนังสือสอนเล่นดนตรีที่ไม่ใช่เพียงว่า เล่นพื้นฐาน แต่ยังสอดแทรกเทคนิคการเล่นอย่างไรให้เข้าถึงอารมณ์และประยุกต์ใช้
                                             </p>
                                         </div>
                                         </div>
