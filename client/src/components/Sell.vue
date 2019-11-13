@@ -44,9 +44,13 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>รูปสินค้า</td>
+                    <td>
+                        <figure class="image is-64x64">
+                            <img src="https://readery.co/media/catalog/product/cache/1/small_image/240x/17f82f742ffe127f42dca9de82fb58b1/7/4/74238125_463268774542092_2482475965918216192_n.jpg" alt="Image">
+                        </figure>
+                    </td>
                     <td></td>
-                    <td>ชื่อสินค้า</td>
+                    <td>เกร็ดความคิดบนก้าววิ่ง (พิมพ์ครั้งที่ 4)</td>
                     <td>900</td>
                     <td>รอแจ้งโอนเงิน</td>
                     <td>ไปรษณีย์ - EMS</td>
