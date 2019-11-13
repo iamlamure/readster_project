@@ -11,7 +11,7 @@
                         <article class="media">
                             <div class="media-left">
                             <figure class="image is-64x64">
-                                <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
+                                <img src="https://jatumint.com/wp-content/uploads/2018/05/%E0%B8%A3%E0%B8%B5%E0%B8%A7%E0%B8%B4%E0%B8%A7%E0%B8%AB%E0%B8%99%E0%B8%B1%E0%B8%87%E0%B8%AA%E0%B8%B7%E0%B8%AD-%E0%B8%98%E0%B8%B8%E0%B8%A3%E0%B8%81%E0%B8%B4%E0%B8%88%E0%B8%9E%E0%B8%AD%E0%B8%94%E0%B8%B5%E0%B8%84%E0%B8%B3.jpg" alt="Image">
                             </figure>
                             </div>
                             <div class="media-content">

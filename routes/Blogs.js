@@ -1,9 +1,9 @@
-var express = require('express')
-var blogs = express.Router()
+const express = require('express')
+const blogs = express.Router()
 const Blog =  require("../models/Blog")
-const core = require('cors')
+const cors = require('cors')
 
-blogs.use(core())
+blogs.use(cors())
 
 
 //Add Blog

@@ -18,12 +18,14 @@ var Blogs = require('./routes/Blogs')
 var Books = require('./routes/Books')
 var Products = require('./routes/Products')
 var Blogview = require('./routes/BlogView')
+var Bookshelf = require('./routes/Bookshelf')
 
 app.use('/users', Users)
 app.use('/blogs', Blogs)
 app.use('/books', Books)
 app.use('/products', Products)
 app.use('/blogview', Blogview)
+app.use('/bookshelf', Bookshelf)
 
 app.listen(port, function() {
   console.log('Server is running on port: ' + port)

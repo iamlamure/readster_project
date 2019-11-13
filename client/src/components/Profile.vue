@@ -2,9 +2,9 @@
   <div class="container">
       <h1 class="title columns is-mobile is-centered"> ข้อมูลผู้ใช้ </h1>
       <hr class="style11">
-      <div class="tile is-ancestor">
-      <div class="tile is-4 is-vertical is-parent">
-        <div class="tile is-child box">
+      <div class="tile is-ancestor ">
+      <div class="tile is-4 is-vertical is-parent ">
+        <div class="tile is-child box ">
           <figure class="image is-square">
             <img class="is-rounded" src="https://scontent.fbkk5-4.fna.fbcdn.net/v/t1.0-9/s960x960/72119991_2948702885158694_1902264873941729280_o.jpg?_nc_cat=110&_nc_eui2=AeF6F8CsOAfoqvUTJ5gjn626Crg2n_hOxFzj8GsMQk5Kml4svYUk54qNd-gXqwbSb6iOgOKC160pbZYTQMIIDBQnoITCJaWG3z5isl9yKzU2Qg&_nc_oc=AQkhnDSYNA8J0JQg_pNp9AHfxIsqo0UlWETrQYfOK2VAxI0BoLKZLuqU1WS9Wf8g1Lc&_nc_ht=scontent.fbkk5-4.fna&oh=17982eb8f5bfa03c155b54528a510db2&oe=5E597B3F">
           </figure>
