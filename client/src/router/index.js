@@ -19,6 +19,8 @@ import User_blog from '@/components/User_blog'
 import Sell from '@/components/Sell'
 import Order from '@/components/Order'
 import Payment from '@/components/Payment'
+import Admin_Login from '@/components/Admin_Login'
+import Dashboard from '@/components/Dashboard'
 
 Vue.use(Router)
 
@@ -118,6 +120,16 @@ export default new Router({
       path: '/payment',
       name: 'Payment',
       component: Payment
+    },
+    {
+      path: '/admin_login',
+      name: 'Admin_Login',
+      component: Admin_Login
+    },
+    {
+      path: '/dashboard',
+      name: 'Dashboard',
+      component: Dashboard
     }
   ]
 })
