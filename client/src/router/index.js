@@ -18,6 +18,7 @@ import User_detail from '@/components/User_detail'
 import User_blog from '@/components/User_blog'
 import Sell from '@/components/Sell'
 import Order from '@/components/Order'
+import Payment from '@/components/Payment'
 
 Vue.use(Router)
 
@@ -112,6 +113,11 @@ export default new Router({
       path: '/order',
       name: 'Order',
       component: Order
+    },
+    {
+      path: '/payment',
+      name: 'Payment',
+      component: Payment
     }
   ]
 })
