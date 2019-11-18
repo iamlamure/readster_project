@@ -22,6 +22,7 @@ import Payment from '@/components/Payment'
 import Admin_Login from '@/components/Admin_Login'
 import Dashboard from '@/components/Dashboard'
 
+
 Vue.use(Router)
 
 export default new Router({

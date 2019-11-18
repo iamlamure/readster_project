@@ -41,6 +41,10 @@ module.exports = {
       '/admins':{
         target: 'http://localhost:5000',
         changeOrigin: true
+      },
+      '/carts':{
+        target: 'http://localhost:5000',
+        changeOrigin: true
       }
       //And Check Server.js
     },

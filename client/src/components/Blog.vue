@@ -1,7 +1,7 @@
 <!-- eslint-disable -->
 <template>
     <div class="container">
-        <h1 class="title columns is-mobile is-centered">บทความ</h1>
+        <h1 class="title columns is-mobile is-centered">บทความ{{id}}</h1>
         <hr class="style11">
         <br>
         <div class="columns is-multiline" >
@@ -56,30 +56,38 @@ export default {
         const token = localStorage.usertoken
         return {
             blogs:[],
-            books:[],
             blogid:'',
             blog_article:'',
             blog_title:'',
             blog_img:'',
-            bookid:'',
-            book_id:'',
-            book_name:'',
-            id:'',
             userblogid:'',
             token: token,
             first_name:'',
-            last_name:'',
-            blog_date:''
+            //last_name:'',
+            blog_date:'',
+            id:''
         }
     },
     mounted() {
         this.getblog()
-        //this.getuser()
+        this.getuser()
         //this.getbooks()
     },
     methods: {
+
+        addblog() {
+            axios.post('/blogs/addblog',
+            {
+                blog_article:this.blog_article,
+                blog_title:this.blog_title,
+                blog_img:this.blog_img,
+                userblogid:''
+            }
+            )
+        },
+
         // Get All Blog
-         getblog () {
+        getblog () {
             axios.get('/blogview/blogview').then(
                 result => {
                     console.log(result.data)
@@ -122,7 +130,7 @@ export default {
                 this.last_name = res.data.last_name
             }).catch(err => {
                 console.log(err)
-                router.push({ name: 'Login' })
+                //router.push({ name: 'Login' })
             })
         },
 

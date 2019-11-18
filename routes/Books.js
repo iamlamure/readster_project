@@ -20,6 +20,7 @@ books.get('/books',(req,res) => {
 
 //Add book
 books.post('/addbook',(req, res) => {
+    const today = new Date()
     const bookData = {
         book_name: req.body.book_name,
         author_name: req.body.author_name,
@@ -29,6 +30,7 @@ books.post('/addbook',(req, res) => {
         price: req.body.price,
         pages: req.body.pages,
         book_img: req.body.book_img,
+        created: today
     }
     
         Book.create(bookData)

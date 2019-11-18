@@ -35,7 +35,7 @@ export default {
 
     data () {
 
-        const token = localStorage.usertoken
+        //const token = localStorage.usertoken
 
         return {
                books:[],
@@ -48,9 +48,9 @@ export default {
                price: '',
                pages: '',
                book_img: '',
-               id:'',
-               token: token,
-               first_name:''
+               //id:'',
+               //token: token,
+               //first_name:''
         } 
     },
     mounted() {
@@ -124,7 +124,7 @@ export default {
                 console.log(err)
             })
         },
-
+        /*
          getuser () {
             axios.get('/users/profile', {
                 headers: { 'Authorization': this.token }
@@ -135,13 +135,10 @@ export default {
                 console.log(err)
                 //router.push({ name: 'Login' })
         })
-    }
-    }
-/*
 
         ยังขาด Update & Upload
-        
-*/
+    }*/
+    }
 
 }
 </script>
