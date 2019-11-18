@@ -9,11 +9,11 @@
         <hr class="style1">
         <h3 class="title is-3">ชำระค่าสินค้า : เศรษฐศาสตร์: ประวัติศาสตร์มีชีวิตของพัฒนาการความคิดเศรษฐศาสตร์</h3>
         <h3 class="title is-3">ยอดชำระทั้งหมด : 397 บาท </h3>
-            <form v-on:submit.prevent="addproduct">
+            <form v-on:submit.prevent="addpayment">
                 <h1 class="title is-4">การจัดส่ง : EMS</h1>
                 <h1 class="title is-4">กรอกที่อยู่ผู้รับ และ เบอร์โทรศัพท์</h1>
                 <div class="columns is-mobile is-centered" >
-                    <textarea v-model="product_detail" class="textarea" placeholder="10 lines of textarea" rows="10"></textarea>
+                    <textarea v-model="user_address" class="textarea" placeholder="10 lines of textarea" rows="10"></textarea>
                 </div>
                 <div class="columns">
                     <div class="column">
