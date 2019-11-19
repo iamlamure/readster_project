@@ -91,7 +91,7 @@ carts.delete('/delete/:cartid',(req,res,next) =>{
         }
     })
     .then(() => {
-        res.send('Cart Deleted!')
+        res.send('Item in Cart Deleted!')
     })
     .catch(err => {
         res.send('error: ' + err)
