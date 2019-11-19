@@ -42,5 +42,7 @@ module.exports = db.sequelize.define(
         }
     },
     {
-        timestamps: false
+        timestamps: false,
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
     })

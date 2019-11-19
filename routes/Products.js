@@ -29,7 +29,7 @@ products.post('/addproduct',(req,res) => {
 })
 
 //Find All Product
-products.get('/products',(req,res) => {
+products.get('/all',(req,res) => {
     Product.findAll()
     .then(products => {
         res.json(products)
@@ -40,7 +40,7 @@ products.get('/products',(req,res) => {
 })
 
 // Delete Product
-products.delete('/products/:productid' ,(req,res,next) => {
+products.delete('/delete/:productid' ,(req,res,next) => {
     Product.destroy({
         where: {
             productid: req.params.productid

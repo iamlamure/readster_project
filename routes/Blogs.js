@@ -36,7 +36,7 @@ blogs.get('/blogs',(req,res) => {
 })
 
 //Delete Blog
-blogs.delete('/blogs/:blogid',(req,res,next) =>{
+blogs.delete('/delete/:blogid',(req,res,next) =>{
     Blog.destroy({
         where:{
             blogid: req.params.blogid
@@ -49,6 +49,7 @@ blogs.delete('/blogs/:blogid',(req,res,next) =>{
         res.send('error: ' + err)
     })
 }),
+
 //Update Blog
 blogs.put('/update/:blogid',(req,res) => {
     const blogData = {

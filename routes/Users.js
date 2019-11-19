@@ -32,7 +32,7 @@ users.post('/register', (req, res) => {
           userData.password = hash
           User.create(userData)
             .then(user => {
-              res.json({ status: user.email + 'Registered!' })
+              res.json({ status: user.email + ' Registered!' })
             })
             .catch(err => {
               res.send('error: ' + err)
@@ -45,6 +45,40 @@ users.post('/register', (req, res) => {
     .catch(err => {
       res.send('error: ' + err)
     })
+})
+
+//User Update
+users.put('/update/:id',(req,res) => {
+  const userData = {
+    first_name: req.body.first_name,
+    last_name: req.body.last_name,
+    email: req.body.email,
+    password: req.body.password,
+    user_address :req.body.user_address,
+  }
+  if (!userData){
+      res.status(400)
+      res.json({
+          error: "Bad Data"
+      })
+  }else{
+      User.update(
+          {   
+            first_name: req.body.first_name,
+            last_name: req.body.last_name,
+            email: req.body.email,
+            password: req.body.password,
+            user_address :req.body.user_address,
+          },
+          {where: {id : req.params.id}}
+      )
+      .then(() => {
+          res.send("User Update")
+      })
+      .catch(err => {
+        res.send('error: ' + err)
+      }) 
+  }
 })
 
 users.post('/login', (req, res) => {
@@ -89,5 +123,20 @@ users.get('/profile', (req, res) => {
       res.send('error: ' + err)
     })
 })
+
+//Delete User
+users.delete('/delete/confirmed/:id',(req,res,next) =>{
+  User.destroy({
+      where:{
+        id: req.params.id
+      }
+  })
+  .then(() => {
+      res.send('User Deleted!')
+  })
+  .catch(err => {
+      res.send('error: ' + err)
+  })
+}),
 
 module.exports = users

@@ -7,7 +7,7 @@ books.use(cors())
 
 
 //Get all book
-books.get('/books',(req,res) => {
+books.get('/all',(req,res) => {
     Book.findAll()
     .then(books => {
         res.json(books)
@@ -32,7 +32,6 @@ books.post('/addbook',(req, res) => {
         book_img: req.body.book_img,
         created: today
     }
-    
         Book.create(bookData)
         .then(() => {
             res.send('Book Added !')
@@ -82,7 +81,7 @@ books.put('/update/:bookid',(req,res) => {
 
 
 //Delete Book
-books.delete('/books/:bookid',(req,res ,next) => {
+books.delete('/delete/:bookid',(req,res ,next) => {
     Book.destroy({
         where: {
             bookid: req.params.bookid
