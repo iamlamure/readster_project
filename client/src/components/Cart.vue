@@ -28,8 +28,8 @@
                             <td>{{cart.cartid}}</td>
                             <td>{{cart.cartid}}</td>
                             <td>
-                                <a class="button is-danger is-outlined is-rounded" href="">ยกเลิก</a>
-                                <a @click="getcart_topayment(cart.cartid)" class="button is-info is-rounded">ชำระเงิน</a>
+                                <button @click="deleteItemCart(cart.cartid)" class="button is-danger is-outlined is-rounded" href="">ยกเลิก</button>
+                                <button @click="getcart_topayment(cart.cartid)" class="button is-info is-rounded">ชำระเงิน</button>
                             </td>
                         </tr>
                     </tbody>
@@ -58,6 +58,7 @@ export default {
     mounted() {
         this.getallcart()
         //this.getcart_topayment()
+        this.deleteItemCart()
     },
     methods: {
     // Get cart by userid
@@ -89,6 +90,16 @@ export default {
             }).then((res) => {
                 this.getallcart()
             }).catch((err)=> {
+                console.log(err)
+            })
+        },
+        //Delete Product By ID
+        deleteItemCart(cartid) {
+            axios.delete(`/carts/delete/${cartid}`
+            ).then((res) => {
+                this.getusercart()
+                console.log(res)
+            }).catch((err) => {
                 console.log(err)
             })
         },

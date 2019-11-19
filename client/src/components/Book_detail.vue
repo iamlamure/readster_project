@@ -39,10 +39,12 @@
                                                     <th></th>
                                                 </thead>
                                                 <tbody>
-                                                    <td>เล่นดนตรีง่ายๆสไตล์ตะวัน สภาพดี</td>
-                                                    <td>150</td>
-                                                    <td>Nattaphong</td>
-                                                    <td><button class="button is-link is-outlined">เพิ่มลงตะกร้าสินค้า</button></td>
+                                                    <tr v-for="(product) in products" v-bind:key="product.productid" v-bind:title="product.product_name">
+                                                        <td>{{product.product_name}}</td>
+                                                        <td>150</td>
+                                                        <td>Nattaphong</td>
+                                                        <td><button class="button is-link is-outlined">เพิ่มลงตะกร้าสินค้า</button></td>
+                                                    </tr>
                                                 </tbody>
                                             </table>
                                             </div>
@@ -97,6 +99,9 @@ export default {
     name: 'Book_detail',
     data() {
         return {
+            books :[],
+            products:[],
+            product_name:'',
             book_name:'',
             author_name: '',
             book_detail: '',
@@ -124,10 +129,34 @@ export default {
                 console.log(err)
             })
         },
+        // Get all Blog by userid
+         getbookformproduct () {
+           //ยังเป็น Static อยู่
+            axios.get(`/books/booksell/${12}`).then(
+                result => {
+                    console.log(result.data)
+                    this.blogs = result.data
+                },
+                error => {
+                    console.error(error)
+                }
+            )
+        },
+        getbooksell(){
+            axios.get(`/products/booksell/get_all/${this.$route.params.book}`
+            ).then(result => {
+                    console.log(result.data)
+                    this.products = result.data
+                },
+                error => {
+                    console.error(error)
+                })
+        }
         
     },
     mounted() {
         this.getbook_detail()
+        this.getbooksell()
     },
 }
 </script>

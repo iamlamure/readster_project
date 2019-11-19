@@ -111,11 +111,26 @@ products.get ('/product_detail/:productid',(req,res) => {
     })
 })
 
-// Get All Product By ID
-products.get ('/products/get_all/:bookid',(req,res) => {
+// Get All Product By userID
+products.get ('/byuser/get_all/:bookid',(req,res) => {
     Product.findAll({
         where: {
             product_user_id : req.params.bookid
+        }
+    })
+    .then(products => {
+        res.json(products)
+    })
+    .catch(err => {
+        res.send('err: '+err)
+    })
+})
+
+// Get All Product By userID
+products.get ('/booksell/get_all/:bookid',(req,res) => {
+    Product.findAll({
+        where: {
+            product_book_id : req.params.bookid
         }
     })
     .then(products => {
