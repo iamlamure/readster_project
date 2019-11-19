@@ -392,7 +392,7 @@ export default {
   methods: {
     //Show Books
         getbooks () {
-            axios.get('/books/books').then(
+            axios.get('/books/all').then(
                 result => {
                     console.log(result.data)
                     this.books = result.data

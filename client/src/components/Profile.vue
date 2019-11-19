@@ -49,12 +49,12 @@
                 </thead>
                 <tbody>
                   <tr v-for="(blog) in blogs" v-bind:key="blog.blogid" v-bind:title="blog.blog_title">
-                    <td>{{blog.blog_title}}</td>
+                    <td><a v-on:click="gotodetail(blog.blogid)">{{blog.blog_title}}</a></td>
                     <td>{{blog.blog_date}}</td>
                     <td></td>
                     <td>
-                      <a class="button is-danger is-small is-rounded is-pulled-right" href="">Delete</a>
-                      <a class="button is-warning is-small is-rounded is-pulled-right" href="">Edit</a>
+                      <button v-on:click="deleteBlog(blog.blogid)" class="button is-danger is-small is-rounded is-pulled-right">Delete</button>
+                      <button class="button is-warning is-small is-rounded is-pulled-right">Edit</button>
                     </td>
                   </tr>
                 </tbody>
@@ -136,6 +136,29 @@ export default {
                     console.error(error)
                 }
             )
+        },
+
+        //Delete Blog
+        deleteBlog(blogid) {
+          axios.delete(`blogs/delete/${blogid}`)
+          .then((res) => {
+            this.getblog()
+            console.log(res)
+          })
+          .catch((err) => {
+            console.log(err)
+          })
+        },
+        // Gotoreadblog
+        gotodetail(blogid){
+            this.$router.push({
+                name:'Read',
+                params:{blog:blogid}
+            }).then((res) => {
+                this.getblog()
+            }).catch((err) => {
+                console.log(err)
+            })
         },
   },
   mounted () {

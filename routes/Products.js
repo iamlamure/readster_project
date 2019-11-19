@@ -28,6 +28,48 @@ products.post('/addproduct',(req,res) => {
     })
 })
 
+//Update Product
+products.put('/update/:productid',(req,res) => {
+    const productData = {
+        product_name:req.body.product_name,
+        product_detail:req.body.product_detail,
+        product_img:req.body.product_img,
+        product_price:req.body.product_price,
+        qty:req.body.qty,
+        product_condition:req.body.product_condition,
+        shipping:req.body.shipping,
+        shippingcost:req.body.shippingcost,
+        product_user_id:req.body.product_user_id,
+        product_book_id:req.body.product_book_id
+    }
+    if (!productData){
+        res.status(400)
+        res.json({
+            error: "Bad Data"
+        })
+    }else{
+        Product.update(
+            {   
+                product_name:req.body.product_name,
+                product_detail:req.body.product_detail,
+                product_img:req.body.product_img,
+                product_price:req.body.product_price,
+                qty:req.body.qty,
+                product_condition:req.body.product_condition,
+                shipping:req.body.shipping,
+                shippingcost:req.body.shippingcost,
+                product_user_id:req.body.product_user_id,
+                product_book_id:req.body.product_book_id
+            },
+            {where: {productid : req.params.productid}}
+        )
+        .then(() => {
+            res.send("Product Update")
+        })
+        .error(err => res.send(err))
+    }
+})
+
 //Find All Product
 products.get('/all',(req,res) => {
     Product.findAll()

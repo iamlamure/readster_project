@@ -103,7 +103,7 @@ export default {
         },
         // Get All Blog
          getblog () {
-            axios.get('/blogs/blogs').then(
+            axios.get('/blogs/all').then(
                 result => {
                     console.log(result.data)
                     this.blogs = result.data
@@ -129,7 +129,7 @@ export default {
 
         //Show Books
         getbooks () {
-            axios.get('/books/books').then(
+            axios.get('/books/all').then(
                 result => {
                     console.log(result.data)
                     this.books = result.data

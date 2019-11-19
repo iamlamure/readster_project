@@ -9,7 +9,7 @@
                 </div>
                 <h1 class="title is-4">รายละเอียดสินค้า</h1>
                 <div class="columns is-mobile is-centered" >
-                    <textarea v-model="product_detail" class="textarea" placeholder="10 lines of textarea" rows="10"></textarea>
+                    <textarea v-model="product_detail" class="textarea" placeholder="เพิ่มรายละเอียดสินค้า" rows="10"></textarea>
                 </div>
                 <div class="columns">
                     <div class="column">
@@ -167,7 +167,7 @@ export default {
 
         //Get All Products
         getproducts() {
-            axios.get('/products/products').then(
+            axios.get('/products/all').then(
                 result => {
                     console.log(result.data)
                     this.products = result.data
@@ -180,7 +180,7 @@ export default {
 
         //Delete Product By ID
         deleteproduct(productid) {
-            axios.delete(`/products/products/${productid}`
+            axios.delete(`/products/delete/${productid}`
             ).then((res) => {
                 this.getproducts()
                 console.log(res)
@@ -203,7 +203,7 @@ export default {
 
         //Show Books
         getbooks () {
-            axios.get('/books/books').then(
+            axios.get('/books/all').then(
                 result => {
                     console.log(result.data)
                     this.books = result.data

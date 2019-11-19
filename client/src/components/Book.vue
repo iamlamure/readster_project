@@ -90,7 +90,7 @@ export default {
 
         //Show Books
         getbooks () {
-            axios.get('/books/books').then(
+            axios.get('/books/all').then(
                 result => {
                     console.log(result.data)
                     this.books = result.data
@@ -103,7 +103,7 @@ export default {
 
         //Delete Book by id
         deletebook (bookid) {
-            axios.delete(`/books/books/${bookid}`
+            axios.delete(`/books/delete/${bookid}`
             ).then((res) => {
                 this.getbooks()
                 console.log(res)

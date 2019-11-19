@@ -16,6 +16,30 @@ payments.get('/all',(req,res) => {
     })
 })
 
+//Add Payment
+payments.post('/addpayment',(req,res) => {
+    const today = new Date()
+    const paymentData = {
+        cart_id: req.body.cart_id,
+        product_id: req.body.product_id,
+        amount:req.body.amount,
+        user_sell_id:req.body.user_sell_id,
+        user_buy_id:req.body.user_buy_id,
+        user_buy_address:req.body.user_buy_address,
+        receipt:req.body.receipt,
+        status:req.body.status,
+        created:today,
+    }
+    Payment.create(paymentData)
+    .then(()=>{
+        res.json('Payment Added!')
+    })
+    .catch(err => {
+        res.send('error:' +err)
+    })
+})
+
+
 //Get Payment For Userid
 payments.get('/user/:id',(req,res) => {
     Payment.findAll({
@@ -45,5 +69,58 @@ payments.get('/checkout/:paymentid',(req,res) => {
         res.send('error: '+ err)
     })
 })
+
+//Update Product
+payments.put('/update/:paymentid',(req,res) => {
+    const paymentData = {
+        cart_id: req.body.cart_id,
+        product_id: req.body.product_id,
+        amount:req.body.amount,
+        user_sell_id:req.body.user_sell_id,
+        user_buy_id:req.body.user_buy_id,
+        user_buy_address:req.body.user_buy_address,
+        receipt:req.body.receipt,
+        status:req.body.status,
+    }
+    if (!paymentData){
+        res.status(400)
+        res.json({
+            error: "Bad Data"
+        })
+    }else{
+        Payment.update(
+            {   
+                cart_id: req.body.cart_id,
+                product_id: req.body.product_id,
+                amount:req.body.amount,
+                user_sell_id:req.body.user_sell_id,
+                user_buy_id:req.body.user_buy_id,
+                user_buy_address:req.body.user_buy_address,
+                receipt:req.body.receipt,
+                status:req.body.status,
+            },
+            {where: {paymentid : req.params.paymentid}}
+        )
+        .then(() => {
+            res.send("Payment Update")
+        })
+        .error(err => res.send(err))
+    }
+})
+
+//Delete Blog
+payments.delete('/delete/:paymentid',(req,res,next) =>{
+    Payment.destroy({
+        where:{
+            paymentid: req.params.paymentid
+        }
+    })
+    .then(() => {
+        res.send('Payment Deleted!')
+    })
+    .catch(err => {
+        res.send('error: ' + err)
+    })
+}),
 
 module.exports = payments

@@ -27,6 +27,7 @@
                 </div>
             </div>
         </div>
+        <!-- 
         <table class="table is-fullwidth">
                 <thead>
                   <th class="subtitle">ชื่อเรื่อง</th>
@@ -41,6 +42,7 @@
                     </tr>
                 </tbody>
         </table>
+        -->
     </div>
 </template>
 <!-- eslint-disable -->
@@ -63,7 +65,7 @@ export default {
             userblogid:'',
             token: token,
             first_name:'',
-            //last_name:'',
+            last_name:'',
             blog_date:'',
             id:''
         }
@@ -71,7 +73,7 @@ export default {
     mounted() {
         this.getblog()
         this.getuser()
-        //this.getbooks()
+        this.getbooks()
     },
     methods: {
 
@@ -88,7 +90,7 @@ export default {
 
         // Get All Blog
         getblog () {
-            axios.get('/blogview/blogview').then(
+            axios.get('/blogview/all').then(
                 result => {
                     console.log(result.data)
                     this.blogs = result.data
@@ -100,7 +102,7 @@ export default {
         },
         // Delete Blog
         deleteblog(blogid) {
-            axios.delete(`/blogs/blogs/${blogid}`
+            axios.delete(`/blogs/delete/${blogid}`
             ).then((res) => {
                 this.getblog()
                 console.log(res)
@@ -135,8 +137,8 @@ export default {
         },
 
         //Show Books
-        getbooks () {
-            axios.get('/books/books').then(
+        getbooks() {
+            axios.get('/books/all').then(
                 result => {
                     console.log(result.data)
                     this.books = result.data
@@ -145,8 +147,7 @@ export default {
                     console.error(error)
                 }
             )
-        },
-        
+        }, 
     }
 }
 </script>

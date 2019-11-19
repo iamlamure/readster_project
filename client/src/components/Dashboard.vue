@@ -1,7 +1,7 @@
 <template>
     <div >
         <h1 class="title is-1">{{first_name}}</h1>
-        <a class="button is-danger is-rounded" href="/" v-on:click="adminlogout">
+        <a class="button is-danger is-rounded" href="#/admin_login/" v-on:click="adminlogout">
                 Logout
         </a>
     </div>

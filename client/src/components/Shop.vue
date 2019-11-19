@@ -25,7 +25,7 @@
                                 </div>
                                 <h6  class="title columns is-mobile is-centered card-header-title is-6">{{product.product_name}}</h6>
                                 <h6  class="subtitle columns is-mobile is-centered is-6 color-is">฿ {{product.product_price}}</h6>
-                                <a @click="addcart(product.productid)" class="button columns is-centered is-primary is-outlined is-rounded is-small">Add Cart</a>
+                                <button @click="addcart(product.productid,product.product_price,product.qty,product.shippingcost)" class="button columns is-centered is-primary is-outlined is-rounded is-small">Add Cart</button>
                             </div>
                         </div>
                     </div>
@@ -63,6 +63,7 @@
     import router from "../router";
 export default {
     data() {
+        const token = localStorage.usertoken
     return {
         products: [],
             books: [],
@@ -78,18 +79,17 @@ export default {
             product_user_id :'',
             product_book_id:'',
             first_name:'',
-            //token: token
+            token: token
     }
 },
 mounted() {
     this.getproducts()
-    this.addcart(productid)
 },
 
 methods: {
      //Get All Products
         getproducts() {
-            axios.get('/products/products').then(
+            axios.get('/products/all').then(
                 result => {
                     console.log(result.data)
                     this.products = result.data
@@ -110,23 +110,35 @@ methods: {
             })
         },
         
-         addcart(productid){
-            axios.post('/carts/addcart',
-            {
-                productid:productid,
-                price:req.data.product_price,
-                qty:req.data.qty,
-                shippingcost:req.data.shippingcost,
-                amount:'',
-                status:''
-            }
-        ).then((res) => {
+          addcart(productid,product_price,qty,shippingcost){
+              this.product_id = productid
+            axios.post('/carts/addcart',{
+                    product_id : this.productid,
+                    price:this.product_price,
+                    qty:this.qty,
+                    shippingcost:this.shippingcost,
+                    amount:this.amount,
+                    //user_id:this.id
+            }).then((res) => {
+                this.getproducts()
                 console.log(res)
             }).catch((err) => {
                 console.log(err)
             })
-            
-        }
+        },
+        getuser () {
+            axios.get('/users/profile', {
+                headers: { 'Authorization': this.token }
+            }).then(res => {
+                this.id = res.data.id
+                this.first_name = res.data.first_name
+                this.last_name = res.data.last_name
+                this.email = res.data.email
+            }).catch(err => {
+                console.log(err)
+                router.push({ name: 'Login' })
+            })
+        },
 },
 
     
