@@ -49,6 +49,38 @@ blogs.delete('/blogs/:blogid',(req,res,next) =>{
         res.send('error: ' + err)
     })
 }),
+//Update Blog
+blogs.put('/update/:blogid',(req,res) => {
+    const blogData = {
+        blog_title : req.body.blog_title,
+        blog_article : req.body.blog_article,
+        blog_img : req.body.blog_img,
+        userblogid : req.body.userblogid,
+        book_id: req.body.book_id
+    }
+    if (!blogData){
+        res.status(400)
+        res.json({
+            error: "Bad Data"
+        })
+    }else{
+        Blog.update(
+            {   
+                blog_title : req.body.blog_title,
+                blog_article : req.body.blog_article,
+                blog_img : req.body.blog_img,
+                userblogid : req.body.userblogid,
+                book_id: req.body.book_id
+            },
+            {where: {blogid : req.params.blogid}}
+        )
+        .then(() => {
+            res.send("Blog Update")
+        })
+        .error(err => res.send(err))
+    }
+})
+
 
 //Read blog to Read.vue
 blogs.get('/read/:blogid',(req,res) => {

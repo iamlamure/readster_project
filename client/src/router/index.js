@@ -118,7 +118,7 @@ export default new Router({
       component: Order
     },
     {
-      path: '/payment',
+      path: '/carts/payment/:cart',
       name: 'Payment',
       component: Payment
     },

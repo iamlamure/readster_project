@@ -45,7 +45,11 @@ module.exports = {
       '/carts':{
         target: 'http://localhost:5000',
         changeOrigin: true
-      }
+      },
+      'payments':{
+        target: 'http://localhost:5000',
+        changeOrigin: true
+      },
       //And Check Server.js
     },
     autoOpenBrowser: false,

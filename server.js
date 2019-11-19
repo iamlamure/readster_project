@@ -21,6 +21,7 @@ var Blogview = require('./routes/BlogView')
 var Bookshelf = require('./routes/Bookshelf')
 var Admins = require('./routes/Admins')
 var Carts = require('./routes/Carts')
+var Payments = require('./routes/Payments')
 
 app.use('/users', Users)
 app.use('/blogs', Blogs)
@@ -30,6 +31,7 @@ app.use('/blogview', Blogview)
 app.use('/bookshelf', Bookshelf)
 app.use('/admins', Admins)
 app.use('/carts', Carts)
+app.use('/payments', Payments)
 
 app.listen(port, function() {
   console.log('Server is running on port: ' + port)

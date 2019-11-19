@@ -42,6 +42,43 @@ books.post('/addbook',(req, res) => {
         })   
 })
 
+//Update Blog
+books.put('/update/:bookid',(req,res) => {
+    const bookData = {
+        book_name: req.body.book_name,
+        author_name: req.body.author_name,
+        book_detail: req.body.book_detail,
+        publisher: req.body.publisher,
+        category: req.body.category,
+        price: req.body.price,
+        pages: req.body.pages,
+        book_img: req.body.book_img,
+    }
+    if (!bookData){
+        res.status(400)
+        res.json({
+            error: "Bad Data"
+        })
+    }else{
+       Book.update(
+            {   
+                book_name: req.body.book_name,
+                author_name: req.body.author_name,
+                book_detail: req.body.book_detail,
+                publisher: req.body.publisher,
+                category: req.body.category,
+                price: req.body.price,
+                pages: req.body.pages,
+                book_img: req.body.book_img,
+            },
+            {where: {bookid : req.params.bookid}}
+        )
+        .then(() => {
+            res.send("Book Update")
+        })
+        .error(err => res.send(err))
+    }
+})
 
 
 //Delete Book
@@ -73,5 +110,6 @@ books.get('/book_detail/:bookid',(req,res) => {
         res.send('error: '+ err)
     })
 })
+
 
 module.exports = books

@@ -83,7 +83,6 @@ export default {
     },
     mounted() {
         this.getproduct_detail();
-        this.addcart(productid);
     },
 }
 </script>

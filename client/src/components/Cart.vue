@@ -29,7 +29,7 @@
                             <td>{{cart.cartid}}</td>
                             <td>
                                 <a class="button is-danger is-outlined is-rounded" href="">ยกเลิก</a>
-                                <a class="button is-info is-rounded" href="">ชำระเงิน</a>
+                                <a @click="getcart_topayment(cart.cartid)" class="button is-info is-rounded">ชำระเงิน</a>
                             </td>
                         </tr>
                     </tbody>
@@ -57,9 +57,10 @@ export default {
     },
     mounted() {
         this.getallcart()
+        //this.getcart_topayment()
     },
     methods: {
-    // Get all Blog by userid
+    // Get cart by userid
          getusercart () {
            //ยังเป็น Static อยู่
             axios.get(`/carts/user/${12}`).then(
@@ -79,7 +80,18 @@ export default {
                     this.carts = result.data
                 }
             )
-        }
+        },
+
+        getcart_topayment(cartid){
+            this.$router.push({
+                name:'Payment',
+                params: {cart:cartid}
+            }).then((res) => {
+                this.getallcart()
+            }).catch((err)=> {
+                console.log(err)
+            })
+        },
     }
 }
 </script>
