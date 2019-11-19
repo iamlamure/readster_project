@@ -17,11 +17,13 @@ carts.get('/all',(req,res) => {
     })
 })
 
+
+
 //Add Cart From BTN
 carts.post('/addcart',(req,res) =>{
     const cartdata = {
         product_id : req.body.product_id,
-        price : req.body.product_price,
+        price : req.body.price,
         qty : req.body.qty,
         shippingcost : req.body.shippingcost,
         amount : req.body.amount,
@@ -50,6 +52,51 @@ carts.get('/user/:id',(req,res) => {
         res.send('error:' + err)
     })
 })
+
+//Update Blog
+carts.put('/update/:cartid',(req,res) => {
+    const cartData = {
+        price : req.body.price,
+        qty : req.body.qty,
+        shippingcost : req.body.shippingcost,
+        amount : req.body.amount,
+    }
+    if (!cartData){
+        res.status(400)
+        res.json({
+            error: "Bad Data"
+        })
+    }else{
+        Cart.update(
+            {   
+                price : req.body.price,
+                qty : req.body.qty,
+                shippingcost : req.body.shippingcost,
+                amount : req.body.amount,
+            },
+            {where: {cartid : req.params.cartid}}
+        )
+        .then(() => {
+            res.send("Cart Update")
+        })
+        .error(err => res.send(err))
+    }
+})
+
+//Delete Cart
+carts.delete('/delete/:cartid',(req,res,next) =>{
+    Cart.destroy({
+        where:{
+            cartid: req.params.cartid
+        }
+    })
+    .then(() => {
+        res.send('Cart Deleted!')
+    })
+    .catch(err => {
+        res.send('error: ' + err)
+    })
+}),
 
 
 module.exports = carts
