@@ -36,6 +36,9 @@ module.exports = db.sequelize.define(
         product_user_id: {
             type: Sequelize.INTEGER
         },
+        product_book_id:{
+            type: Sequelize.INTEGER
+        },
         created:{
             type: Sequelize.DATE,
             defaultValue:Sequelize.NOW

@@ -16,7 +16,7 @@
                         <th>action</th>
                     </thead>
                     <tbody>
-                        <tr v-for="(cart) in carts" v-bind:key="cart.cartid" v-title:titiel="cart.price">
+                        <tr v-for="(cart) in carts" v-bind:key="cart.cartid" v-bind:title="cart.user_buy_address">
                             <td>
                                 <figure class="image is-32x32">
                                     <img src="https://readery.co/media/catalog/product/cache/1/small_image/360x/17f82f742ffe127f42dca9de82fb58b1/s/c/screen_shot_2562-10-22_at_1.43.56_am.png" alt="Image">
@@ -43,6 +43,7 @@
     import router from "../router";
 export default {
     data(){
+        const token = localStorage.usertoken
         return {
             carts:[],
             cartid:'',
@@ -52,19 +53,24 @@ export default {
             qty:'',
             shippingcost:'',
             amount:'',
-            status:''
+            status:'',
+            token: token,
         }
     },
     mounted() {
         this.getallcart()
         //this.getcart_topayment()
-        this.deleteItemCart()
+        //this.deleteItemCart()
+        this.getusercart()
     },
     methods: {
     // Get cart by userid
          getusercart () {
-           //ยังเป็น Static อยู่
-            axios.get(`/carts/user/${12}`).then(
+           axios.get('/users/profile',{
+            headers: { 'Authorization': this.token }
+           }).then(res => {
+               this.id = res.data.id
+               axios.get(`/carts/user/${this.id}`).then(
                 result => {
                     console.log(result.data)
                     this.carts = result.data
@@ -73,7 +79,9 @@ export default {
                     console.error(error)
                 }
             )
+           })   
         },
+
         getallcart() {
             axios.get('/carts/all').then(
                 result => {

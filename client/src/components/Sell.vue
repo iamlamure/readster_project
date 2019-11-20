@@ -1,29 +1,29 @@
 <template>
     <div class="container">
-        <h1 class="title is-1">จัดการการขาย</h1>
+        <h1 class="title is-1">จัดการการขาย {{id}}</h1>
         <div class="columns">
             <div class="column">
                 <div class="notification is-primary">
                     <h3 class="title is-3">รอแจ้งโอนเงิน</h3>
-                    <h5 class="title is-5">จำนวน: 1   รายการ</h5>
+                    <h5 class="title is-5">จำนวน:    รายการ</h5>
                 </div>
             </div>
             <div class="column">
                 <div class="notification is-info">
                     <h3 class="title is-3">โอนเงินเรียบร้อย</h3>
-                    <h5 class="title is-5">จำนวน: 0  รายการ</h5>
+                    <h5 class="title is-5">จำนวน:   รายการ</h5>
                 </div> 
             </div>
             <div class="column">
                 <div class="notification is-link">
                     <h3 class="title is-3">อยู่ระหว่างจัดส่ง</h3>
-                    <h5 class="title is-5">จำนวน: 0   รายการ</h5>
+                    <h5 class="title is-5">จำนวน:    รายการ</h5>
                 </div> 
             </div>
             <div class="column">
                 <div class="notification is-success">
                     <h3 class="title is-3">ได้รับแล้ว</h3>
-                    <h5 class="title is-5">จำนวน: 0  รายการ</h5>
+                    <h5 class="title is-5">จำนวน:   รายการ</h5>
                 </div>
             </div>
         </div>
@@ -70,7 +70,48 @@
 </template>
 
 <script>
+import axios from 'axios'
+import router from "../router"
 export default {
+    data(){
+        const token = localStorage.usertoken
+        return {
+            payments:[],
+            token:token,
+            id:'',
+            cart_id: '',
+            product_id: '',
+            amount:'',
+            user_sell_id:'',
+            user_buy_id:'',
+            user_buy_address:'',
+            receipt:'',
+            status:'',
+        }
+    },
+    methods: {
+        getusersell(){
+            axios.get('/users/profile',{
+                headers: { 'Authorization': this.token }
+            }).then(res => {
+                this.id = res.data.id
+                axios.get(`/payments/user/${this.id}`).then(
+                    result => {
+                        console.log(result.data)
+                        this.payments = result.data
+                    },
+                    error => {
+                        console.error(error)
+                    }
+                )
+            }).catch(err => {
+                console.log(err)
+            })
+        }
+    },
+    mounted() {
+        this.getusersell()
+    },
     
 }
 </script>

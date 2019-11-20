@@ -46,7 +46,7 @@ module.exports = {
         target: 'http://localhost:5000',
         changeOrigin: true
       },
-      'payments':{
+      '/payments':{
         target: 'http://localhost:5000',
         changeOrigin: true
       },

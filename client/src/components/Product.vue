@@ -14,11 +14,11 @@
                 <div class="columns">
                     <div class="column">
                         <label class="title is-4">ราคา</label>
-                        <input v-model="product_price" class="input" type="text" name="product_name">
+                        <input v-model="product_price" class="input" type="number" name="product_name">
                     </div>
                     <div class="column">
                        <label class="title is-4">จำนวน</label>
-                        <input v-model="qty" class="input" type="text" name="product_name">
+                        <input v-model="qty" class="input" type="number" name="product_name">
                     </div>
                     <div class="column">
                         <div class="select">
@@ -45,7 +45,7 @@
                     <div class="column">
                         <div>
                             <label class="title is-4">ค่าจัดส่ง</label>
-                            <input v-model="shippingcost" class="input" type="text" name="product_name">
+                            <input v-model="shippingcost" class="input" type="number" name="product_name">
                         </div>
                     </div>
                     <div class="column">
@@ -56,17 +56,10 @@
                             </select>
                         </div>
                     </div>
-                    <div class="column">
-                        <div class="select">
-                        <label class="title is-4">ขายโดย : </label>
-                            <select v-model="product_user_id" required>
-                                <option v-bind:value="id">{{first_name}}</option>
-                            </select>
-                        </div>
-                    </div>  
                 </div>
-                <button class="button is-primary  is-fullwidth">เพิ่มสินค้า</button>   
+                <button  type="submit" class="button is-primary  is-fullwidth">เพิ่มสินค้า</button>   
             </form>
+            
             <div>
                 <hr class="style11">
                 <h1 class="title is-1">รายการสินค้า</h1>
@@ -102,6 +95,7 @@
 
 import axios from 'axios'
 import router from "../router";
+
 export default {
     data(){
         const token = localStorage.usertoken
@@ -126,41 +120,68 @@ export default {
     mounted() {
         this.getproducts()
         this.getbooks()
-        this.getuser()
+        this.getproductbyuser()
+        //this.getuser()
+        //this.addproduct()
     },
 
     methods: {
 
         addproduct(){
-            axios.post('/products/addproduct',
-                {
-                productid:this.productid,
-                product_name:this.product_name,
-                product_detail:this.product_detail,
-                product_img:this.product_img,
-                product_price:this.product_price,
-                qty:this.qty,
-                product_condition:this.product_condition,
-                shipping:this.shipping,
-                shippingcost:this.shippingcost,
-                product_user_id :this.product_user_id,
-                product_book_id : this.product_book_id,
-                    headers: { 'Authorization': this.token }
-                }
-            ).then((res) => {
-                this.product_name = ''
-                this.product_detail = ''
-                this.product_img = ''
-                this.product_price = ''
-                this.qty = ''
-                this.product_condition = ''
-                this.shipping = ''
-                this.shippingcost = ''
-                this.getproducts()
-                console.log(res)
-            }).catch((err) => {
+            axios.get('/users/profile', {
+                headers: { 'Authorization': this.token }
+            }).then(res => {
+                this.id = res.data.id
+                axios.post('/products/addproduct',
+                    {
+                        productid:this.productid,
+                        product_name:this.product_name,
+                        product_detail:this.product_detail,
+                        product_img:this.product_img,
+                        product_price:this.product_price,
+                        qty:this.qty,
+                        product_condition:this.product_condition,
+                        shipping:this.shipping,
+                        shippingcost:this.shippingcost,
+                        product_user_id :this.id,
+                        product_book_id : this.product_book_id,
+                    }).then((res) => {
+                        this.product_name = ''
+                        this.product_detail = ''
+                        this.product_img = ''
+                        this.product_price = ''
+                        this.qty = ''
+                        this.product_condition = ''
+                        this.shipping = ''
+                        this.shippingcost = ''
+                        this.product_user_id = ''
+                        this.product_book_id = ''
+                        console.log(res)
+                        this.getproductbyuser()
+                    })
+            })
+            .catch((err) => {
                 console.log(err)
-                router.push({ name: 'Login' })
+                //router.push({ name: 'Login' })
+            })
+        },
+
+        getproductbyuser() {
+            axios.get('/users/profile', {
+              headers: { 'Authorization': this.token }
+            }).then(res => {
+              this.id = res.data.id
+              axios.get(`/products/byuser/get_all/${this.id}`).then(
+                result => {
+                    console.log(result.data)
+                    this.products = result.data
+                },
+                error => {
+                    console.error(error)
+                }
+            )
+            }).catch(err => {
+              console.log(err)
             })
         },
 
@@ -220,7 +241,7 @@ export default {
                 headers: { 'Authorization': this.token }
             }).then(res => {
                 this.id = res.data.id
-                this.first_name = res.data.first_name
+                //this.first_name = res.data.first_name
             }).catch(err => {
                 console.log(err)
                 router.push({ name: 'Login' })
