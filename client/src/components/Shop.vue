@@ -25,7 +25,7 @@
                                 </div>
                                 <h6  class="title columns is-mobile is-centered card-header-title is-6">{{product.product_name}}</h6>
                                 <h6  class="subtitle columns is-mobile is-centered is-6 color-is">฿ {{product.product_price}}</h6>
-                                <button @click="addcart(product.productid,product.product_price,product.qty,product.shippingcost)" class="button columns is-centered is-primary is-outlined is-rounded is-small">Add Cart</button>
+                                <button @click="addcart(product.productid)" class="button columns is-centered is-primary is-outlined is-rounded is-small">Add Cart</button>
                             </div>
                         </div>
                     </div>
@@ -110,19 +110,40 @@ methods: {
             })
         },
         
-          addcart(productid,product_price,qty,shippingcost){
-              this.product_id = productid
-            axios.post('/carts/addcart',{
+          addcart(productid){
+              axios.get('/users/profile',{
+                  headers: { 'Authorization': this.token }
+              }).then(res =>{
+                  this.id = res.data.id
+                  axios.get(`/products/product_detail/${productid}`)
+                  .then(res =>{
+                    this.productid = res.data.productid
+                    this.product_id = res.data.productid
+                    this.price = res.data.product_price
+                    this.shippingcost = res.data.shippingcost
+                    this.user_id = res.data.id
+                    this.amount = res.data.price
+                    this.qty = res.data.qty  
+                  axios.post('/carts/addcart',{
                     product_id : this.productid,
-                    price:this.product_price,
-                    qty:this.qty,
-                    shippingcost:this.shippingcost,
-                    amount:this.amount,
-                    //user_id:this.id
-            }).then((res) => {
-                this.getproducts()
-                console.log(res)
-            }).catch((err) => {
+                    price : this.price,
+                    shippingcost : this.shippingcost,
+                    user_id : this.id,
+                    amount : this.amount,
+                    qty : this.qty
+                  }).then((res) => {
+                    this.product_id = ''
+                    this.price = ''
+                    this.shippingcost = ''
+                    this.user_id = ''
+                    this.amount = ''
+                    this.qty = ''
+                    console.log(res)
+                    this.getproducts()
+                })
+                })        
+              })
+                .catch((err) => {
                 console.log(err)
             })
         },

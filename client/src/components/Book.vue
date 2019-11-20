@@ -55,7 +55,7 @@ export default {
     },
     mounted() {
         this.getbooks()
-        this.getuser()
+        //this.getuser()
     },
 
     methods: {

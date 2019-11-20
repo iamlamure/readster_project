@@ -111,7 +111,7 @@ products.get ('/product_detail/:productid',(req,res) => {
     })
 })
 
-// Get All Product By userID
+// Get All Product By userID for User Check
 products.get ('/byuser/get_all/:bookid',(req,res) => {
     Product.findAll({
         where: {
@@ -126,7 +126,7 @@ products.get ('/byuser/get_all/:bookid',(req,res) => {
     })
 })
 
-// Get All Product By userID
+// Get All Product By userID for Book Check
 products.get ('/booksell/get_all/:bookid',(req,res) => {
     Product.findAll({
         where: {
