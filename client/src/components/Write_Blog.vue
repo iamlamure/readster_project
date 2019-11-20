@@ -19,14 +19,6 @@
                         </div>
                     </div>
                     <div class="column">
-                        <label class="title is-4">รีวิวโดย : </label>
-                        <div class="select">
-                            <select v-model="userblogid" required>
-                                <option v-bind:value="id">{{first_name}}</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="column">
                        <div class="file has-name">
                         <label class="file-label">
                             <input class="file-input" type="file" name="resume">
@@ -78,26 +70,33 @@ export default {
 
         //Add Blog
          addblog() {
-            axios.post('/blogs/addblog',
-            {
-                blog_title: this.blog_title,
-                blog_article: this.blog_article,
-                bookid: this.bookid,
-                blog_img:this.blog_img,
-                book_id:this.book_id,
-                userblogid:this.userblogid,
-            }
-            ).then((res) => {
+             axios.get('/users/profile',{
+                 headers: { 'Authorization': this.token }
+             }).then(res => {
+                this.id = res.data.id
+                axios.post('/blogs/addblog',
+                {
+                    blog_title: this.blog_title,
+                    blog_article: this.blog_article,
+                    bookid: this.bookid,
+                    blog_img:this.blog_img,
+                    book_id: this.book_id,
+                    userblogid: this.id,
+                }).then((res) => {
                     this.blog_title = ''
                     this.blog_article = ''
                     this.blog_img = ''
                     this.book_id = ''
                     this.userblogid = ''
-                    this.getblog()
+                    //this.getblog()
                     this.getbooks()
-                    this.getuser()
+                    //this.getuser()
                     console.log(res)
-                }).catch((err) => {
+                    router.push({ name: 'Profile' })
+
+                })
+             })
+            .catch((err) => {
                     console.log(err)
                 })
         },
@@ -141,9 +140,9 @@ export default {
         },
     },
     mounted() {
-        this.getblog()
+        //this.getblog()
         this.getbooks()
-        this.getuser()
+        //this.getuser()
     },
 }
 </script>

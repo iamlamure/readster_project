@@ -23,10 +23,10 @@
                                 </figure>
                             </td>
                             <td>เศรษฐศาสตร์: ประวัติศาสตร์มีชีวิตของพัฒนาการความคิดเศรษฐศาสตร์</td>
-                            <td>{{cart.cartid}}</td>
-                            <td>{{cart.cartid}}</td>
-                            <td>{{cart.cartid}}</td>
-                            <td>{{cart.cartid}}</td>
+                            <td>{{cart.product_id}}</td>
+                            <td>{{cart.price}}</td>
+                            <td>{{cart.qty}}</td>
+                            <td>{{cart.shippingcost}}</td>
                             <td>
                                 <button @click="deleteItemCart(cart.cartid)" class="button is-danger is-outlined is-rounded" href="">ยกเลิก</button>
                                 <button @click="getcart_topayment(cart.cartid)" class="button is-info is-rounded">ชำระเงิน</button>
