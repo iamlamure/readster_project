@@ -9,7 +9,7 @@
             <img class="is-rounded" src="https://scontent.fbkk5-4.fna.fbcdn.net/v/t1.0-9/s960x960/72119991_2948702885158694_1902264873941729280_o.jpg?_nc_cat=110&_nc_eui2=AeF6F8CsOAfoqvUTJ5gjn626Crg2n_hOxFzj8GsMQk5Kml4svYUk54qNd-gXqwbSb6iOgOKC160pbZYTQMIIDBQnoITCJaWG3z5isl9yKzU2Qg&_nc_oc=AQkhnDSYNA8J0JQg_pNp9AHfxIsqo0UlWETrQYfOK2VAxI0BoLKZLuqU1WS9Wf8g1Lc&_nc_ht=scontent.fbkk5-4.fna&oh=17982eb8f5bfa03c155b54528a510db2&oe=5E597B3F">
           </figure>
           <br>
-          <h3 class="title is-3 columns is-mobile is-centered">{{first_name}} {{last_name}}</h3>
+          <h3 class="title is-3 columns is-mobile is-centered">{{first_name}} {{last_name}} id = {{$id}}</h3>
           <p></p>
           <h5 class="subtitle is-5 columns is-mobile is-centered" href="">{{email}}</h5>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
@@ -125,9 +125,13 @@ export default {
       })
     },
     // Get all Blog by userid
-         getblog () {
+         getblog() {
            //ยังเป็น Static อยู่
-            axios.get(`/blogview/userblog/${12}`).then(
+            axios.get('/users/profile', {
+              headers: { 'Authorization': this.token }
+            }).then(res => {
+              this.id = res.data.id
+              axios.get(`/blogview/userblog/${this.id}`).then(
                 result => {
                     console.log(result.data)
                     this.blogs = result.data
@@ -136,6 +140,10 @@ export default {
                     console.error(error)
                 }
             )
+            }).catch(err => {
+              console.log(err)
+            })
+            
         },
 
         //Delete Blog
