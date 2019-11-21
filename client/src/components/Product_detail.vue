@@ -5,9 +5,8 @@
           <div class="tile is-ancestor">
             <div class="tile is-parent">
               <div class="tile is-child box">
-                  <p class="is-pulled-right"> วันที่ {{blog_date}}</p>
+                  <p class="is-pulled-right"> วันที่ </p>
                 <h1 class="title is-1"> {{product_name}} </h1>
-                <div @click="addcart(product.productid)" class="button is-primary is-outlined is-rounded is-pulled-right">เพิ่มลงตะกร้าสินค้า</div>
                 <h5 class="title is-5"> รายละเอียด : {{product_detail}} </h5>
                 <h5 class="subtitle is-5"> ราคา : {{product_price}} </h5>
                 <p>จำนวนชิ้น : {{qty}}</p>
@@ -15,7 +14,6 @@
                 <p>การจัดส่ง : {{shipping}}</p>
                 <p>ค่าจัดส่ง : {{shippingcost}}</p>
                 <hr class="style11">
-                <p>{{blog_article}}</p>
               </div>
             </div>
           </div>
@@ -32,6 +30,7 @@ import router from '../router'
 export default {
     name: 'Product_detail',
     data() {
+        const token = localStorage.usertoken
         return {
             product_detail:this.$route.params.productid,
             productid:'',
@@ -43,6 +42,7 @@ export default {
             product_condition:'',
             shipping:'',
             shippingcost:'',
+            token: token
         }
     },
     methods: {
@@ -63,23 +63,6 @@ export default {
                 console.log(err)
             })
         },
-        addcart(productid){
-            axios.post('/carts/addcart',
-            {
-                productid:productid,
-                price:req.data.product_price,
-                qty:req.data.qty,
-                shippingcost:req.data.shippingcost,
-                amount:'',
-                status:''
-            }
-        ).then((res) => {
-                console.log(res)
-            }).catch((err) => {
-                console.log(err)
-            })
-            
-        }
     },
     mounted() {
         this.getproduct_detail();

@@ -15,24 +15,15 @@
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
           <br>
           <div>
-            <router-link class="button is-warning is-fullwidth title is-6" to="/user/user_detail">อัพเดทข้อมูลผู้ใช้</router-link>
+            <router-link class="button is-info is-fullwidth title is-6" to="/user/user_detail">อัพเดทข้อมูลผู้ใช้</router-link>
           </div>
         </div>
         <div class="tile is-child box">
-          <a class="title">การขาย</a>
-          <table class="table is-fullwidth">
-                <thead>
-                  <th class="subtitle is-6">ล่าสุด</th>
-
-                  <th class="subtitle is-6">สถานะ</th>
-                </thead>
-                <tbody>
-                  <td>รับราชการยังไงให้ได้ 4000 ล้าน</td>
-                  <td>อยู่ระหว่างการจัดส่ง</td>
-                </tbody>
-              </table>
+          <h3 class="title is-3">ซื้อ / ขาย</h3>
+          <br>
               <router-link class="button is-warning is-fullwidth title is-6" to="/product">จัดการสินค้า</router-link>
-              <router-link class="button is-warning is-fullwidth title is-6" to="/sell">จัดการการขาย</router-link>
+              <router-link class="button is-danger is-fullwidth title is-6" to="/sell">จัดการการขาย</router-link>
+              <router-link class="button is-success is-fullwidth title is-6" to="/sell">การสั่งซื้อของฉัน</router-link>
         </div>
       </div>
         <div class="tile is-parent">
@@ -79,8 +70,7 @@
                                   <img src="https://readery.co/media/catalog/product/cache/1/small_image/240x/17f82f742ffe127f42dca9de82fb58b1/b/o/book_l_less.png">
                               </figure>
                           </div>
-                          <h5  class="title columns is-mobile is-centered card-header-title is-5">ชื่อหนังสือ</h5>
-                          <h6  class="title columns is-mobile is-centered is-6">฿ราคา</h6>
+                          <h6  class="title columns is-mobile is-centered card-header-title is-6">ชื่อหนังสือ</h6>
                         </div>
                       </div>
                   </div>

@@ -24,7 +24,7 @@
 </div>
 </template>
 <!-- eslint-disable -->
-</template>
+
 
 <script>
 

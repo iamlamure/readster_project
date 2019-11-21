@@ -25,7 +25,7 @@
                                 </div>
                                 <h6  class="title columns is-mobile is-centered card-header-title is-6">{{product.product_name}}</h6>
                                 <h6  class="subtitle columns is-mobile is-centered is-6 color-is">฿ {{product.product_price}}</h6>
-                                <button @click="addcart(product.productid)" class="button columns is-centered is-primary is-outlined is-rounded is-small">Add Cart</button>
+                                <a @click="addcart(product.productid)" class="button columns is-centered is-primary is-outlined is-rounded is-fullwidth is-small">Add Cart</a>
                             </div>
                         </div>
                     </div>
@@ -34,27 +34,7 @@
         </div>
         <br>
         <section>
-        <hr class="style11">
-        <div class="tile is-ancestor">
-            <div class="tile is-child box">
-                <h4 class="title is-4"> สินค้าที่ถูกรีวิวมากที่สุด </h4>
-                <div class="container">
-                    <div class="columns is-multiline">
-                        <div class="column tile is-2 is-vertical is-mobile is-parent is-narrow">
-                            <div class="tile is-child box">
-                                <div class="card-image has-text-centered">
-                                    <figure class="image is-inline-block">
-                                        <img src="https://readery.co/media/catalog/product/cache/1/small_image/360x/17f82f742ffe127f42dca9de82fb58b1/9/7/9786163016560.jpg">
-                                    </figure>
-                                </div>
-                                <h5  class="title columns is-mobile is-centered card-header-title is-5">เซเปียนส์: ประวัติย่อมนุษยชาติ</h5>
-                                <h6  class="title columns is-mobile is-centered is-6">฿450</h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+            <hr class="style11">
         </section>
     </div>
 </template>
@@ -65,7 +45,7 @@ export default {
     data() {
         const token = localStorage.usertoken
     return {
-        products: [],
+            products: [],
             books: [],
             productid:'',
             product_name:'',

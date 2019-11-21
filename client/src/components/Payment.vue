@@ -43,11 +43,13 @@
 //ต้อง Create view และ join เข้ามาจะแสดงชื่อสินค้าได้
 import axios from 'axios'
 import router from '../router'
+
 export default {
     name: 'Payment',
     data(){
+        const token = localStorage.usertoken
         return {
-            //payment:this.$route.params.cartid,
+            payment:this.$route.params.cartid,
             cartid:'',
             productid:'',
             price:'',
@@ -55,12 +57,13 @@ export default {
             qty:'',
             shippingcost:'',
             amount:'',
-            status:''
+            status:'',
+            token: token
         }
     },
     methods: {
         getpayment(cart){
-            axios.get(`/carts/payment/checkout/${this.$route.params.cart}`
+            axios.get(`/carts/checkout/${this.$route.params.cart}`
             ).then((res) => {
                 this.cartid = res.data.cartid,
                 this.product_id = res.data.productid,

@@ -5,7 +5,6 @@ const cors = require('cors')
 
 carts.use(cors())
 
-
 //Get Cart All
 carts.get('/all',(req,res) => {
     Cart.findAll()
@@ -16,8 +15,6 @@ carts.get('/all',(req,res) => {
         res.send('error:' + err)
     })
 })
-
-
 
 //Add Cart From BTN
 carts.post('/addcart',(req,res) =>{
@@ -92,6 +89,21 @@ carts.delete('/delete/:cartid',(req,res,next) =>{
     })
     .then(() => {
         res.send('Item in Cart Deleted!')
+    })
+    .catch(err => {
+        res.send('error: ' + err)
+    })
+}),
+
+//check out to cart_detail and before post to payment
+carts.get('/checkout/:cartid',(req,res,next) =>{
+    Cart.findOne({
+        where:{
+            cartid: req.params.cartid
+        }
+    })
+    .then(() => {
+        res.json(carts)
     })
     .catch(err => {
         res.send('error: ' + err)

@@ -62,6 +62,7 @@ export default {
         //this.getcart_topayment()
         //this.deleteItemCart()
         this.getusercart()
+        this.getuser()
     },
     methods: {
     // Get cart by userid
@@ -90,13 +91,12 @@ export default {
                 }
             )
         },
-
         getcart_topayment(cartid){
             this.$router.push({
                 name:'Payment',
                 params: {cart:cartid}
             }).then((res) => {
-                this.getallcart()
+                this.getusercart()
             }).catch((err)=> {
                 console.log(err)
             })
@@ -109,6 +109,19 @@ export default {
                 console.log(res)
             }).catch((err) => {
                 console.log(err)
+            })
+        },
+        getuser() {
+            axios.get('/users/profile', {
+                headers: { 'Authorization': this.token }
+            }).then(res => {
+                this.id = res.data.id
+                this.first_name = res.data.first_name
+                this.last_name = res.data.last_name
+                this.email = res.data.email
+            }).catch(err => {
+                console.log(err)
+                router.push({ name: 'Login' })
             })
         },
     }
