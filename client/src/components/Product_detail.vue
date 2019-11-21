@@ -5,8 +5,9 @@
           <div class="tile is-ancestor">
             <div class="tile is-parent">
               <div class="tile is-child box">
-                  <p class="is-pulled-right"> วันที่ </p>
+                <button v-on:click="addcart(productid)" class="button is-link is-outlined is-pulled-right">เพิ่มลงตะกร้าสินค้า</button>
                 <h1 class="title is-1"> {{product_name}} </h1>
+                <p class="is-pulled-right"> วันที่ </p>
                 <h5 class="title is-5"> รายละเอียด : {{product_detail}} </h5>
                 <h5 class="subtitle is-5"> ราคา : {{product_price}} </h5>
                 <p>จำนวนชิ้น : {{qty}}</p>
@@ -63,6 +64,43 @@ export default {
                 console.log(err)
             })
         },
+        addcart(productid){
+              axios.get('/users/profile',{
+                  headers: { 'Authorization': this.token }
+              }).then(res =>{
+                  this.id = res.data.id
+                  axios.get(`/products/product_detail/${productid}`)
+                  .then(res =>{
+                    this.productid = res.data.productid
+                    this.product_id = res.data.productid
+                    this.price = res.data.product_price
+                    this.shippingcost = res.data.shippingcost
+                    this.user_id = res.data.id
+                    this.amount = res.data.price
+                    this.qty = res.data.qty  
+                  axios.post('/carts/addcart',{
+                    product_id : this.productid,
+                    price : this.price,
+                    shippingcost : this.shippingcost,
+                    user_id : this.id,
+                    amount : this.amount,
+                    qty : this.qty
+                  }).then((res) => {
+                    this.product_id = ''
+                    this.price = ''
+                    this.shippingcost = ''
+                    this.user_id = ''
+                    this.amount = ''
+                    this.qty = ''
+                    console.log(res)
+                    //this.getproducts()
+                })
+                })        
+              })
+                .catch((err) => {
+                console.log(err)
+            })
+        }
     },
     mounted() {
         this.getproduct_detail();

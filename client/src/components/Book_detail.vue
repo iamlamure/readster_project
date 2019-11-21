@@ -34,16 +34,16 @@
                                                 <table class="table">
                                                 <thead>
                                                     <th>ชื่อสินค้า</th>
+                                                    <th>สภาพ</th>
                                                     <th>ราคา</th>
-                                                    <th>ผู้ขาย</th>
                                                     <th></th>
                                                 </thead>
                                                 <tbody>
                                                     <tr v-for="(product) in products" v-bind:key="product.productid" v-bind:title="product.product_name">
                                                         <td>{{product.product_name}}</td>
-                                                        <td>150</td>
-                                                        <td>Nattaphong</td>
-                                                        <td><button class="button is-link is-outlined">เพิ่มลงตะกร้าสินค้า</button></td>
+                                                        <td>{{product.product_condition}}</td>
+                                                        <td>{{product.product_price}}</td>
+                                                        <td><button v-on:click="addcart(product.productid)" class="button is-link is-outlined">เพิ่มลงตะกร้าสินค้า</button></td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -98,6 +98,7 @@ import router from '../router'
 export default {
     name: 'Book_detail',
     data() {
+        const token = localStorage.usertoken
         return {
             books :[],
             products:[],
@@ -109,7 +110,8 @@ export default {
             category: '',
             price: '',
             pages: '',
-            book_img: ''
+            book_img: '',
+            token : token
         }
     },
     methods: {
@@ -151,7 +153,57 @@ export default {
                 error => {
                     console.error(error)
                 })
-        }
+        },
+          addcart(productid){
+              axios.get('/users/profile',{
+                  headers: { 'Authorization': this.token }
+              }).then(res =>{
+                  this.id = res.data.id
+                  axios.get(`/products/product_detail/${productid}`)
+                  .then(res =>{
+                    this.productid = res.data.productid
+                    this.product_id = res.data.productid
+                    this.price = res.data.product_price
+                    this.shippingcost = res.data.shippingcost
+                    this.user_id = res.data.id
+                    this.amount = res.data.price
+                    this.qty = res.data.qty  
+                  axios.post('/carts/addcart',{
+                    product_id : this.productid,
+                    price : this.price,
+                    shippingcost : this.shippingcost,
+                    user_id : this.id,
+                    amount : this.amount,
+                    qty : this.qty
+                  }).then((res) => {
+                    this.product_id = ''
+                    this.price = ''
+                    this.shippingcost = ''
+                    this.user_id = ''
+                    this.amount = ''
+                    this.qty = ''
+                    console.log(res)
+                    //this.getproducts()
+                })
+                })        
+              })
+                .catch((err) => {
+                console.log(err)
+            })
+        },
+        getuser () {
+            axios.get('/users/profile', {
+                headers: { 'Authorization': this.token }
+            }).then(res => {
+                this.id = res.data.id
+                this.first_name = res.data.first_name
+                this.last_name = res.data.last_name
+                this.email = res.data.email
+            }).catch(err => {
+                console.log(err)
+                //router.push({ name: 'Login' })
+            })
+        },
         
     },
     mounted() {

@@ -89,7 +89,6 @@ methods: {
                 console.log(err)
             })
         },
-        
           addcart(productid){
               axios.get('/users/profile',{
                   headers: { 'Authorization': this.token }
