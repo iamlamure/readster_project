@@ -72,7 +72,7 @@
                                             <img src="http://www.kalyanamitra.org/th/images/book/MAGAZINE/hopevol_10.jpg" alt="Image">
                                         </figure>
                                         </div>
-                                        <div class="media-content">
+                                        <div class="media-cnp,ontent">
                                         <div class="content">
                                             <p>
                                             <strong>Nattaphong Kajud</strong> <small>เมื่อ 15 วันที่แล้ว</small>
@@ -131,6 +131,8 @@ export default {
                 console.log(err)
             })
         },
+
+
         // Get all Blog by userid
          getbookformproduct () {
            //ยังเป็น Static อยู่
@@ -144,6 +146,7 @@ export default {
                 }
             )
         },
+        
         getbooksell(){
             axios.get(`/products/booksell/get_all/${this.$route.params.book}`
             ).then(result => {

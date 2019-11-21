@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <h1 class="title is-1">จัดการการขาย {{id}}</h1>
+        <h1 class="title is-1">การสั่งซื้อของฉัน</h1>
         <div class="columns">
             <div class="column">
                 <div class="notification is-primary">
@@ -38,9 +38,8 @@
                 <th>ยอดทั้งหมด</th>
                 <th>สถานะ</th>
                 <th>การจัดส่ง</th>
-                <th>สลิป</th>
+                <th>เลขพัสดุ</th>
                 <th>คำสั่ง</th>
-                <th>แจ้งเลขพัสดุ</th>
             </thead>
             <tbody>
                 <tr v-for="(payment) in payments" v-bind:key="payment.paymentid" v-bind:title="payment.cart_id">
@@ -50,26 +49,18 @@
                         </figure>
                     </td>
                     <td></td>
-                    <td>{{payment.user_sell_id}}</td>
+                    <td>{{payment.user_buy_id}}</td>
                     <td>900</td>
-                    <td>รอแจ้งโอนเงิน</td>
+                    <td>{{payment.status}}</td>
                     <td>
                         ไปรษณีย์ - EMS
-                           <div>
-                                <div v-if="isOpen">
-                                    <h5 class="title is-5">ที่อยู่ </h5>
-                                    <p></p>
-                                </div>
-                                <button class="button is-warning is-fullwidth is-rounded is-small" @click="isOpen=!isOpen">ที่อยู่ในการจัดส่ง</button>
-                            </div>
-                    </td>
-                    <td>รออัพโหลด</td>
-                    <td>
-                        <a class="button is-danger is-rounded is-small" href="">ยกเลิก</a>
                     </td>
                     <td>
-                        <input class="input is-rounded is-small " type="text">
-                        <button class="button is-success is-fullwidth is-rounded is-small">จัดส่ง</button>
+                        เลขพัสดุ
+                    </td>
+                    <td>
+                        <button class="button is-danger is-rounded is-small">ยกเลิก</button>
+                        <button class="button is-success is-rounded is-small">ได้รับสินค้าแล้ว</button>
                     </td>
                 </tr>
             </tbody>
@@ -81,9 +72,9 @@
 import axios from 'axios'
 import router from "../router"
 export default {
-    data:function(){
+    data(){
         const token = localStorage.usertoken
-        return {
+        return{
             payments:[],
             token:token,
             id:'',
@@ -96,16 +87,15 @@ export default {
             receipt:'',
             status:'',
             tracking_number:'',
-            isOpen: false
         }
     },
     methods: {
-        getusersell(){
+        getuserbuy(){
             axios.get('/users/profile',{
                 headers: { 'Authorization': this.token }
             }).then(res => {
                 this.id = res.data.id
-                axios.get(`/payments/usersell/${this.id}`).then(
+                axios.get(`/payments/userbuy/${this.id}`).then(
                     result => {
                         console.log(result.data)
                         this.payments = result.data
@@ -120,8 +110,7 @@ export default {
         }
     },
     mounted() {
-        this.getusersell()
+        this.getuserbuy()
     },
-    
 }
 </script>

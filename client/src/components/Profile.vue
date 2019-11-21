@@ -23,7 +23,7 @@
           <br>
               <router-link class="button is-warning is-fullwidth title is-6" to="/product">จัดการสินค้า</router-link>
               <router-link class="button is-danger is-fullwidth title is-6" to="/sell">จัดการการขาย</router-link>
-              <router-link class="button is-success is-fullwidth title is-6" to="/sell">การสั่งซื้อของฉัน</router-link>
+              <router-link class="button is-success is-fullwidth title is-6" to="/user/purchase">การสั่งซื้อของฉัน</router-link>
         </div>
       </div>
         <div class="tile is-parent">

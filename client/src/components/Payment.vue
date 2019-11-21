@@ -7,13 +7,13 @@
             </figure>
         </div>
         <hr class="style1">
-        <h3 class="title is-3">ชำระค่าสินค้า : เศรษฐศาสตร์: ประวัติศาสตร์มีชีวิตของพัฒนาการความคิดเศรษฐศาสตร์</h3>
+        <h3 class="title is-3">{{product_id}}</h3>
         <h3 class="title is-3">ยอดชำระทั้งหมด : {{price}} บาท </h3>
             <form v-on:submit.prevent="addpayment">
                 <h1 class="title is-4">การจัดส่ง : EMS</h1>
                 <h1 class="title is-4">กรอกที่อยู่ผู้รับ และ เบอร์โทรศัพท์</h1>
                 <div class="columns is-mobile is-centered" >
-                    <textarea v-model="user_address" class="textarea" placeholder="10 lines of textarea" rows="10"></textarea>
+                    <textarea v-model="user_buy_address" class="textarea" placeholder="ชื่อ-ที่อยู่ และ เบอร์โทรศัพท์ผู้รับ" rows="10"></textarea>
                 </div>
                 <div class="columns">
                     <div class="column">
@@ -51,19 +51,23 @@ export default {
         return {
             payment:this.$route.params.cartid,
             cartid:'',
-            productid:'',
+            product_id:'',
             price:'',
             user_id:'',
             qty:'',
             shippingcost:'',
             amount:'',
             status:'',
-            token: token
+            user_sell_id:'',
+            user_buy_id:'',
+            token: token,
+            user_address:'',
+            user_buy_address:''
         }
     },
     methods: {
         getpayment(cart){
-            axios.get(`/carts/checkout/${this.$route.params.cart}`
+            axios.get(`/carts/cart_detail/${this.$route.params.cart}`
             ).then((res) => {
                 this.cartid = res.data.cartid,
                 this.product_id = res.data.productid,
@@ -75,6 +79,47 @@ export default {
                 this.status = res.data.status
                 console.log(res)
             }).catch((err) => {
+                console.log(err)
+            })
+        },
+        addpayment(cartid){
+              axios.get('/users/profile',{
+                  headers: { 'Authorization': this.token }
+              }).then(res =>{
+                  this.id = res.data.id
+                  axios.get(`/carts/cart_detail/${this.$route.params.cart}`)
+                  .then(res =>{
+                    this.cartid = res.data.cartid
+                    this.product_id = res.data.product_id
+                    this.price = res.data.product_price
+                    this.shippingcost = res.data.shippingcost
+                    this.user_id = res.data.user_id
+                    this.amount = res.data.price
+                    this.qty = res.data.qty  
+                  axios.post('/payments/addpayment',{
+                    cart_id : this.cartid,
+                    product_id : this.product_id,
+                    amount : this.amount,
+                    user_sell_id : this.user_id,
+                    user_buy_id : this.id,
+                    user_buy_address : this.user_buy_address,
+                    receipt : this.receipt,
+                    status : "แจ้งชำระเงินเรียบร้อยแล้ว",
+                  }).then((res) => {
+                    this.cart_id = '',
+                    this.product_id = '',
+                    this.amount = '',
+                    this.user_sell_id = '',
+                    this.user_buy_id = '',
+                    this.user_buy_address = '',
+                    this.receipt = '',
+                    this.status = '',
+                    console.log(res)
+                    this.getpayment()
+                })
+                })        
+              })
+                .catch((err) => {
                 console.log(err)
             })
         }

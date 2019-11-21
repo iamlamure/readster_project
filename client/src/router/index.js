@@ -17,7 +17,7 @@ import Write_Blog from '@/components/Write_Blog'
 import User_detail from '@/components/User_detail'
 import User_blog from '@/components/User_blog'
 import Sell from '@/components/Sell'
-import Order from '@/components/Order'
+import Purchase from '@/components/Purchase'
 import Payment from '@/components/Payment'
 import Admin_Login from '@/components/Admin_Login'
 import Dashboard from '@/components/Dashboard'
@@ -113,9 +113,9 @@ export default new Router({
       component: Sell
     },
     {
-      path: '/order',
-      name: 'Order',
-      component: Order
+      path: '/user/purchase',
+      name: 'Purchase',
+      component: Purchase
     },
     {
       path: '/carts/payment/:cart',
