@@ -50,26 +50,27 @@
                         </figure>
                     </td>
                     <td></td>
-                    <td>{{payment.user_sell_id}}</td>
+                    <td>{{payment.paymentid}}</td>
                     <td>900</td>
-                    <td>รอแจ้งโอนเงิน</td>
+                    <td>{{payment.status}}</td>
                     <td>
-                        ไปรษณีย์ - EMS
-                           <div>
-                                <div v-if="isOpen">
-                                    <h5 class="title is-5">ที่อยู่ </h5>
-                                    <p></p>
-                                </div>
-                                <button class="button is-warning is-fullwidth is-rounded is-small" @click="isOpen=!isOpen">ที่อยู่ในการจัดส่ง</button>
+                        <div>
+                            <div v-if="isOpen">
+                                <h5 class="title is-5">ที่อยู่ </h5>
+                                <p>{{payment.user_buy_address}}</p>
                             </div>
+                            <button class="button is-warning is-fullwidth is-rounded is-small" @click="isOpen=!isOpen">ที่อยู่ในการจัดส่ง</button>
+                        </div>
                     </td>
                     <td>รออัพโหลด</td>
                     <td>
-                        <a class="button is-danger is-rounded is-small" href="">ยกเลิก</a>
+                        <a class="button is-danger is-rounded is-small">ยกเลิก</a>
                     </td>
                     <td>
-                        <input class="input is-rounded is-small " type="text">
-                        <button class="button is-success is-fullwidth is-rounded is-small">จัดส่ง</button>
+                        <form v-on:submit.prevent="updateSell(payment.paymentid)">
+                            <input v-model="tracking_number" name="payment.tracking_number"  class="input is-rounded is-small " type="text">
+                            <button type="submit" class="button is-success is-fullwidth is-rounded is-small">จัดส่ง</button>
+                        </form>
                     </td>
                 </tr>
             </tbody>
@@ -115,6 +116,22 @@ export default {
                     }
                 )
             }).catch(err => {
+                console.log(err)
+            })
+        },
+        updateSell(paymentid){
+            axios.put(`/payments/update/${paymentid}`,
+                {
+                    status : "จัดส่งเรียบร้อยแล้ว",
+                    tracking_number : this.tracking_number
+                }
+            ).then((res) => {
+                this.status = ''
+                this.tracking_number = ''
+                console.log(res)
+                this.getusersell()
+            })
+            .catch((err) => {
                 console.log(err)
             })
         }

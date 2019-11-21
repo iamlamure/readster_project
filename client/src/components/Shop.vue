@@ -59,7 +59,8 @@ export default {
             product_user_id :'',
             product_book_id:'',
             first_name:'',
-            token: token
+            token: token,
+            status:''
     }
 },
 mounted() {
@@ -69,7 +70,7 @@ mounted() {
 methods: {
      //Get All Products
         getproducts() {
-            axios.get('/products/all').then(
+            axios.get('/products/shop_page').then(
                 result => {
                     console.log(result.data)
                     this.products = result.data
@@ -109,7 +110,8 @@ methods: {
                     shippingcost : this.shippingcost,
                     user_id : this.id,
                     amount : this.amount,
-                    qty : this.qty
+                    qty : this.qty,
+                    status : "เพิ่มลงในตะกร้าสินค้าแล้ว"
                   }).then((res) => {
                     this.product_id = ''
                     this.price = ''
@@ -119,6 +121,7 @@ methods: {
                     this.qty = ''
                     console.log(res)
                     this.getproducts()
+                    router.push({ name: 'Cart' })
                 })
                 })        
               })

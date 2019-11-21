@@ -96,7 +96,13 @@ export default {
                 name:'Payment',
                 params: {cart:cartid}
             }).then((res) => {
-                this.getusercart()
+                axios.put(`/carts/update/${cartid}`,{
+                    status : "สั่งซื้อแล้ว",
+                }).then((res) => {
+                    this.status = ''
+                    console.log(res)
+                    this.getusercart()
+                })
             }).catch((err)=> {
                 console.log(err)
             })

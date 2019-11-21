@@ -114,7 +114,8 @@ export default {
             product_user_id :'',
             product_book_id:'',
             first_name:'',
-            token: token
+            token: token,
+            status: ''
         }
     },
     mounted() {

@@ -95,7 +95,7 @@ export default {
                     this.shippingcost = res.data.shippingcost
                     this.user_id = res.data.user_id
                     this.amount = res.data.price
-                    this.qty = res.data.qty  
+                    this.qty = res.data.qty 
                   axios.post('/payments/addpayment',{
                     cart_id : this.cartid,
                     product_id : this.product_id,
@@ -104,7 +104,7 @@ export default {
                     user_buy_id : this.id,
                     user_buy_address : this.user_buy_address,
                     receipt : this.receipt,
-                    status : "แจ้งชำระเงินเรียบร้อยแล้ว",
+                    status : "รอการตรวจสอบชำระเงิน",
                   }).then((res) => {
                     this.cart_id = '',
                     this.product_id = '',
@@ -115,7 +115,7 @@ export default {
                     this.receipt = '',
                     this.status = '',
                     console.log(res)
-                    this.getpayment()
+                    router.push({ name: 'Purchase' })
                 })
                 })        
               })

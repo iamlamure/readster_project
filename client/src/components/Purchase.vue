@@ -60,7 +60,7 @@
                     </td>
                     <td>
                         <button class="button is-danger is-rounded is-small">ยกเลิก</button>
-                        <button class="button is-success is-rounded is-small">ได้รับสินค้าแล้ว</button>
+                        <button @click="completeBuy(payment.paymentid)" class="button is-success is-rounded is-small">ได้รับสินค้าแล้ว</button>
                     </td>
                 </tr>
             </tbody>
@@ -105,6 +105,20 @@ export default {
                     }
                 )
             }).catch(err => {
+                console.log(err)
+            })
+        },
+        completeBuy(paymentid){
+            axios.put(`/payments/update/${paymentid}`,
+                {
+                    status : "ได้รับสินค้าแล้ว",
+                }
+            ).then((res) => {
+                this.status = ''
+                console.log(res)
+                this.getuserbuy()
+            })
+            .catch((err) => {
                 console.log(err)
             })
         }
