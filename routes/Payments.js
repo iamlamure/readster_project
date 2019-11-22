@@ -2,6 +2,8 @@ const express = require('express')
 const payments = express.Router()
 const Payment = require('../models/Payment')
 const cors = require('cors')
+const Sequelize = require('sequelize')
+
 
 payments.use(cors())
 
@@ -40,11 +42,35 @@ payments.post('/addpayment',(req,res) => {
 })
 
 
-//Get Payment For Userid
-payments.get('/user/:id',(req,res) => {
+//Get Payment For User buy id
+payments.get('/userbuy/:id',(req,res) => {
+    const Op = Sequelize.Op;
     Payment.findAll({
         where: {
-            user_buy_id : req.params.id
+            user_buy_id : req.params.id,
+            [Op.or]: [{status : 'แจ้งชำระเงินเรียบร้อยแล้ว' },{ status : 'รอการตรวจสอบชำระเงิน'}]
+        }
+    })
+    .then(carts => {
+        res.json(carts)
+    })
+    .catch(err => {
+        res.send('error:' + err)
+    })
+})
+
+//Get Payment For User sell id
+payments.get('/usersell/:id',(req,res) => {
+    const Op = Sequelize.Op;
+    Payment.findAll({
+        where: {
+            user_sell_id : req.params.id,
+            [Op.or]:[
+                {status : 'แจ้งชำระเงินเรียบร้อยแล้ว' },
+                { status : 'รอการตรวจสอบชำระเงิน'},
+                { status : 'ชำระเงินเสร็จสิ้น'},
+                //{ status : 'จัดส่งเรียบร้อยแล้ว'}
+            ]
         }
     })
     .then(carts => {
@@ -59,7 +85,13 @@ payments.get('/user/:id',(req,res) => {
 payments.get('/checkout/:paymentid',(req,res) => {
     Payment.findOne({
         where: {
-            paymentid : req.params.paymentid
+            paymentid : req.params.paymentid,
+            [Op.or]:[
+                {status : 'แจ้งชำระเงินเรียบร้อยแล้ว' },
+                { status : 'รอการตรวจสอบชำระเงิน'},
+                { status : 'ชำระเงินเสร็จสิ้น'},
+                { status : 'จัดส่งเรียบร้อยแล้ว'}
+            ]
         }
     })
     .then(payments => {
@@ -70,7 +102,7 @@ payments.get('/checkout/:paymentid',(req,res) => {
     })
 })
 
-//Update Product
+//Update Payment
 payments.put('/update/:paymentid',(req,res) => {
     const paymentData = {
         cart_id: req.body.cart_id,
@@ -81,6 +113,7 @@ payments.put('/update/:paymentid',(req,res) => {
         user_buy_address:req.body.user_buy_address,
         receipt:req.body.receipt,
         status:req.body.status,
+        tracking_number:req.body.tracking_number
     }
     if (!paymentData){
         res.status(400)
@@ -98,6 +131,7 @@ payments.put('/update/:paymentid',(req,res) => {
                 user_buy_address:req.body.user_buy_address,
                 receipt:req.body.receipt,
                 status:req.body.status,
+                tracking_number:req.body.tracking_number
             },
             {where: {paymentid : req.params.paymentid}}
         )

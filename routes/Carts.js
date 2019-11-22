@@ -5,9 +5,13 @@ const cors = require('cors')
 
 carts.use(cors())
 
-//Get Cart All
+//Get Cart All for admin
 carts.get('/all',(req,res) => {
-    Cart.findAll()
+    Cart.findAll({
+        where: {
+            status : 'เพิ่มสินค้าเรียบร้อยแล้ว'
+        }
+    })
     .then(carts => {
         res.json(carts)
     })
@@ -24,7 +28,8 @@ carts.post('/addcart',(req,res) =>{
         qty : req.body.qty,
         shippingcost : req.body.shippingcost,
         amount : req.body.amount,
-        user_id : req.body.user_id
+        user_id : req.body.user_id,
+        status : "เพิ่มสินค้าเรียบร้อยแล้ว"
     }
     Cart.create(cartdata)
     .then(() => {
@@ -39,7 +44,8 @@ carts.post('/addcart',(req,res) =>{
 carts.get('/user/:id',(req,res) => {
     Cart.findAll({
         where: {
-            user_id : req.params.id
+            user_id : req.params.id,
+            status : 'เพิ่มสินค้าเรียบร้อยแล้ว'
         }
     })
     .then(carts => {
@@ -50,6 +56,23 @@ carts.get('/user/:id',(req,res) => {
     })
 })
 
+//Get Cart Detail by cartid
+carts.get('/cart_detail/:cartid',(req,res) => {
+    Cart.findOne({
+        where:{
+            cartid : req.params.cartid
+        }
+    })
+    .then(carts => {
+        res.json(carts)
+    })
+    .catch(err => {
+        res.send('error:' + err)
+    })
+})
+
+
+
 //Update Blog
 carts.put('/update/:cartid',(req,res) => {
     const cartData = {
@@ -57,6 +80,7 @@ carts.put('/update/:cartid',(req,res) => {
         qty : req.body.qty,
         shippingcost : req.body.shippingcost,
         amount : req.body.amount,
+        status : req.body.status
     }
     if (!cartData){
         res.status(400)
@@ -70,6 +94,7 @@ carts.put('/update/:cartid',(req,res) => {
                 qty : req.body.qty,
                 shippingcost : req.body.shippingcost,
                 amount : req.body.amount,
+                status : req.body.status
             },
             {where: {cartid : req.params.cartid}}
         )

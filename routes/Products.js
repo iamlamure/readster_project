@@ -17,7 +17,8 @@ products.post('/addproduct',(req,res) => {
         shipping:req.body.shipping,
         shippingcost:req.body.shippingcost,
         product_user_id:req.body.product_user_id,
-        product_book_id:req.body.product_book_id
+        product_book_id:req.body.product_book_id,
+        status : "เพิ่มสินค้าเรียบร้อยแล้ว"
     }
     Product.create(productData)
     .then(() => {
@@ -70,7 +71,7 @@ products.put('/update/:productid',(req,res) => {
     }
 })
 
-//Find All Product
+//Find All Product For Admin
 products.get('/all',(req,res) => {
     Product.findAll()
     .then(products => {
@@ -80,6 +81,22 @@ products.get('/all',(req,res) => {
         res.send('error: ' + err)
     })
 })
+
+//Find All For Shop
+products.get('/shop_page',(req,res) => {
+    Product.findAll({
+        where : {
+            status : "เพิ่มสินค้าเรียบร้อยแล้ว"
+        }
+    })
+    .then(products => {
+        res.json(products)
+    })
+    .catch(err => {
+        res.send('error: ' + err)
+    })
+})
+
 
 // Delete Product
 products.delete('/delete/:productid' ,(req,res,next) => {
@@ -100,7 +117,7 @@ products.delete('/delete/:productid' ,(req,res,next) => {
 products.get ('/product_detail/:productid',(req,res) => {
     Product.findOne({
         where: {
-            productid : req.params.productid
+            productid : req.params.productid,
         }
     })
     .then(products => {
@@ -128,9 +145,12 @@ products.get ('/byuser/get_all/:bookid',(req,res) => {
 
 // Get All Product By userID for Book Check
 products.get ('/booksell/get_all/:bookid',(req,res) => {
+    const Op = Sequelize.Op;
     Product.findAll({
         where: {
-            product_book_id : req.params.bookid
+            product_book_id : req.params.bookid,
+            status : 'รอการตรวจสอบชำระเงิน'
+            
         }
     })
     .then(products => {
