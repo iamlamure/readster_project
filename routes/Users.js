@@ -9,6 +9,51 @@ users.use(cors())
 
 process.env.SECRET_KEY = 'secret'
 
+
+//For Upload Profile Img
+const multer = require('multer')
+const path = require('path')
+const Upload = multer({ storage: storage })
+
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+      cb(null, './uploads/profileimg')
+  },
+  filename: function (req, file, cb) {
+      cb(null, file.fieldname + Date.now() + path.extname(file.originalname))
+  }
+})
+
+
+//Upload and Update User_img
+users.put('/profile/uploadimg/:id',Upload.single('profile_img'),(req,res) => {
+  const imgData = {
+    user_img : req.file.filename.user_img
+  }
+  if(!imgData){
+    res.status(400)
+    res.json({
+        error: "Bad Data"
+    })
+  }else{
+    User.update(
+      {
+        user_img : req.file.filename.user_img
+      },
+        {where: {id : req.params.id}}
+      )
+    .then(() => {
+      res.send('Profile Img Update !')
+      console.log(req.file.filename);
+      res.send(req.file);
+    })
+    .catch(err => {
+      res.send('error: ' + err)
+    })
+  }
+})
+
+
 users.post('/register', (req, res) => {
   const today = new Date()
   const userData = {
