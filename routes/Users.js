@@ -3,7 +3,7 @@ const users = express.Router()
 const cors = require('cors')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
-
+const Sequelize = require('sequelize')
 const User = require('../models/User')
 users.use(cors())
 
@@ -92,6 +92,23 @@ users.post('/register', (req, res) => {
     })
 })
 
+//Get User All
+users.get('/getuser/all',(req,res) => {
+  const Op = Sequelize.Op;
+  User.findAll({
+    where:{
+      status : "สมาชิกปัจจุบัน",
+      [Op.not]: [{status : 'ระงับผู้ใช้'}]
+  }
+  })
+  .then(users => {
+    res.json(users)
+  })
+  .catch(err => {
+      res.send('error: ' + err)
+  })
+})
+
 //User Update
 users.put('/update/:id',(req,res) => {
   const userData = {
@@ -100,6 +117,7 @@ users.put('/update/:id',(req,res) => {
     email: req.body.email,
     password: req.body.password,
     user_address :req.body.user_address,
+    status: req.body.status
   }
   if (!userData){
       res.status(400)
@@ -114,6 +132,7 @@ users.put('/update/:id',(req,res) => {
             email: req.body.email,
             password: req.body.password,
             user_address :req.body.user_address,
+            status: req.body.status
           },
           {where: {id : req.params.id}}
       )
@@ -126,10 +145,13 @@ users.put('/update/:id',(req,res) => {
   }
 })
 
+//Login
 users.post('/login', (req, res) => {
+  const Op = Sequelize.Op;
   User.findOne({
     where: {
-      email: req.body.email
+      email: req.body.email,
+      [Op.not]: [{status : 'ระงับผู้ใช้'}]
     }
   })
     .then(user => {
@@ -151,7 +173,6 @@ users.post('/login', (req, res) => {
 
 users.get('/profile', (req, res) => {
   var decoded = jwt.verify(req.headers['authorization'], process.env.SECRET_KEY)
-
   User.findOne({
     where: {
       id: decoded.id

@@ -6,20 +6,21 @@
         <table class="table is-fullwidth">
             <thead>
                 <th>ID</th>
-                <th></th>
-                <th>BOOK NAME</th>
+                <th>ชื่อจริง</th>
+                <th>นามสกุล</th>
+                <th>อีเมลล์</th>
+                <th>วันที่สมัคร</th>
                 <th class="text-right" >ACTION</th>
             </thead>
             <tbody>
-                <tr v-for="(book) in books" v-bind:key="book.bookid" v-bind:title="book.book_name">
-                    <td>{{book.bookid}}</td>
-                    <td></td>
-                    <td>
-                        <h5 @click="getbookdetail(book.bookid)">{{book.book_name}}</h5>
-                    </td>
+                <tr v-for="(user) in users" v-bind:key="user.id" v-bind:title="user.first_name">
+                    <td>{{user.id}}</td>
+                    <td>{{user.first_name}}</td>
+                    <td>{{user.last_name}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{{user.created}}</td>
                     <td class="text-right">
-                        <button  class="button is-warning is-rounded ">Edit</button>
-                        <button  v-on:click="deletebook(book.bookid)" type="button"  class="button is-danger is-rounded">Delete</button>
+                        <button  v-on:click="deleteUser(user.id)" type="button"  class="button is-danger is-rounded">Delete</button>
                     </td>
                 </tr>
             </tbody>
@@ -27,7 +28,51 @@
     </div>
 </template>
 <script>
+    import router from '../router'
+    import axios from 'axios'
 export default {
+    data() {
+        return {
+            users:[],
+            id:'',
+            first_name: '',
+            last_name: '',
+            email: '',
+            created:'',
+            status:''
+        }
+    },
+    methods: {
+        getalluser(){
+            axios.get('users/getuser/all').then(
+                result => {
+                    console.log(result.data)
+                    this.users = result.data
+                },
+                error => {
+                    console.error(error)
+                }
+            )
+        },
+        
+        //Delete Book by id
+        deleteUser(id) {
+            axios.put(`/users/update/${id}`,
+            {
+                    status : "ระงับผู้ใช้",
+            }
+            ).then((res) => {
+                this.status = ''
+                this.getalluser()
+                console.log(res)
+            }).catch((err) => {
+                console.log(err)
+            })
+        },
+    },
+    mounted() {
+        this.getalluser()
+    },
     
 }
 </script>

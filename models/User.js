@@ -28,7 +28,7 @@ module.exports = db.sequelize.define(
       type: Sequelize.DATE,
       defaultValue: Sequelize.NOW
     },
-    user_img:{
+    status:{
       type: Sequelize.STRING
     }
   },

@@ -2,6 +2,7 @@ const express = require('express')
 const blogs = express.Router()
 const Blog =  require("../models/Blog")
 const cors = require('cors')
+const Sequelize = require('sequelize')
 
 blogs.use(cors())
 
@@ -13,7 +14,8 @@ blogs.post('/addblog',(req,res) => {
         blog_article : req.body.blog_article,
         blog_img : req.body.blog_img,
         userblogid : req.body.userblogid,
-        book_id: req.body.book_id
+        book_id: req.body.book_id,
+        status: "เพิ่มบทความเรียบร้อยแล้ว"
     }
     Blog.create(blogData)
     .then(() => {
@@ -26,7 +28,13 @@ blogs.post('/addblog',(req,res) => {
 
 //Get All blog 
 blogs.get('/blogs',(req,res) => {
-    Blog.findAll()
+    const Op = Sequelize.Op;
+    Blog.findAll({
+        where :{
+            status : 'เพิ่มบทความเรียบร้อยแล้ว' ,
+            [Op.not]: [{status : 'ระงับบทความ'}]
+        }
+    })
     .then(blogs => {
         res.json(blogs)
     })
@@ -57,7 +65,8 @@ blogs.put('/update/:blogid',(req,res) => {
         blog_article : req.body.blog_article,
         blog_img : req.body.blog_img,
         userblogid : req.body.userblogid,
-        book_id: req.body.book_id
+        book_id: req.body.book_id,
+        status: req.body.status
     }
     if (!blogData){
         res.status(400)
@@ -71,7 +80,8 @@ blogs.put('/update/:blogid',(req,res) => {
                 blog_article : req.body.blog_article,
                 blog_img : req.body.blog_img,
                 userblogid : req.body.userblogid,
-                book_id: req.body.book_id
+                book_id: req.body.book_id,
+                status: req.body.status
             },
             {where: {blogid : req.params.blogid}}
         )
@@ -85,9 +95,12 @@ blogs.put('/update/:blogid',(req,res) => {
 
 //Read blog to Read.vue
 blogs.get('/read/:blogid',(req,res) => {
+    const Op = Sequelize.Op;
     Blog.findOne({
         where: {
-            blogid : req.params.blogid
+            blogid : req.params.blogid,
+            status : 'เพิ่มบทความเรียบร้อยแล้ว' ,
+            [Op.not]: [{status : 'ระงับบทความ'}]
         }
     })
     .then(blogs => {

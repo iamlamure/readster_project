@@ -31,6 +31,9 @@ module.exports = db.sequelize.define(
             type: Sequelize.INTEGER,
             references: 'books',
             referencesKey: 'bookid'
+        },
+        status:{
+            type: Sequelize.STRING
         }
     },
     {
