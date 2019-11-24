@@ -13,12 +13,13 @@ products.post('/addproduct',(req,res) => {
         product_detail:req.body.product_detail,
         product_img:req.body.product_img,
         product_price:req.body.product_price,
-        qty:req.body.qty,
+        //qty:req.body.qty,
         product_condition:req.body.product_condition,
         shipping:req.body.shipping,
         shippingcost:req.body.shippingcost,
         product_user_id:req.body.product_user_id,
         product_book_id:req.body.product_book_id,
+        amount : req.body.amount,
         status : "เพิ่มสินค้าเรียบร้อยแล้ว"
     }
     Product.create(productData)
@@ -37,13 +38,14 @@ products.put('/update/:productid',(req,res) => {
         product_detail:req.body.product_detail,
         product_img:req.body.product_img,
         product_price:req.body.product_price,
-        qty:req.body.qty,
+        //qty:req.body.qty,
         product_condition:req.body.product_condition,
         shipping:req.body.shipping,
         shippingcost:req.body.shippingcost,
         product_user_id:req.body.product_user_id,
         product_book_id:req.body.product_book_id,
         status:req.body.status,
+        amount : req.body.amount,
     }
     if (!productData){
         res.status(400)
@@ -57,13 +59,14 @@ products.put('/update/:productid',(req,res) => {
                 product_detail:req.body.product_detail,
                 product_img:req.body.product_img,
                 product_price:req.body.product_price,
-                qty:req.body.qty,
+                //qty:req.body.qty,
                 product_condition:req.body.product_condition,
                 shipping:req.body.shipping,
                 shippingcost:req.body.shippingcost,
                 product_user_id:req.body.product_user_id,
                 product_book_id:req.body.product_book_id,
                 status:req.body.status,
+                amount : req.body.amount,
             },
             {where: {productid : req.params.productid}}
         )

@@ -39,6 +39,9 @@ module.exports = db.sequelize.define(
         product_book_id:{
             type: Sequelize.INTEGER
         },
+        amount:{
+            type: Sequelize.INTEGER
+        },
         status:{
             type: Sequelize.STRING
         },

@@ -68,8 +68,9 @@
                     <thead>
                         <th>ID</th>
                         <th>PRODUCT NAME</th>
-                        <th>QTY</th>
                         <th>PRICE</th>
+                        <th>SHIPPINGCOST</th>
+                        <th>AMOUNT</th>
                         <th class="text-right" >ACTION</th>
                     </thead>
                     <tbody>
@@ -78,8 +79,9 @@
                             <td>
                                 <h5 @click="getproduct_detail(product.productid)">{{product.product_name}}</h5>
                             </td>
-                            <td>{{product.qty}}</td>
                             <td>{{product.product_price}}</td>
+                            <td>{{product.shippingcost}}</td>
+                            <td>{{product.amount}}</td>
                             <td class="text-right">
                                 <button  class="button is-warning is-rounded ">Edit</button>
                                 <button  v-on:click="deleteproduct(product.productid)" type="button"  class="button is-danger is-rounded">Delete</button>
@@ -99,6 +101,7 @@ import router from "../router";
 export default {
     data(){
         const token = localStorage.usertoken
+        
         return {
             products: [],
             books: [],
@@ -107,7 +110,7 @@ export default {
             product_detail:'',
             product_img:'',
             product_price:'',
-            qty:'',
+            amount:'',
             product_condition:'',
             shipping:'',
             shippingcost:'',
@@ -115,7 +118,8 @@ export default {
             product_book_id:'',
             first_name:'',
             token: token,
-            status: ''
+            status: '',
+            qty:''
         }
     },
     mounted() {
@@ -139,7 +143,7 @@ export default {
                         product_detail:this.product_detail,
                         product_img:this.product_img,
                         product_price:this.product_price,
-                        qty:this.qty,
+                        amount:product_price + shippingcost,
                         product_condition:this.product_condition,
                         shipping:this.shipping,
                         shippingcost:this.shippingcost,

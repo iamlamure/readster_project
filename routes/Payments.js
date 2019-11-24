@@ -8,16 +8,16 @@ payments.use(cors())
 
 //Upload
 const multer = require('multer')
-const path = require('path');
-var Upload = multer({ storage: storage })
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, './uploads/payment/receipt/img')
+        cb(null, './uploads/payment/receipt')
     },
     filename: function (req, file, cb) {
-        cb(null, file.fieldname + Date.now() + path.extname(file.originalname))
+        cb(null, file.originalname)
     }
 })
+
+var upload = multer({ storage: storage })
 
 //Get All Payment
 payments.get('/all',(req,res) => {
@@ -46,7 +46,7 @@ payments.get('/forcheckbyadmin/all',(req,res) => {
 })
 
 //Add Payment
-payments.post('/addpayment',Upload.single('receipt_img'),(req,res) => {
+payments.post('/addpayment',upload.single('receipt'),(req,res) => {
     const today = new Date()
     const paymentData = {
         cart_id: req.body.cart_id,
@@ -55,21 +55,27 @@ payments.post('/addpayment',Upload.single('receipt_img'),(req,res) => {
         user_sell_id:req.body.user_sell_id,
         user_buy_id:req.body.user_buy_id,
         user_buy_address:req.body.user_buy_address,
-        receipt:req.file.receipt,
+        receipt:req.file.name,
         status:req.body.status,
         created:today,
     }
+    try {
+        console.log(req.file.filename);
+        res.send(req.file)
+    }catch(err){
+        res.send(400)
+    }
     Payment.create(paymentData)
-    .then(()=>{
+    .then(() => {
         res.json('Payment Added!')
         console.log(req.file.filename)
-        res.send(req.file)
+        return next();
     })
     .catch(err => {
-        res.send('error:' +err)
+        res.send('error: ' +err)
+        console.log(err)
     })
 })
-
 
 //Get Payment For User buy id
 payments.get('/userbuy/:id',(req,res) => {
@@ -78,7 +84,7 @@ payments.get('/userbuy/:id',(req,res) => {
         where: {
             user_buy_id : req.params.id,
             [Op.or]: [
-                        {status : 'แจ้งชำระเงินเรียบร้อยแล้ว' },
+                        { status : 'แจ้งชำระเงินเรียบร้อยแล้ว' },
                         { status : 'รอการตรวจสอบชำระเงิน'},
                         { status : 'ชำระเงินสำเร็จแล้ว'},
                         { status : 'จัดส่งเรียบร้อยแล้ว'}
@@ -100,7 +106,7 @@ payments.get('/usersell/:id',(req,res) => {
         where: {
             user_sell_id : req.params.id,
             [Op.or]:[
-                {status : 'แจ้งชำระเงินเรียบร้อยแล้ว' },
+                { status : 'แจ้งชำระเงินเรียบร้อยแล้ว' },
                 { status : 'รอการตรวจสอบชำระเงิน'},
                 { status : 'ชำระเงินสำเร็จแล้ว'},
                 //{ status : 'จัดส่งเรียบร้อยแล้ว'}
@@ -121,7 +127,7 @@ payments.get('/checkout/:paymentid',(req,res) => {
         where: {
             paymentid : req.params.paymentid,
             [Op.or]:[
-                {status : 'แจ้งชำระเงินเรียบร้อยแล้ว' },
+                { status : 'แจ้งชำระเงินเรียบร้อยแล้ว' },
                 { status : 'รอการตรวจสอบชำระเงิน'},
                 { status : 'ชำระเงินเสร็จสิ้น'},
                 { status : 'จัดส่งเรียบร้อยแล้ว'}

@@ -8,9 +8,7 @@ import router from './router'
 //require('../node_modules/bootstrap/dist/css/bootstrap.css'),
 require('../node_modules/bulma/css/bulma.css')
 
-
 Vue.config.productionTip = false
-
 
 /* eslint-disable no-new */
 new Vue({
