@@ -56,7 +56,7 @@
                         ไปรษณีย์ - EMS
                     </td>
                     <td>
-                        เลขพัสดุ
+                        {{payment.tracking_number}}
                     </td>
                     <td>
                         <button class="button is-danger is-rounded is-small">ยกเลิก</button>

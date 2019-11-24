@@ -119,7 +119,7 @@ export default {
         }
     },
     mounted() {
-        this.getproducts()
+        //this.getproducts()
         this.getbooks()
         this.getproductbyuser()
         //this.getuser()
@@ -127,7 +127,6 @@ export default {
     },
 
     methods: {
-
         addproduct(){
             axios.get('/users/profile', {
                 headers: { 'Authorization': this.token }
@@ -202,9 +201,14 @@ export default {
 
         //Delete Product By ID
         deleteproduct(productid) {
-            axios.delete(`/products/delete/${productid}`
+            //UserUpdate Status
+            axios.put(`/products/update/${productid}`,
+                {
+                    status : "ยกเลิกสินค้า",
+                }
             ).then((res) => {
-                this.getproducts()
+                this.status = ''
+                this.getproductbyuser()
                 console.log(res)
             }).catch((err) => {
                 console.log(err)

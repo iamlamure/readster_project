@@ -19,11 +19,12 @@
                     <div class="column">
                        <div class="file has-name">
                         <label class="file-label">
-                            <input class="file-input" type="file" name="resume">
+                            <input class="file-input" 
+                                    type="file" 
+                                    name="receipt"
+                                    @change="onSelect" 
+                            >
                             <span class="file-cta">
-                            <span class="file-icon">
-                                <i class="fas fa-upload"></i>
-                            </span>
                             <span class="file-label">
                                 อัพโหลดสลิป
                             </span>
@@ -62,10 +63,15 @@ export default {
             user_buy_id:'',
             token: token,
             user_address:'',
-            user_buy_address:''
+            user_buy_address:'',
+            receipt:''
         }
     },
     methods: {
+        onSelect(){
+            const receipt = this.$refs.receipt.receipts[0];
+            this.receipt = receipt
+        },
         getpayment(cart){
             axios.get(`/carts/cart_detail/${this.$route.params.cart}`
             ).then((res) => {

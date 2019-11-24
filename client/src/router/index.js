@@ -19,8 +19,10 @@ import User_blog from '@/components/User_blog'
 import Sell from '@/components/Sell'
 import Purchase from '@/components/Purchase'
 import Payment from '@/components/Payment'
+//
 import Admin_Login from '@/components/Admin_Login'
 import Dashboard from '@/components/Dashboard'
+import Admin_Payment from '@/components/Admin_Payment'
 
 
 Vue.use(Router)
@@ -131,6 +133,11 @@ export default new Router({
       path: '/dashboard',
       name: 'Dashboard',
       component: Dashboard
+    },
+    {
+      path: '/admin_payment',
+      name: 'Admin_Payment',
+      component : Admin_Payment
     }
   ]
 })

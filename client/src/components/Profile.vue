@@ -5,14 +5,10 @@
       <div class="tile is-ancestor">
       <div class="tile is-4 is-vertical is-parent">
         <div class="tile is-child box">
-          <figure class="image is-square">
-            <img class="is-rounded" src="https://scontent.fbkk5-4.fna.fbcdn.net/v/t1.0-9/s960x960/72119991_2948702885158694_1902264873941729280_o.jpg?_nc_cat=110&_nc_eui2=AeF6F8CsOAfoqvUTJ5gjn626Crg2n_hOxFzj8GsMQk5Kml4svYUk54qNd-gXqwbSb6iOgOKC160pbZYTQMIIDBQnoITCJaWG3z5isl9yKzU2Qg&_nc_oc=AQkhnDSYNA8J0JQg_pNp9AHfxIsqo0UlWETrQYfOK2VAxI0BoLKZLuqU1WS9Wf8g1Lc&_nc_ht=scontent.fbkk5-4.fna&oh=17982eb8f5bfa03c155b54528a510db2&oe=5E597B3F">
-          </figure>
           <br>
           <h3 class="title is-3 columns is-mobile is-centered">{{first_name}} {{last_name}}</h3>
           <p></p>
           <h5 class="subtitle is-5 columns is-mobile is-centered">{{email}}</h5>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
           <br>
           <div>
             <router-link class="button is-info is-fullwidth title is-6" to="/user/user_detail">อัพเดทข้อมูลผู้ใช้</router-link>
@@ -35,14 +31,14 @@
                 <thead>
                   <th class="subtitle is-5">ชื่อเรื่อง</th>
                   <th class="subtitle is-5">วันที่</th>
-                  <th class="subtitle is-5">ถูกใจ</th>
+                  
                   <th></th>
                 </thead>
                 <tbody>
                   <tr v-for="(blog) in blogs" v-bind:key="blog.blogid" v-bind:title="blog.blog_title">
                     <td><a v-on:click="gotodetail(blog.blogid)">{{blog.blog_title}}</a></td>
                     <td>{{blog.blog_date}}</td>
-                    <td></td>
+                    
                     <td>
                       <button v-on:click="deleteBlog(blog.blogid)" class="button is-danger is-small is-rounded is-pulled-right">Delete</button>
                       <button class="button is-warning is-small is-rounded is-pulled-right">Edit</button>

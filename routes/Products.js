@@ -2,6 +2,7 @@ const express = require('express')
 const products = express.Router()
 const Product = require('../models/Product')
 const cors = require('cors')
+const Sequelize = require('sequelize')
 
 products.use(cors())
 
@@ -41,7 +42,8 @@ products.put('/update/:productid',(req,res) => {
         shipping:req.body.shipping,
         shippingcost:req.body.shippingcost,
         product_user_id:req.body.product_user_id,
-        product_book_id:req.body.product_book_id
+        product_book_id:req.body.product_book_id,
+        status:req.body.status,
     }
     if (!productData){
         res.status(400)
@@ -60,7 +62,8 @@ products.put('/update/:productid',(req,res) => {
                 shipping:req.body.shipping,
                 shippingcost:req.body.shippingcost,
                 product_user_id:req.body.product_user_id,
-                product_book_id:req.body.product_book_id
+                product_book_id:req.body.product_book_id,
+                status:req.body.status,
             },
             {where: {productid : req.params.productid}}
         )
@@ -84,9 +87,11 @@ products.get('/all',(req,res) => {
 
 //Find All For Shop
 products.get('/shop_page',(req,res) => {
+    const Op = Sequelize.Op;
     Product.findAll({
         where : {
-            status : "เพิ่มสินค้าเรียบร้อยแล้ว"
+            status : "เพิ่มสินค้าเรียบร้อยแล้ว",
+            [Op.not]: [{status : 'ยกเลิกสินค้า'},{status : 'สินค้าถูกสั่งซื้อแล้ว'}]
         }
     })
     .then(products => {
@@ -129,10 +134,12 @@ products.get ('/product_detail/:productid',(req,res) => {
 })
 
 // Get All Product By userID for User Check
-products.get ('/byuser/get_all/:bookid',(req,res) => {
+products.get('/byuser/get_all/:bookid',(req,res) => {
+    const Op = Sequelize.Op;
     Product.findAll({
         where: {
-            product_user_id : req.params.bookid
+            product_user_id : req.params.bookid,
+            [Op.not]: [{status : 'ยกเลิกสินค้า'}]
         }
     })
     .then(products => {
