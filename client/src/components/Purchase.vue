@@ -2,6 +2,7 @@
     <div class="container">
         <h1 class="title is-1">การสั่งซื้อของฉัน</h1>
         <div class="columns">
+            <!--
             <div class="column">
                 <div class="notification is-primary">
                     <h3 class="title is-3">รอแจ้งโอนเงิน</h3>
@@ -26,6 +27,7 @@
                     <h5 class="title is-5">จำนวน:   รายการ</h5>
                 </div>
             </div>
+            -->
         </div>
         <hr class="style11">
         <h2 class="title is-2">รายการ</h2>

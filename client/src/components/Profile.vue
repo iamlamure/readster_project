@@ -11,7 +11,7 @@
           <h5 class="subtitle is-5 columns is-mobile is-centered">{{email}}</h5>
           <br>
           <div>
-            <router-link class="button is-info is-fullwidth title is-6" to="/user/user_detail">อัพเดทข้อมูลผู้ใช้</router-link>
+            <!--<router-link class="button is-info is-fullwidth title is-6" to="/user/user_detail">อัพเดทข้อมูลผู้ใช้</router-link>-->
           </div>
         </div>
         <div class="tile is-child box">
@@ -52,6 +52,7 @@
         </div>
       </div>
       <hr class="style11">
+      <!--
       <section class="section columns is-half is-centered">
         <div class="container">
           <div class="tile is-ancestor">
@@ -75,6 +76,7 @@
           </div>
         </div>
       </section>
+      -->
   </div>
 </template>
 

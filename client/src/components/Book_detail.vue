@@ -13,7 +13,7 @@
                             <div class="media-content is-mobile">
                                 <div class="content">
                                     <!-- @click insert book to Fevbook -->
-                                    <button class="button is-primary is-outlined is-rounded is-pulled-right">เพิ่มในชั้นหนังสือ</button>
+                                    <!--<button class="button is-primary is-outlined is-rounded is-pulled-right">เพิ่มในชั้นหนังสือ</button>-->
                                     <p class="title">{{book_name}}</p>
                                     <h4 class="title id-4">ผู้เขียน : {{author_name}}</h4>
                                     <h6 class="title id-6">สำนักพิมพ์ : {{publisher}}</h6>
@@ -60,25 +60,22 @@
                 <div class="tile is-vertical is-parent">
                     <div class="tile is-child box">
                         <!-- @click gotoBookReview  -->
-                        <button class="button is-warning is-rounded is-pulled-right">เขียนรีวิว</button>
+                        <!--<button class="button is-warning is-rounded is-pulled-right">เขียนรีวิว</button>-->
                         <h1 class="title"> รวมบทความเกี่ยวกับหนังสือเล่มนี้ !</h1>
                         <div class="columns is-multiline">
                         <div class="tile is-ancestor column is-6">
-                            <div class="column tile is-mobile is-parent">
-                                <div class="tile is-child box">
+                            <div class="column tile is-mobile is-parent" v-for="(blog) in blogs" v-bind:key="blog.blogid" v-bind:title="blog.blog_title">
+                                <div v-on:click="gotodetail(blog.blogid)" class="tile is-child box" >
                                     <article class="media">
                                         <div class="media-left">
-                                        <figure class="image is-64x64">
-                                            <img src="http://www.kalyanamitra.org/th/images/book/MAGAZINE/hopevol_10.jpg" alt="Image">
-                                        </figure>
                                         </div>
                                         <div class="media-cnp,ontent">
                                         <div class="content">
                                             <p>
-                                            <strong>Nattaphong Kajud</strong> <small>เมื่อ 15 วันที่แล้ว</small>
+                                            <strong>{{blog.blog_title}}</strong> <small> เมื่อวันที่ {{blog.blog_date}}</small>
                                             <br>
-                                                หนังสือสอนเล่นดนตรีที่ไม่ใช่เพียงว่า เล่นพื้นฐาน แต่ยังสอดแทรกเทคนิคการเล่นอย่างไรให้เข้าถึงอารมณ์และประยุกต์ใช้
                                             </p>
+                                            <h6 class="subtitle is-6">เขียนโดย : {{blog.first_name}}</h6>
                                         </div>
                                         </div>
                                     </article>
@@ -102,6 +99,7 @@ export default {
         return {
             books :[],
             products:[],
+            blogs:[],
             product_name:'',
             book_name:'',
             author_name: '',
@@ -111,6 +109,7 @@ export default {
             price: '',
             pages: '',
             book_img: '',
+            first_name:'',
             token : token
         }
     },
@@ -132,22 +131,7 @@ export default {
             })
         },
 
-
-        // Get all Blog by userid
-         getbookformproduct () {
-           //ยังเป็น Static อยู่
-            axios.get(`/books/booksell/${12}`).then(
-                result => {
-                    console.log(result.data)
-                    this.blogs = result.data
-                },
-                error => {
-                    console.error(error)
-                }
-            )
-        },
-        
-        getbooksell(){
+        getbooksell(book){
             axios.get(`/products/booksell/get_all/${this.$route.params.book}`
             ).then(result => {
                     console.log(result.data)
@@ -186,6 +170,7 @@ export default {
                     this.amount = ''
                     this.qty = ''
                     console.log(res)
+                    router.push({ name: 'Cart' })
                     //this.getproducts()
                 })
                 })        
@@ -207,11 +192,34 @@ export default {
                 //router.push({ name: 'Login' })
             })
         },
+        getblog_book(book){
+            axios.get(`/blogview/book/review/${this.$route.params.book}`
+            ).then(result => {
+                console.log(result.data)
+                this.blogs = result.data
+            },
+            error => {
+                console.error(error)
+            })
+        },
+
+        // Gotoreadblog
+        gotodetail(blogid){
+            this.$router.push({
+                name:'Read',
+                params:{blog:blogid}
+            }).then((res) => {
+                this.getblog()
+            }).catch((err) => {
+                console.log(err)
+            })
+        },
         
     },
     mounted() {
         this.getbook_detail()
         this.getbooksell()
+        this.getblog_book()
     },
 }
 </script>

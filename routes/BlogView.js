@@ -2,7 +2,7 @@ const express = require('express')
 const blogview = express.Router()
 const Blogview = require('../models/Blogview')
 const cors = require('cors')
-
+const Sequelize = require('sequelize')
 blogview.use(cors())
 
 //Get all view 
@@ -41,6 +41,23 @@ blogview.get('/userblog/:id',(req,res) => {
         where: {
             userblogid : req.params.id
         }
+    })
+    .then(blogview => {
+        res.json(blogview)
+    })
+    .catch(err => {
+        res.send('error: '+ err)
+    })
+})
+
+//Get Blog By Bookid
+blogview.get('/book/review/:bookid',(req,res) => {
+    const Op = Sequelize.Op;
+    Blogview.findAll({
+        attributes: ['blogid','blog_title','blog_article','blog_img','blog_date','userblogid','book_id','first_name','book_name'],
+        where: {
+            book_id : req.params.bookid,
+        } 
     })
     .then(blogview => {
         res.json(blogview)

@@ -147,7 +147,8 @@ products.get('/byuser/get_all/:bookid',(req,res) => {
     const Op = Sequelize.Op;
     Product.findAll({
         where: {
-            product_user_id : req.params.bookid,
+            product_book_id : req.params.bookid,
+            status : 'เพิ่มสินค้าเรียบร้อยแล้ว',
             [Op.not]: [{status : 'ยกเลิกสินค้า'}]
         }
     })
@@ -165,7 +166,7 @@ products.get ('/booksell/get_all/:bookid',(req,res) => {
     Product.findAll({
         where: {
             product_book_id : req.params.bookid,
-            status : 'รอการตรวจสอบชำระเงิน'
+            [Op.not]: [{status : 'ยกเลิกสินค้า'},{status : 'สินค้าถูกสั่งซื้อแล้ว'}]
             
         }
     })

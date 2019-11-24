@@ -22,7 +22,6 @@
                         <td>{{product.shippingcost}}</td>
                         <td>{{product.product_price + product.shippingcost}}</td>
                         <td class="text-right">
-                            <button  class="button is-warning is-rounded ">Edit</button>
                             <button  v-on:click="deleteproduct(product.productid)" type="button"  class="button is-danger is-rounded">Delete</button>
                         </td>
                     </tr>
