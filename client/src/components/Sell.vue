@@ -30,7 +30,7 @@
         -->
         </div>
         <hr class="style11">
-        <h2 class="title is-2">รายการ</h2>
+        <h2 class="title is-2">ดำเนินการ</h2>
         <hr class="style11">
         <table class="table is-fullwidth">
             <thead class="title is-4">
@@ -52,8 +52,8 @@
                         </figure>
                     </td>
                     <td></td>
+                    <td></td>
                     <td>{{payment.paymentid}}</td>
-                    <td>900</td>
                     <td>{{payment.status}}</td>
                     <td>
                         <div>
@@ -77,6 +77,26 @@
                 </tr>
             </tbody>
         </table>
+        <hr class="style11">
+        <h2 class="title is-2">สำเร็จ</h2>
+        <table class="table is-fullwidth">
+            <thead class="title is-4">
+                <th>รหัสการขาย</th>
+                <th>รหัสสินค้า</th>
+                <th>สถานะ</th>
+                <th>การจัดส่ง</th>
+                <th>เลขพัสดุ</th>
+            </thead>
+            <tbody>
+                <tr v-for="(paymentcomplete) in paymentcompletes" v-bind:key="paymentcomplete.paymentid" v-bind:title="paymentcomplete.cart_id">
+                    <td>{{paymentcomplete.paymentid}}</td>
+                    <td>{{paymentcomplete.product_id}}</td>
+                    <td>{{paymentcomplete.status}}</td>
+                    <td>{{paymentcomplete.user_buy_address}}</td>
+                    <td>{{paymentcomplete.tracking_number}}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </template>
 
@@ -88,6 +108,7 @@ export default {
         const token = localStorage.usertoken
         return {
             payments:[],
+            paymentcompletes:[],
             token:token,
             id:'',
             cart_id: '',
@@ -136,10 +157,29 @@ export default {
             .catch((err) => {
                 console.log(err)
             })
-        }
+        },
+        sellcomplete(){
+            axios.get('/users/profile',{
+                headers: { 'Authorization': this.token }
+            }).then(res => {
+                this.id = res.data.id
+                axios.get(`/payments/sellcomplete/${this.id}`).then(
+                    result => {
+                        console.log(result.data)
+                        this.paymentcompletes = result.data
+                    },
+                    error => {
+                        console.error(error)
+                    }
+                )
+            }).catch(err => {
+                console.log(err)
+            })
+        },
     },
     mounted() {
         this.getusersell()
+        this.sellcomplete()
     },
     
 }

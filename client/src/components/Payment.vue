@@ -17,23 +17,7 @@
                 </div>
                 <div class="columns">
                     <div class="column">
-                       <div class="file has-name">
-                        <label class="file-label">
-                            <input class="file-input" 
-                                    type="file" 
-                                    name="receipt"
-                                    @change="onSelect" 
-                            >
-                            <span class="file-cta">
-                            <span class="file-label">
-                                อัพโหลดสลิป
-                            </span>
-                            </span>
-                            <span class="file-name">
-                               สลิปธนาคาร.jpg
-                            </span>
-                        </label>
-                        </div>
+                       
                     </div>
                 </div>
                 <button class="button is-success  is-fullwidth">แจ้งโอนเงิน</button>   
@@ -82,7 +66,8 @@ export default {
                 this.qty = res.data.qty,
                 this.shippingcost = res.data.shippingcost,
                 this.amount = res.data.amount,
-                this.status = res.data.status
+                this.status = res.data.status,
+                //this.receipt = res.data.receipt
                 console.log(res)
             }).catch((err) => {
                 console.log(err)
@@ -102,6 +87,7 @@ export default {
                     this.user_id = res.data.user_id
                     this.amount = res.data.price
                     this.qty = res.data.qty 
+                    //this.receipt = res.data.receipt
                   axios.post('/payments/addpayment',{
                     cart_id : this.cartid,
                     product_id : this.product_id,
@@ -109,7 +95,7 @@ export default {
                     user_sell_id : this.user_id,
                     user_buy_id : this.id,
                     user_buy_address : this.user_buy_address,
-                    receipt : this.receipt,
+                    //receipt : this.receipt,
                     status : "รอการตรวจสอบชำระเงิน",
                   }).then((res) => {
                     this.cart_id = '',
@@ -118,7 +104,7 @@ export default {
                     this.user_sell_id = '',
                     this.user_buy_id = '',
                     this.user_buy_address = '',
-                    this.receipt = '',
+                    //this.receipt = '',
                     this.status = '',
                     console.log(res)
                     router.push({ name: 'Purchase' })

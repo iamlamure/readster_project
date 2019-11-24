@@ -55,7 +55,7 @@ import router from '../router'
 
 export default {
     data() {
-        const token = localStorage.usertoken
+        //const token = localStorage.usertoken
         return {
             blogs:[],
             blogid:'',
@@ -63,7 +63,7 @@ export default {
             blog_title:'',
             blog_img:'',
             userblogid:'',
-            token: token,
+            //token: token,
             first_name:'',
             last_name:'',
             blog_date:'',
@@ -72,7 +72,7 @@ export default {
     },
     mounted() {
         this.getblog()
-        this.getuser()
+        //this.getuser()
         this.getbooks()
     },
     methods: {
