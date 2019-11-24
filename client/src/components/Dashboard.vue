@@ -1,9 +1,12 @@
 <template>
     <div >
-        <h1 class="title is-1">{{first_name}}</h1>
-        <a class="button is-danger is-rounded" href="#/admin_login/" v-on:click="adminlogout">
+        <h1 class="title is-1">Welcome {{first_name}} <a class="button is-danger is-rounded" href="#/admin_login/" v-on:click="adminlogout">
                 Logout
-        </a>
+        </a></h1>
+        <br>
+        <router-link class="button is-info is-rounded" to="Admin_Payment" >
+                ตรวจสอบการโอนเงิน
+        </router-link>
     </div>
 </template>
 

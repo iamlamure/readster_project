@@ -23,6 +23,9 @@ import Payment from '@/components/Payment'
 import Admin_Login from '@/components/Admin_Login'
 import Dashboard from '@/components/Dashboard'
 import Admin_Payment from '@/components/Admin_Payment'
+import Admin_Blog from '@/components/Admin_Blog'
+import Admin_Book from '@/components/Admin_Book'
+import Admin_Product from '@/components/Admin_Product'
 
 
 Vue.use(Router)
@@ -138,6 +141,21 @@ export default new Router({
       path: '/admin_payment',
       name: 'Admin_Payment',
       component : Admin_Payment
+    },
+    {
+      path: '/admin_blog',
+      name: 'Admin_Blog',
+      component : Admin_Blog
+    },
+    {
+      path: '/admin_book',
+      name: 'Admin_book',
+      component : Admin_Book
+    },
+    {
+      path: '/admin_product',
+      name: 'Admin_Product',
+      component: Admin_Product
     }
   ]
 })

@@ -17,8 +17,8 @@
                         <input v-model="product_price" class="input" type="number" name="product_name">
                     </div>
                     <div class="column">
-                       <label class="title is-4">จำนวน</label>
-                        <input v-model="qty" class="input" type="number" name="product_name">
+                       <label class="title is-4">ค่าจัดส่ง</label>
+                        <input v-model="shippingcost" class="input" type="number" name="product_name">
                     </div>
                     <div class="column">
                         <div class="select">
@@ -44,8 +44,8 @@
                     </div>
                     <div class="column">
                         <div>
-                            <label class="title is-4">ค่าจัดส่ง</label>
-                            <input v-model="shippingcost" class="input" type="number" name="product_name">
+                            <label class="title is-4">ราคารวม</label>
+                            <input v-model="amount" class="input" type="number" name="product_name" >
                         </div>
                     </div>
                     <div class="column">
@@ -81,7 +81,7 @@
                             </td>
                             <td>{{product.product_price}}</td>
                             <td>{{product.shippingcost}}</td>
-                            <td>{{product.amount}}</td>
+                            <td></td>
                             <td class="text-right">
                                 <button  class="button is-warning is-rounded ">Edit</button>
                                 <button  v-on:click="deleteproduct(product.productid)" type="button"  class="button is-danger is-rounded">Delete</button>
@@ -110,7 +110,7 @@ export default {
             product_detail:'',
             product_img:'',
             product_price:'',
-            amount:'',
+            amount : '',
             product_condition:'',
             shipping:'',
             shippingcost:'',
@@ -131,6 +131,7 @@ export default {
     },
 
     methods: {
+
         addproduct(){
             axios.get('/users/profile', {
                 headers: { 'Authorization': this.token }
@@ -143,7 +144,7 @@ export default {
                         product_detail:this.product_detail,
                         product_img:this.product_img,
                         product_price:this.product_price,
-                        amount:product_price + shippingcost,
+                        amount:this.amount,
                         product_condition:this.product_condition,
                         shipping:this.shipping,
                         shippingcost:this.shippingcost,
