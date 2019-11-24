@@ -30,7 +30,7 @@
             -->
         </div>
         <hr class="style11">
-        <h2 class="title is-2">รายการ</h2>
+        <h2 class="title is-2">ดำเนินการ</h2>
         <hr class="style11">
         <table class="table is-fullwidth">
             <thead class="title is-4">
@@ -66,6 +66,24 @@
                 </tr>
             </tbody>
         </table>
+        <hr class="style11">
+        <h2 class="title is-2">สำเร็จ</h2>
+        <table class="table is-fullwidth">
+            <thead class="title is-4">
+                <th>รหัสการซื้อ</th>
+                <th>รหัสสินค้า</th>
+                <th>สถานะ</th>
+                <th>เลขพัสดุ</th>
+            </thead>
+            <tbody>
+                <tr v-for="(buycomplete) in buycompletes" v-bind:key="buycomplete.paymentid" v-bind:title="buycomplete.cart_id">
+                    <td>{{buycomplete.paymentid}}</td>
+                    <td>{{buycomplete.product_id}}</td>
+                    <td>{{buycomplete.status}}</td>
+                    <td>{{buycomplete.tracking_number}}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </template>
 
@@ -77,6 +95,7 @@ export default {
         const token = localStorage.usertoken
         return{
             payments:[],
+            buycompletes:[],
             token:token,
             id:'',
             cart_id: '',
@@ -122,10 +141,29 @@ export default {
             .catch((err) => {
                 console.log(err)
             })
-        }
+        },
+        buycomplete(){
+            axios.get('/users/profile',{
+                headers: { 'Authorization': this.token }
+            }).then(res => {
+                this.id = res.data.id
+                axios.get(`/payments/buycomplete/${this.id}`).then(
+                    result => {
+                        console.log(result.data)
+                        this.buycompletes = result.data
+                    },
+                    error => {
+                        console.error(error)
+                    }
+                )
+            }).catch(err => {
+                console.log(err)
+            })
+        },
     },
     mounted() {
         this.getuserbuy()
+        this.buycomplete()
     },
 }
 </script>

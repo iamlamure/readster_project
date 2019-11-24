@@ -143,9 +143,24 @@ payments.get('/sellcomplete/:id',(req,res) => {
     })
 })
 
-
-
-
+//Get Ship complete
+payments.get('/buycomplete/:id',(req,res) => {
+    const Op = Sequelize.Op;
+    Payment.findAll({
+        where: {
+            user_buy_id : req.params.id,
+            [Op.or]:[
+                { status : 'ได้รับสินค้าแล้ว'}
+            ]
+        }
+    })
+    .then(buycompletes => {
+        res.json(buycompletes)
+    })
+    .catch(err => {
+        res.send('error:' + err)
+    })
+})
 
 //Get Payment detail form cartid on click
 payments.get('/checkout/:paymentid',(req,res) => {
