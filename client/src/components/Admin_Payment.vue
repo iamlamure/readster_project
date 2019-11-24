@@ -1,6 +1,8 @@
 <template>
     <div>
-        <h1 class="title is-1">Admin Payment</h1>
+        <h1 class="title is-1">Admin Payment<router-link class="button is-primary is-rounded" to="Dashboard" >
+                หน้าหลัก
+        </router-link></h1>
         <div class="container">
             <div>
                 <hr class="style11">

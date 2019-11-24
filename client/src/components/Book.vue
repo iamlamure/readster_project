@@ -101,17 +101,6 @@ export default {
             )
         },
 
-        //Delete Book by id
-        deletebook (bookid) {
-            axios.delete(`/books/delete/${bookid}`
-            ).then((res) => {
-                this.getbooks()
-                console.log(res)
-            }).catch((err) => {
-                console.log(err)
-            })
-        },
-
         //getbookdetail
         getbookdetail(bookid) {
             this.$router.push({

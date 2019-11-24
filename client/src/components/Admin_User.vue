@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <h1 class="title is-1"> จัดการ Blog<router-link class="button is-primary is-rounded" to="Dashboard" >
+        <h1 class="title is-1">จัดการผู้ใช้<router-link class="button is-primary is-rounded" to="Dashboard" >
                 หน้าหลัก
         </router-link></h1>
         <table class="table is-fullwidth">

@@ -32,6 +32,9 @@ module.exports = db.sequelize.define(
         },
         book_img: {
             type: Sequelize.STRING
+        },
+        status: {
+            type: Sequelize.STRING
         }
     },
     {

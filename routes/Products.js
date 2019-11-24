@@ -79,7 +79,13 @@ products.put('/update/:productid',(req,res) => {
 
 //Find All Product For Admin
 products.get('/all',(req,res) => {
-    Product.findAll()
+    const Op = Sequelize.Op;
+    Product.findAll({
+        where : {
+            status : "เพิ่มสินค้าเรียบร้อยแล้ว",
+            [Op.not]: [{status : 'ยกเลิกสินค้า'},{status : 'สินค้าถูกสั่งซื้อแล้ว'}]
+        }
+    })
     .then(products => {
         res.json(products)
     })

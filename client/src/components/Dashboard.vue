@@ -7,6 +7,18 @@
         <router-link class="button is-info is-rounded" to="Admin_Payment" >
                 ตรวจสอบการโอนเงิน
         </router-link>
+        <router-link class="button is-warning is-rounded" to="Admin_Product" >
+                ตรวจสอบสินค้า
+        </router-link>
+        <router-link class="button is-success is-rounded" to="Admin_Book" >
+                ตรวจสอบหนังสือ
+        </router-link>
+        <router-link class="button is-primary is-rounded" to="Admin_Blog" >
+                ตรวจสอบการรีวิว
+        </router-link>
+        <router-link class="button is-link is-rounded" to="Admin_User" >
+                ตรวจสอบผู้ใช้
+        </router-link>
     </div>
 </template>
 

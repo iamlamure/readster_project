@@ -2,13 +2,21 @@ const express = require('express')
 const books = express.Router()
 const Book = require('../models/Book')
 const cors = require('cors')
+const Sequelize = require('sequelize')
 
 books.use(cors())
 
 
 //Get all book
 books.get('/all',(req,res) => {
-    Book.findAll()
+    const Op = Sequelize.Op;
+    Book.findAll({
+        where:{
+            status : 'เพิ่มหนังสือเรียบร้อยแล้ว' ,
+            [Op.not]: [{status : 'ระงับหนังสือ'}]
+        }
+    })
+    
     .then(books => {
         res.json(books)
     })
@@ -30,7 +38,8 @@ books.post('/addbook',(req, res) => {
         price: req.body.price,
         pages: req.body.pages,
         book_img: req.body.book_img,
-        created: today
+        created: today,
+        status: "เพิ่มหนังสือเรียบร้อยแล้ว"
     }
         Book.create(bookData)
         .then(() => {
@@ -52,6 +61,7 @@ books.put('/update/:bookid',(req,res) => {
         price: req.body.price,
         pages: req.body.pages,
         book_img: req.body.book_img,
+        status: req.body.status
     }
     if (!bookData){
         res.status(400)
@@ -69,6 +79,7 @@ books.put('/update/:bookid',(req,res) => {
                 price: req.body.price,
                 pages: req.body.pages,
                 book_img: req.body.book_img,
+                status: req.body.status
             },
             {where: {bookid : req.params.bookid}}
         )
