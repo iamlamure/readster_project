@@ -61,7 +61,6 @@
                         {{payment.tracking_number}}
                     </td>
                     <td>
-                        <button class="button is-danger is-rounded is-small">ยกเลิก</button>
                         <button @click="completeBuy(payment.paymentid)" class="button is-success is-rounded is-small">ได้รับสินค้าแล้ว</button>
                     </td>
                 </tr>

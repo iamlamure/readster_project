@@ -82,8 +82,13 @@ products.get('/all',(req,res) => {
     const Op = Sequelize.Op;
     Product.findAll({
         where : {
-            status : "เพิ่มสินค้าเรียบร้อยแล้ว",
-            [Op.not]: [{status : 'ยกเลิกสินค้า'},{status : 'สินค้าถูกสั่งซื้อแล้ว'}]
+            status : 'เพิ่มสินค้าเรียบร้อยแล้ว',
+            [Op.not]: [
+                {status : 'ยกเลิกสินค้า'},
+                {status : 'สินค้าถูกสั่งซื้อแล้ว'},
+                {status : 'จัดส่งเรียบร้อยแล้ว'},
+                {status : 'ได้รับสินค้าแล้ว'}
+            ]
         }
     })
     .then(products => {
@@ -100,7 +105,12 @@ products.get('/shop_page',(req,res) => {
     Product.findAll({
         where : {
             status : "เพิ่มสินค้าเรียบร้อยแล้ว",
-            [Op.not]: [{status : 'ยกเลิกสินค้า'},{status : 'สินค้าถูกสั่งซื้อแล้ว'}]
+            [Op.not]: [
+                {status : 'ยกเลิกสินค้า'},
+                {status : 'สินค้าถูกสั่งซื้อแล้ว'},
+                {status : 'จัดส่งเรียบร้อยแล้ว'},
+                {status : 'ได้รับสินค้าแล้ว'}
+            ]
         }
     })
     .then(products => {
@@ -143,13 +153,18 @@ products.get ('/product_detail/:productid',(req,res) => {
 })
 
 // Get All Product By userID for User Check
-products.get('/byuser/get_all/:bookid',(req,res) => {
+products.get('/byuser/get_all/:id',(req,res) => {
     const Op = Sequelize.Op;
     Product.findAll({
         where: {
-            product_book_id : req.params.bookid,
+            product_user_id : req.params.id,
             status : 'เพิ่มสินค้าเรียบร้อยแล้ว',
-            [Op.not]: [{status : 'ยกเลิกสินค้า'}]
+            [Op.not]: [
+                {status : 'ยกเลิกสินค้า'},
+                {status : 'สินค้าถูกสั่งซื้อแล้ว'},
+                {status : 'จัดส่งเรียบร้อยแล้ว'},
+                {status : 'ได้รับสินค้าแล้ว'}
+            ]
         }
     })
     .then(products => {
@@ -166,7 +181,12 @@ products.get ('/booksell/get_all/:bookid',(req,res) => {
     Product.findAll({
         where: {
             product_book_id : req.params.bookid,
-            [Op.not]: [{status : 'ยกเลิกสินค้า'},{status : 'สินค้าถูกสั่งซื้อแล้ว'}]
+            [Op.not]: [
+                {status : 'ยกเลิกสินค้า'},
+                {status : 'สินค้าถูกสั่งซื้อแล้ว'},
+                {status : 'จัดส่งเรียบร้อยแล้ว'},
+                {status : 'ได้รับสินค้าแล้ว'}
+            ]
             
         }
     })

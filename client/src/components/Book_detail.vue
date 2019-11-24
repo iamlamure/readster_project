@@ -22,7 +22,6 @@
                                         <dl>
                                             <li>ราคา : {{price}}</li>
                                             <li>หน้า : {{pages}}</li>
-                                            <li>หมวดหมู่ : {{category}}</li>
                                         </dl>
                                     </div>
                                     <p>{{book_detail}}</p>

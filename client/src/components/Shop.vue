@@ -4,9 +4,7 @@
         <br>
         <div class="columns is-centered">
         <div class="column is-half ">
-          <p class="bd-notification is-primary">
-            <input class="input is-rounded" type="text" placeholder="สินค้าที่ต้องการ">
-          </p>
+          
         </div>
       </div>
         <hr class="style11">
@@ -80,6 +78,7 @@ methods: {
                 }
             )
         },
+
         getproduct_detail(productid){
             this.$router.push({
                 name:'Product_detail',

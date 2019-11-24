@@ -31,6 +31,9 @@ module.exports = db.sequelize.define(
         book_name: {
             type: Sequelize.STRING,
         },
+        status: {
+            type: Sequelize.STRING,
+        }
     },
     {
         timestamps: false,

@@ -7,8 +7,13 @@ blogview.use(cors())
 
 //Get all view 
 blogview.get('/all',(req,res) => {
+    const Op = Sequelize.Op;
     Blogview.findAll({
-        attributes: ['blogid','blog_title','blog_article','blog_img','blog_date','userblogid','book_id','first_name','book_name']
+        attributes: ['blogid','blog_title','blog_article','blog_img','blog_date','userblogid','book_id','first_name','book_name','status'],
+        where : {
+            status : 'เพิ่มบทความเรียบร้อยแล้ว' ,
+            [Op.not]: [{status : 'ระงับบทความ'}]
+        }
     })
     .then(blogview => {
         res.json(blogview)
@@ -37,7 +42,7 @@ blogview.get('/read/:blogid',(req,res) => {
 //ฺGet All Blog By ID
 blogview.get('/userblog/:id',(req,res) => {
     Blogview.findAll({
-        attributes: ['blogid','blog_title','blog_article','blog_img','blog_date','userblogid','book_id','first_name','book_name'],
+        attributes: ['blogid','blog_title','blog_article','blog_img','blog_date','userblogid','book_id','first_name','book_name','status'],
         where: {
             userblogid : req.params.id
         }
@@ -54,7 +59,7 @@ blogview.get('/userblog/:id',(req,res) => {
 blogview.get('/book/review/:bookid',(req,res) => {
     const Op = Sequelize.Op;
     Blogview.findAll({
-        attributes: ['blogid','blog_title','blog_article','blog_img','blog_date','userblogid','book_id','first_name','book_name'],
+        attributes: ['blogid','blog_title','blog_article','blog_img','blog_date','userblogid','book_id','first_name','book_name','status'],
         where: {
             book_id : req.params.bookid,
         } 

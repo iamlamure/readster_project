@@ -73,7 +73,7 @@ export default {
     mounted() {
         this.getblog()
         //this.getuser()
-        this.getbooks()
+        //this.getbooks()
     },
     methods: {
 

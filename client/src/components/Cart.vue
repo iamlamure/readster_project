@@ -10,23 +10,17 @@
                         <th>สินค้า</th>
                         <th></th>
                         <th>ราคาต่อชิ้น</th>
-                        <th>จำนวน</th>
                         <th>ค่าจัดส่ง</th>
                         <th>ราคารวม</th>
                         <th>action</th>
                     </thead>
                     <tbody>
                         <tr v-for="(cart) in carts" v-bind:key="cart.cartid" v-bind:title="cart.user_buy_address">
-                            <td>
-                                <figure class="image is-32x32">
-                                    <img src="https://readery.co/media/catalog/product/cache/1/small_image/360x/17f82f742ffe127f42dca9de82fb58b1/s/c/screen_shot_2562-10-22_at_1.43.56_am.png" alt="Image">
-                                </figure>
-                            </td>
-                            <td>เศรษฐศาสตร์: ประวัติศาสตร์มีชีวิตของพัฒนาการความคิดเศรษฐศาสตร์</td>
                             <td>{{cart.product_id}}</td>
+                            <td></td>
                             <td>{{cart.price}}</td>
-                            <td>{{cart.qty}}</td>
                             <td>{{cart.shippingcost}}</td>
+                            <td>{{cart.price + cart.shippingcost}}</td>
                             <td>
                                 <button @click="deleteItemCart(cart.cartid)" class="button is-danger is-outlined is-rounded" href="">ยกเลิก</button>
                                 <button @click="getcart_topayment(cart.cartid)" class="button is-info is-rounded">ชำระเงิน</button>

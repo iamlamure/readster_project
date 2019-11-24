@@ -52,10 +52,7 @@ export default {
         }
     },
     methods: {
-        onSelect(){
-            const receipt = this.$refs.receipt.receipts[0];
-            this.receipt = receipt
-        },
+        
         getpayment(cart){
             axios.get(`/carts/cart_detail/${this.$route.params.cart}`
             ).then((res) => {

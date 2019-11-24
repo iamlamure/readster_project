@@ -41,7 +41,6 @@
                 <th>สถานะ</th>
                 <th>การจัดส่ง</th>
                 <th>สลิป</th>
-                <th>คำสั่ง</th>
                 <th>แจ้งเลขพัสดุ</th>
             </thead>
             <tbody>
@@ -64,10 +63,7 @@
                             <button class="button is-warning is-fullwidth is-rounded is-small" @click="isOpen=!isOpen">ที่อยู่ในการจัดส่ง</button>
                         </div>
                     </td>
-                    <td>รออัพโหลด</td>
-                    <td>
-                        <a class="button is-danger is-rounded is-small">ยกเลิก</a>
-                    </td>
+                    <td>รูปภาพ</td>
                     <td>
                         <form v-on:submit.prevent="updateSell(payment.paymentid)">
                             <input v-model="tracking_number" name="payment.tracking_number"  class="input is-rounded is-small " type="text">

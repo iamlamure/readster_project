@@ -1,8 +1,37 @@
 <template>
     <div class="container">
-        <h1 class="title is-1">จัดการหนังสือ<router-link class="button is-primary is-rounded" to="Dashboard" >
+         <h1 class="title is-1">จัดการหนังสือ<router-link class="button is-primary is-rounded" to="Dashboard" >
                 หน้าหลัก
         </router-link></h1>
+         <form v-on:submit.prevent="addbook">
+                <div class="columns is-mobile is-centered" >
+                    <input v-model="book_name" class="input is-medium title is-5" type="text" name="product_name" placeholder="ชื่อหนังสือ">
+                </div>
+                <h1 class="title is-4">รายละเอียดหนังสือ</h1>
+                <div class="columns is-mobile is-centered" >
+                    <textarea v-model="book_detail" class="textarea" placeholder="แบ่งปันประสบการณ์ที่นี่" rows="20"></textarea>
+                </div>
+                <div class="columns">
+                    <div class="column">
+                        <label class="title is-4">ชื่อผู้เขียน </label>
+                        <input v-model="author_name" class="input" type="text">
+                    </div>
+                    <div class="column">
+                        <label class="title is-4">สำนักพิมพ์ : </label>
+                        <input v-model="publisher" class="input" type="text">
+                    </div>
+                    <div class="column">
+                        <label class="title is-4">ราคา : </label>
+                        <input v-model="price" class="input" type="text">
+                    </div>
+                    <div class="column">
+                        <label class="title is-4">จำนวนหน้า : </label>
+                        <input v-model="pages" class="input" type="text">
+                    </div>
+                </div>
+                <button class="button is-primary is-fullwidth title is-4">เพิ่มหนังสือ</button>   
+            </form>
+            <hr class="style11">
         <table class="table is-fullwidth">
             <thead>
                 <th>ID</th>
@@ -57,7 +86,7 @@ export default {
                     category: this.category,
                     price: this.price,
                     pages: this.pages,
-                    book_img: this.book_img
+                    //book_img: this.book_img
                 },
             ).then((res) => {
                 this.book_name =''
