@@ -18,6 +18,9 @@ module.exports = db.sequelize.define(
         user_id:{
             type: Sequelize.INTEGER
         },
+        user_sell_id:{
+            type: Sequelize.INTEGER
+        },
         qty:{
             type: Sequelize.INTEGER
         },

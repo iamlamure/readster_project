@@ -23,7 +23,7 @@
                             <td>{{payment.user_buy_id}}</td>
                             <td>{{payment.user_sell_id}}</td>
                             <td>{{payment.amount}}</td>
-                            <td>รูปใบเสร็จ</td>
+                            <td><img  v-bind:src="payment.receipt" /></td>
                             <td class="text-right">
                                 <button  v-on:click="rejectpayment(payment.paymentid)" type="button"  class="button is-danger is-rounded">Reject</button>
                                 <button  v-on:click="confirmpayment(payment.paymentid,payment.product_id)" type="button"  class="button is-success is-rounded">Confirm</button>
@@ -41,6 +41,7 @@ import router from "../router";
 
 export default {
      data(){
+         img : '/uploads/payment/receipt/1.jpg'
         //const token = localStorage.usertoken
         return {
             payments: [],

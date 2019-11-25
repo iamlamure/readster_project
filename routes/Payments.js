@@ -10,7 +10,7 @@ payments.use(cors())
 const multer = require('multer')
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, './uploads/payment/receipt')
+        cb(null, './public/payment/receipt')
     },
     filename: function (req, file, cb) {
         cb(null, file.originalname)
@@ -32,13 +32,19 @@ payments.get('/all',(req,res) => {
 
 //Get Paynet for Check by Admin
 payments.get('/forcheckbyadmin/all',(req,res) => {
-    Payment.findAll({
-        where: {
-            status : 'รอการตรวจสอบชำระเงิน'
-        }
-    })
+    Payment.findAll(//{
+       // where: {
+       //     status : 'รอการตรวจสอบชำระเงิน'
+      //  }
+   // }
+    )
     .then(payments => {
-        res.json(payments)
+        const data = payments.map((value)=>{
+            value.receipt = "http://localhost:5000/payment/receipt/"+value.receipt
+            return value;
+        })
+     ///   console.log(data);
+        res.json(data)
     })
     .catch(err => {
         res.send('error: '+err)
@@ -46,7 +52,7 @@ payments.get('/forcheckbyadmin/all',(req,res) => {
 })
 
 //Add Payment
-payments.post('/addpayment'/*,upload.single('receipt')*/,(req,res) => {
+payments.post('/addpayment',upload.single('receipt'),(req,res) => {
     const today = new Date()
     const paymentData = {
         cart_id: req.body.cart_id,
@@ -55,27 +61,17 @@ payments.post('/addpayment'/*,upload.single('receipt')*/,(req,res) => {
         user_sell_id:req.body.user_sell_id,
         user_buy_id:req.body.user_buy_id,
         user_buy_address:req.body.user_buy_address,
-        //receipt:req.file.filename,
-        receipt:req.body.receipt,
+        receipt:req.file.filename,
         status:req.body.status,
         created:today,
+        //tracking_number:req.body.tracking_number
     }
-    /*
-    try {
-        console.log(req.file.filename);
-    }catch(err){
-        res.send(400)
-    }*/
     Payment.create(paymentData)
     .then(() => {
-        //res.send(req.file)
         res.json('Payment Added!')
-        //console.log(req.file.filename)
-        //return next();
     })
     .catch(err => {
         res.send('error: ' +err)
-        console.log(err)
     })
 })
 

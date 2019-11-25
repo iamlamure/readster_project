@@ -43,6 +43,7 @@ export default {
             product_condition:'',
             shipping:'',
             shippingcost:'',
+            product_user_id:'',
             token: token
         }
     },
@@ -59,6 +60,7 @@ export default {
                 this.product_condition = res.data.product_condition,
                 this.shipping = res.data.shipping,
                 this.shippingcost = res.data.shippingcost,
+                this.product_user_id = res.data.product_user_id
                 console.log(res)
             }).catch((err) => {
                 console.log(err)
@@ -78,9 +80,11 @@ export default {
                     this.user_id = res.data.id
                     this.amount = res.data.price
                     this.qty = res.data.qty  
+                    this.product_user_id = res.data.product_user_id
                   axios.post('/carts/addcart',{
                     product_id : this.productid,
                     price : this.price,
+                    user_sell_id:this.product_user_id,
                     shippingcost : this.shippingcost,
                     user_id : this.id,
                     amount : this.amount,

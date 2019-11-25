@@ -41,10 +41,13 @@ blogview.get('/read/:blogid',(req,res) => {
 
 //ฺGet All Blog By ID
 blogview.get('/userblog/:id',(req,res) => {
+    const Op = Sequelize.Op;
     Blogview.findAll({
         attributes: ['blogid','blog_title','blog_article','blog_img','blog_date','userblogid','book_id','first_name','book_name','status'],
         where: {
-            userblogid : req.params.id
+            userblogid : req.params.id,
+            status : 'เพิ่มบทความเรียบร้อยแล้ว' ,
+            [Op.not]: [{status : 'ระงับบทความ'}]
         }
     })
     .then(blogview => {
