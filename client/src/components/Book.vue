@@ -11,11 +11,11 @@
                 <div @click="getbookdetail(book.bookid)" class="tile is-child box">
                     <div class="card-image has-text-centered">
                         <figure class="image is-inline-block">
-                            <img src="https://readery.co/media/catalog/product/cache/1/small_image/240x/17f82f742ffe127f42dca9de82fb58b1/b/o/book_l_less.png">
+                            <img  v-bind:src="book.book_img" />
                         </figure>
                     </div>
-                    <h5  class="title columns is-mobile is-centered card-header-title is-5">{{book.book_name}}</h5>
-                    <h6  class="title columns is-mobile is-centered is-6">฿{{book.price}}</h6>
+                    <h5 class="title columns is-mobile is-centered card-header-title is-5">{{book.book_name}}</h5>
+                    <h6 class="title columns is-mobile is-centered is-6">฿{{book.price}}</h6>
                 </div>
             </div>
         </div>

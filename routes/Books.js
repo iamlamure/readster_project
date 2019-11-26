@@ -6,6 +6,18 @@ const Sequelize = require('sequelize')
 
 books.use(cors())
 
+//Upload
+const multer = require('multer')
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, './public/book/cover')
+    },
+    filename: function (req, file, cb) {
+        cb(null, file.originalname)
+    }
+})
+
+var upload = multer({ storage: storage })
 
 //Get all book
 books.get('/all',(req,res) => {
@@ -18,7 +30,11 @@ books.get('/all',(req,res) => {
     })
     
     .then(books => {
-        res.json(books)
+        const data = books.map((value)=>{
+            value.book_img = "http://localhost:5000/book/cover/"+value.book_img
+            return value;
+        })
+        res.json(data)
     })
     .catch(err => {
         res.send('error: '+ err)
@@ -27,7 +43,7 @@ books.get('/all',(req,res) => {
 
 
 //Add book
-books.post('/addbook',(req, res) => {
+books.post('/addbook',upload.single('book_img'),(req, res) => {
     const today = new Date()
     const bookData = {
         book_name: req.body.book_name,
@@ -37,7 +53,7 @@ books.post('/addbook',(req, res) => {
         category: req.body.category,
         price: req.body.price,
         pages: req.body.pages,
-        book_img: req.body.book_img,
+        book_img: req.file.filename,
         created: today,
         status: "เพิ่มหนังสือเรียบร้อยแล้ว"
     }

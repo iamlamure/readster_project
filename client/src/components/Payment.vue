@@ -116,9 +116,17 @@
                       user_buy_id: this.id,
                       user_buy_address: this.user_buy_address,
                       //receipt : this.receipt,
-                      status: "รอการตรวจสอบชำระเงิน",
-                    }).then((res) => {
-                      this.cart_id = '',
+                      status: "รอการตรวจสอบชำระเงิน"
+                      }).then((res) => {
+                         axios.put(`/carts/update/${cart_id}`,
+                       {
+                            status : "สั่งซื้อแล้ว",
+                        }
+                        ).then((res) => {
+                            this.status = ''
+                            console.log(res)
+                        })
+                        this.cart_id = '',
                         this.product_id = '',
                         this.amount = '',
                         this.user_sell_id = '',
