@@ -7,16 +7,16 @@
             <div class="tile is-child box">
                 <table class="table is-fullwidth">
                     <thead>
-                        <th>สินค้า</th>
+                        <th>รหัสคำสั่งซื้อ</th>
                         <th></th>
-                        <th>ราคาต่อชิ้น</th>
-                        <th>ค่าจัดส่ง</th>
+                        <th>ราคาสินค้า</th>
+                        <th>ค่าส่ง</th>
                         <th>ราคารวม</th>
-                        <th>action</th>
+                        <th></th>
                     </thead>
                     <tbody>
                         <tr v-for="(cart) in carts" v-bind:key="cart.cartid" v-bind:title="cart.user_buy_address">
-                            <td>{{cart.product_id}}</td>
+                            <td>{{cart.cartid}}</td>
                             <td></td>
                             <td>{{cart.price}}</td>
                             <td>{{cart.shippingcost}}</td>
@@ -52,7 +52,7 @@ export default {
         }
     },
     mounted() {
-        this.getallcart()
+        //this.getallcart()
         //this.getcart_topayment()
         //this.deleteItemCart()
         this.getusercart()
@@ -97,7 +97,10 @@ export default {
         },
         //Delete Product By ID
         deleteItemCart(cartid) {
-            axios.delete(`/carts/delete/${cartid}`
+            axios.put(`/carts/update/${cartid}`,
+            {
+                    status : "ยกเลิกตะกร้าสินค้า",
+            },
             ).then((res) => {
                 this.getusercart()
                 console.log(res)

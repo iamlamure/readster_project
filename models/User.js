@@ -30,6 +30,9 @@ module.exports = db.sequelize.define(
     },
     status:{
       type: Sequelize.STRING
+    },
+    phone:{
+      type: Sequelize.STRING
     }
   },
   {

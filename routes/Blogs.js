@@ -6,13 +6,27 @@ const Sequelize = require('sequelize')
 
 blogs.use(cors())
 
+//Upload
+const multer = require('multer')
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, './public/blog/banner')
+    },
+    filename: function (req, file, cb) {
+        cb(null, file.originalname)
+    }
+})
+
+var upload = multer({ storage: storage })
+
+
 
 //Add Blog
-blogs.post('/addblog',(req,res) => {
+blogs.post('/addblog',upload.single('blog_img'),(req,res) => {
     const blogData = {
         blog_title : req.body.blog_title,
         blog_article : req.body.blog_article,
-        blog_img : req.body.blog_img,
+        blog_img : req.file.filename,
         userblogid : req.body.userblogid,
         book_id: req.body.book_id,
         status: "เพิ่มบทความเรียบร้อยแล้ว"
@@ -36,7 +50,11 @@ blogs.get('/blogs',(req,res) => {
         }
     })
     .then(blogs => {
-        res.json(blogs)
+        const data = blogs.map((value)=>{
+            value.blog_img = "http://localhost:5000/blog/banner/"+value.blog_img
+            return value;
+        })
+        res.json(data)
     })
     .catch(err => {
         res.send('error: ' + err)

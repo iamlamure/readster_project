@@ -34,7 +34,7 @@
         <hr class="style11">
         <table class="table is-fullwidth">
             <thead class="title is-4">
-                <th>สินค้า</th>
+                <th>รหัสการซื้อ</th>
                 <th></th>
                 <th></th>
                 <th>ยอดทั้งหมด</th>
@@ -45,14 +45,10 @@
             </thead>
             <tbody>
                 <tr v-for="(payment) in payments" v-bind:key="payment.paymentid" v-bind:title="payment.cart_id">
-                    <td>
-                        <figure class="image is-64x64">
-                            <img src="https://readery.co/media/catalog/product/cache/1/small_image/240x/17f82f742ffe127f42dca9de82fb58b1/7/4/74238125_463268774542092_2482475965918216192_n.jpg" alt="Image">
-                        </figure>
-                    </td>
+                    <td>{{payment.cart_id}}</td>
                     <td></td>
-                    <td>{{payment.user_buy_id}}</td>
-                    <td>900</td>
+                    <td></td>
+                    <td>{{payment.amount}}</td>
                     <td>{{payment.status}}</td>
                     <td>
                         ไปรษณีย์ - EMS

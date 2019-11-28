@@ -44,8 +44,7 @@
                     </div>
                     <div class="column">
                         <div>
-                            <label class="title is-4">ราคารวม</label>
-                            <input v-model="amount" class="input" type="number" name="product_name" >
+                           
                         </div>
                     </div>
                     <div class="column">
@@ -57,6 +56,7 @@
                         </div>
                     </div>
                 </div>
+                <br>
                 <button  type="submit" class="button is-primary  is-fullwidth">เพิ่มสินค้า</button>   
             </form>
             
@@ -81,7 +81,7 @@
                             </td>
                             <td>{{product.product_price}}</td>
                             <td>{{product.shippingcost}}</td>
-                            <td></td>
+                            <td>{{product.product_price + product.shippingcost}}</td>
                             <td class="text-right">
                                 <button  class="button is-warning is-rounded ">Edit</button>
                                 <button  v-on:click="deleteproduct(product.productid)" type="button"  class="button is-danger is-rounded">Delete</button>
@@ -161,8 +161,10 @@ export default {
                         this.shippingcost = ''
                         this.product_user_id = ''
                         this.product_book_id = ''
+                        this.amount = ''
                         console.log(res)
                         this.getproductbyuser()
+                        //router.push({ name: 'Sell' })
                     })
             })
             .catch((err) => {

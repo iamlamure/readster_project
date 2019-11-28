@@ -38,7 +38,16 @@ module.exports = db.sequelize.define(
             defaultValue: Sequelize.NOW
         },
         tracking_number: {
-            type:Sequelize.STRING,
+            type:Sequelize.STRING
+        },
+        time_pay:{
+            type: Sequelize.STRING
+        },
+        date_pay:{
+            type: Sequelize.STRING
+        },
+        bank:{
+            type:Sequelize.STRING
         }
     },
     {

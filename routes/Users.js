@@ -63,7 +63,8 @@ users.post('/register', (req, res) => {
     email: req.body.email,
     password: req.body.password,
     user_address :req.body.user_address,
-    created: today
+    created: today,
+    phone: req.body.phone
   }
 
   User.findOne({

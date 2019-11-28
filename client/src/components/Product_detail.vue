@@ -7,10 +7,9 @@
               <div class="tile is-child box">
                 <button v-on:click="addcart(productid)" class="button is-link is-outlined is-pulled-right">เพิ่มลงตะกร้าสินค้า</button>
                 <h1 class="title is-1"> {{product_name}} </h1>
-                <p class="is-pulled-right"> วันที่ </p>
+                <p class="is-pulled-right"> วันที่ {{created}} </p>
                 <h5 class="title is-5"> รายละเอียด : {{product_detail}} </h5>
                 <h5 class="subtitle is-5"> ราคา : {{product_price}} </h5>
-                <p>จำนวนชิ้น : {{qty}}</p>
                 <p>สภาพสินค้า : {{product_condition}}</p>
                 <p>การจัดส่ง : {{shipping}}</p>
                 <p>ค่าจัดส่ง : {{shippingcost}}</p>
@@ -44,7 +43,8 @@ export default {
             shipping:'',
             shippingcost:'',
             product_user_id:'',
-            token: token
+            token: token,
+            created:''
         }
     },
     methods: {
@@ -61,6 +61,7 @@ export default {
                 this.shipping = res.data.shipping,
                 this.shippingcost = res.data.shippingcost,
                 this.product_user_id = res.data.product_user_id
+                this.created = res.data.created
                 console.log(res)
             }).catch((err) => {
                 console.log(err)

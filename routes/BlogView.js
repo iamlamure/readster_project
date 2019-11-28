@@ -16,7 +16,11 @@ blogview.get('/all',(req,res) => {
         }
     })
     .then(blogview => {
-        res.json(blogview)
+        const data = blogview.map((value)=>{
+            value.blog_img = "http://localhost:5000/blog/banner/"+value.blog_img
+            return value;
+        })
+        res.json(data)
     })
     .catch(err => {
         res.send('error: '+ err)

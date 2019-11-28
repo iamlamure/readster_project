@@ -34,25 +34,18 @@
         <hr class="style11">
         <table class="table is-fullwidth">
             <thead class="title is-4">
-                <th>สินค้า</th>
-                <th></th>
+                <th>รหัสสินค้า</th>
                 <th></th>
                 <th>ยอดทั้งหมด</th>
                 <th>สถานะ</th>
                 <th>การจัดส่ง</th>
-                <th>สลิป</th>
                 <th>แจ้งเลขพัสดุ</th>
             </thead>
             <tbody>
                 <tr v-for="(payment) in payments" v-bind:key="payment.paymentid" v-bind:title="payment.cart_id">
-                    <td>
-                        <figure class="image is-64x64">
-                            <img src="https://readery.co/media/catalog/product/cache/1/small_image/240x/17f82f742ffe127f42dca9de82fb58b1/7/4/74238125_463268774542092_2482475965918216192_n.jpg" alt="Image">
-                        </figure>
-                    </td>
+                    <td>{{payment.product_id}}</td>
                     <td></td>
-                    <td></td>
-                    <td>{{payment.paymentid}}</td>
+                    <td>{{payment.amount}}</td>
                     <td>{{payment.status}}</td>
                     <td>
                         <div>
@@ -63,7 +56,6 @@
                             <button class="button is-warning is-fullwidth is-rounded is-small" @click="isOpen=!isOpen">ที่อยู่ในการจัดส่ง</button>
                         </div>
                     </td>
-                    <td>รูปภาพ</td>
                     <td>
                         <form v-on:submit.prevent="updateSell(payment.paymentid)">
                             <input v-model="tracking_number" name="payment.tracking_number"  class="input is-rounded is-small " type="text">
@@ -168,6 +160,7 @@ export default {
                         console.error(error)
                     }
                 )
+                this.getusersell()
             }).catch(err => {
                 console.log(err)
             })

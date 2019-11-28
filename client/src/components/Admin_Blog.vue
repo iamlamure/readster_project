@@ -17,7 +17,6 @@
                     <td>{{blog.userblogid}}</td>
                     <td>
                         <button v-on:click="deleteblog(blog.blogid)" class="button is-danger is-small is-rounded is-pulled-right">Delete</button>
-                        <button class="button is-warning is-small is-rounded is-pulled-right">Edit</button>
                     </td>
                 </tr>
             </tbody>

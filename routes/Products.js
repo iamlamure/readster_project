@@ -6,12 +6,27 @@ const Sequelize = require('sequelize')
 
 products.use(cors())
 
+//Upload
+const multer = require('multer')
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, './public/product/pic')
+    },
+    filename: function (req, file, cb) {
+        cb(null, file.originalname)
+    }
+})
+
+var upload = multer({ storage: storage })
+
+
+
 //Add Product
-products.post('/addproduct',(req,res) => {
+products.post('/addproduct',/*upload.single('product_img'),*/(req,res) => {
     const productData = {
         product_name:req.body.product_name,
         product_detail:req.body.product_detail,
-        product_img:req.body.product_img,
+        //product_img:req.file.filename,
         product_price:req.body.product_price,
         //qty:req.body.qty,
         product_condition:req.body.product_condition,
@@ -19,7 +34,7 @@ products.post('/addproduct',(req,res) => {
         shippingcost:req.body.shippingcost,
         product_user_id:req.body.product_user_id,
         product_book_id:req.body.product_book_id,
-        amount : req.body.amount,
+        //amount : req.body.amount,
         status : "เพิ่มสินค้าเรียบร้อยแล้ว"
     }
     Product.create(productData)
@@ -181,13 +196,7 @@ products.get ('/booksell/get_all/:bookid',(req,res) => {
     Product.findAll({
         where: {
             product_book_id : req.params.bookid,
-            [Op.not]: [
-                {status : 'ยกเลิกสินค้า'},
-                {status : 'สินค้าถูกสั่งซื้อแล้ว'},
-                {status : 'จัดส่งเรียบร้อยแล้ว'},
-                {status : 'ได้รับสินค้าแล้ว'}
-            ]
-            
+            status : "เพิ่มสินค้าเรียบร้อยแล้ว"
         }
     })
     .then(products => {

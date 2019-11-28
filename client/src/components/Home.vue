@@ -13,11 +13,11 @@
       <h4 class="title is-4"> หนังสือใหม่ </h4>
         <div class="container">
           <div class="columns is-multiline">
-            <div class="column tile is-2 is-vertical is-mobile is-parent is-narrow" v-for="(book) in books" v-bind:key="book.bookid" v-bind:title="book.book_name">
+            <div class="column tile is-3 is-vertical is-mobile is-parent is-narrow" v-for="(book) in books" v-bind:key="book.bookid" v-bind:title="book.book_name">
                 <div @click="getbookdetail(book.bookid)" class="tile is-child box">
                     <div class="card-image has-text-centered">
                         <figure class="image is-inline-block">
-                            <img src="https://readery.co/media/catalog/product/cache/1/small_image/360x/17f82f742ffe127f42dca9de82fb58b1/9/7/9786163016942.jpg">
+                            <img  v-bind:src="book.book_img" />
                         </figure>
                     </div>
                         <h5  class="title columns is-mobile is-centered card-header-title is-5">{{book.book_name}}</h5>

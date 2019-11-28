@@ -21,6 +21,37 @@ var upload = multer({ storage: storage })
 
 //Get All Payment
 payments.get('/all',(req,res) => {
+    const Op = Sequelize.Op;
+    Payment.findAll({
+        where: {
+            status: 'ได้รับสินค้าแล้ว'
+        }
+    })
+    .then(paymentcheckbyadmins => {
+        res.json(paymentcheckbyadmins)
+    })
+    .catch(err => {
+        res.send('error: '+err)
+    })
+})
+
+payments.get('/all/complete',(req,res) => {
+    const Op = Sequelize.Op;
+    Payment.findAll({
+        where: {
+            status: 'โอนเงินค่าสินค้าเรียบร้อยแล้ว'
+        }
+    })
+    .then(adminsendmoneys => {
+        res.json(adminsendmoneys)
+    })
+    .catch(err => {
+        res.send('error: '+err)
+    })
+})
+
+//Get All Payment
+payments.get('/forSendMoney',(req,res) => {
     Payment.findAll()
     .then(payments => {
         res.json(payments)
@@ -30,13 +61,13 @@ payments.get('/all',(req,res) => {
     })
 })
 
-//Get Paynet for Check by Admin
+//Get Paymet for Check by Admin
 payments.get('/forcheckbyadmin/all',(req,res) => {
-    Payment.findAll(//{
-       // where: {
-       //     status : 'รอการตรวจสอบชำระเงิน'
-      //  }
-   // }
+    Payment.findAll({
+       where: {
+           status : 'รอการตรวจสอบชำระเงิน'
+       }
+   }
     )
     .then(payments => {
         const data = payments.map((value)=>{
@@ -52,7 +83,7 @@ payments.get('/forcheckbyadmin/all',(req,res) => {
 })
 
 //Add Payment
-payments.post('/addpayment',upload.single('receipt'),(req,res) => {
+payments.post('/addpayment',/*upload.single('receipt'),*/(req,res) => {
     const today = new Date()
     const paymentData = {
         cart_id: req.body.cart_id,
@@ -61,9 +92,12 @@ payments.post('/addpayment',upload.single('receipt'),(req,res) => {
         user_sell_id:req.body.user_sell_id,
         user_buy_id:req.body.user_buy_id,
         user_buy_address:req.body.user_buy_address,
-        receipt:req.file.filename,
+        //receipt:req.file.filename,
         status:req.body.status,
         created:today,
+        time_pay:req.body.time_pay,
+        date_pay:req.body.date_pay,
+        bank:req.body.bank
         //tracking_number:req.body.tracking_number
     }
     Payment.create(paymentData)

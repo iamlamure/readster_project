@@ -10,6 +10,7 @@
                 <th>นามสกุล</th>
                 <th>อีเมลล์</th>
                 <th>วันที่สมัคร</th>
+                <th>เบอร์โทร สำหรับโอนเงิน</th>
                 <th class="text-right" >ACTION</th>
             </thead>
             <tbody>
@@ -19,6 +20,7 @@
                     <td>{{user.last_name}}</td>
                     <td>{{user.email}}</td>
                     <td>{{user.created}}</td>
+                    <td>{{user.phone}}</td>
                     <td class="text-right">
                         <button  v-on:click="deleteUser(user.id)" type="button"  class="button is-danger is-rounded">Delete</button>
                     </td>
@@ -39,7 +41,8 @@ export default {
             last_name: '',
             email: '',
             created:'',
-            status:''
+            status:'',
+            phone:''
         }
     },
     methods: {

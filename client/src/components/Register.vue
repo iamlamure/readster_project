@@ -20,6 +20,10 @@
             <label for="password">Password</label>
             <input type="password" v-model="password" class="input" name="password" placeholder="Password">
           </div>
+          <div class="form-group">
+            <label for="phone">เบอร์โทร และ สามารถใช้งานพร้อมเพย์</label>
+            <input type="text" v-model="phone" class="input" name="phone" placeholder="ระบุเบอร์โทร">
+          </div>
           <br>
             <button type="submit" class="button is-primary  is-fullwidth">Sign up</button>
           <br>
@@ -43,7 +47,8 @@ export default {
       first_name: '',
       last_name: '',
       email: '',
-      password: ''
+      password: '',
+      phone: ''
     }
   },
 
@@ -54,7 +59,8 @@ export default {
           first_name: this.first_name,
           last_name: this.last_name,
           email: this.email,
-          password: this.password
+          password: this.password,
+          phone: this.phone
         }
       ).then((res) => {
         router.push({ name: 'Login' })

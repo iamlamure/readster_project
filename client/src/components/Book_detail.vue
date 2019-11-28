@@ -7,7 +7,7 @@
                         <article class="media">
                             <div class="media-left">
                                 <figure class="image">
-                                    <img  :src="book_img" />
+                                    <img  v-bind:src="book_img"/>
                                 </figure>
                             </div>
                             <div class="media-content is-mobile">
@@ -96,7 +96,7 @@ export default {
     data() {
         const token = localStorage.usertoken
         return {
-            books :[],
+            book :[],
             products:[],
             blogs:[],
             product_name:'',

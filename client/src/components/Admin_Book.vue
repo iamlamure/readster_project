@@ -37,7 +37,7 @@
                 <th>ID</th>
                 <th></th>
                 <th>BOOK NAME</th>
-                <th class="text-right" >ACTION</th>
+                <th class="text-right" ></th>
             </thead>
             <tbody>
                 <tr v-for="(book) in books" v-bind:key="book.bookid" v-bind:title="book.book_name">
@@ -47,7 +47,6 @@
                         <h5 @click="getbookdetail(book.bookid)">{{book.book_name}}</h5>
                     </td>
                     <td class="text-right">
-                        <button  class="button is-warning is-rounded ">Edit</button>
                         <button  v-on:click="deletebook(book.bookid)" type="button"  class="button is-danger is-rounded">Delete</button>
                     </td>
                 </tr>
@@ -74,7 +73,9 @@ export default {
         }
     },
     methods: {
+        bookedit(){
 
+        },
         //Add Book
         addbook () {
             axios.post('/books/addbook',

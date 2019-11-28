@@ -1,19 +1,19 @@
 <template>
   <div class="container">
-    <h1 class="title is-1">Payment {{cartid}}</h1>
+    <h1 class="title is-1">ชำระเงินรหัสคำสั่งซื้อที่ : {{cartid}}</h1>
+    <h1 class="title is-4">ชื่อบัญชี บริษัท รีดส์เตอร์ จำกัด</h1>
+    <h1 class="title is-5">เลขที่บัญชี : 0000-000000-000-0 ธนาคาร กรุงไทย</h1>
+    <h1 class="title is-5">เลขที่บัญชี : 0000-000000-000-0 ธนาคาร ไทยพาณิช</h1>
+    <h1 class="title is-5">เลขที่บัญชี : 0000-000000-000-0 ธนาคาร ทหารไทย</h1>
+    <h1 class="title is-5">เลขที่บัญชี : 0000-000000-000-0 ธนาคาร กรุงศรีอยุธยา</h1>
+    <h1 class="title is-5">เลขที่บัญชี : 0000-000000-000-0 ธนาคาร กสิกรไทย</h1>
     <div>
       <figure class="image is-64x64 is-pulled-right">
-        <img
-          src="https://readery.co/media/catalog/product/cache/1/small_image/360x/17f82f742ffe127f42dca9de82fb58b1/s/c/screen_shot_2562-10-22_at_1.43.56_am.png"
-          alt="Image">
       </figure>
     </div>
     <hr class="style1">
     <h3 class="title is-3">{{product_id}}</h3>
-    <h3 class="title is-3">ยอดชำระทั้งหมด : {{price}} บาท </h3>
-    <h3 class="title is-3">ผู้ขาย : {{user_id}} ==== ผู้ซื้อ {{id}} </h3>
     <form v-on:submit.prevent="addpayment">
-      <h1 class="title is-4">การจัดส่ง : EMS</h1>
       <h1 class="title is-4">กรอกที่อยู่ผู้รับ และ เบอร์โทรศัพท์</h1>
       <div class="columns is-mobile is-centered">
         <textarea v-model="user_buy_address" class="textarea" placeholder="ชื่อ-ที่อยู่ และ เบอร์โทรศัพท์ผู้รับ"
@@ -21,19 +21,28 @@
       </div>
       <div class="columns">
         <div class="column">
-          <div class="file">
-            <label class="file-label">
-              <input class="file-input" type="file" name="resume">
-              <span class="file-cta">
-                <span class="file-icon">
-                  <i class="fas fa-upload"></i>
-                </span>
-                <span class="file-label">
-                  Choose a file…
-                </span>
-              </span>
-            </label>
+          <div  class="select">
+            <label class="title is-4">ธนาคารที่โอนเงิน</label>
+            <select v-model="bank">
+              <option>ธนาคาร กรุงไทย</option>
+              <option>ธนาคาร ไทยพาณิช</option>
+              <option>ธนาคาร ทหารไทย</option>
+              <option>ธนาคาร กรุงศรีอยุธยา</option>
+              <option>ธนาคาร กสิกรไทย</option>
+            </select>
           </div>
+        </div>
+        <div class="column">
+          <label class="title is-4">จำนวนเงินที่ชำระ</label>
+          <input v-model="amount" class="input" type="number">
+        </div>
+        <div class="column">
+          <label class="title is-4">วันที่ที่โอน</label>
+          <input v-model="date_pay" class="input" type="date">
+        </div>
+        <div class="column">
+          <label class="title is-4">เวลาที่โอน</label>
+          <input v-model="time_pay" class="input" type="time">
         </div>
       </div>
       <button class="button is-success  is-fullwidth">แจ้งโอนเงิน</button>
@@ -67,7 +76,10 @@
         receipt: '',
         id: '',
         user_id: '',
-        product_user_id: ''
+        product_user_id: '',
+        time_pay:'',
+        date_pay:'',
+        bank:''
       }
     },
     methods: {
@@ -101,9 +113,15 @@
                 this.price = res.data.product_price
                 this.shippingcost = res.data.shippingcost
                 this.user_id = res.data.user_id
-                this.amount = res.data.price
+                //this.amount = res.data.amount
                 this.qty = res.data.qty
                 //this.receipt = res.data.receipt
+                axios.put(`/carts/update/${this.cartid}`, {
+                  status: "สั่งซื้อแล้ว",
+                }).then((res) => {
+                  this.status = ''
+                  console.log(res)
+                })
                 axios.get(`/products/product_detail/${this.product_id}`)
                   .then(res => {
                     console.log(res.data)
@@ -116,17 +134,12 @@
                       user_buy_id: this.id,
                       user_buy_address: this.user_buy_address,
                       //receipt : this.receipt,
-                      status: "รอการตรวจสอบชำระเงิน"
-                      }).then((res) => {
-                         axios.put(`/carts/update/${cart_id}`,
-                       {
-                            status : "สั่งซื้อแล้ว",
-                        }
-                        ).then((res) => {
-                            this.status = ''
-                            console.log(res)
-                        })
-                        this.cart_id = '',
+                      status: "รอการตรวจสอบชำระเงิน",
+                      time_pay:this.time_pay,
+                      date_pay:this.date_pay,
+                      bank:this.bank
+                    }).then((res) => {
+                      this.cart_id = '',
                         this.product_id = '',
                         this.amount = '',
                         this.user_sell_id = '',
@@ -134,10 +147,12 @@
                         this.user_buy_address = '',
                         //this.receipt = '',
                         this.status = '',
+                        this.time_pay = '',
+                        this.date_pay = ''
                         console.log(res)
-                      router.push({
-                        name: 'Purchase'
-                      })
+                    })
+                    router.push({
+                      name: 'Purchase'
                     })
                   })
               })
