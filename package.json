@@ -16,7 +16,7 @@
   "author": "Panuwat Chaiwongkhot",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "^3.0.0",
+    "bcrypt": "^5.0.0",
     "body-parser": "^1.17.2",
     "bulma": "^0.8.0",
     "cors": "^2.8.4",
